@@ -11,19 +11,17 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -Wall -O2")
+set(CMAKE_BUILD_RPATH "'\$$ORIGIN'")
+set(CMAKE_FIND_LIBRARY_SUFFIXES ".a")
+set(BUILD_SHARED_LIBS OFF)
+set(CMAKE_EXE_LINKER_FLAGS "-static")
 
-find_package(QT NAMES Qt5 COMPONENTS Core REQUIRED)
-find_package(QT NAMES Qt5 COMPONENTS Gui REQUIRED)
-find_package(QT NAMES Qt5 COMPONENTS Svg REQUIRED)
-find_package(QT NAMES Qt5 COMPONENTS WebEngineWidgets REQUIRED)
-find_package(QT NAMES Qt5 COMPONENTS Multimedia REQUIRED)
-find_package(QT NAMES Qt5 COMPONENTS Widgets REQUIRED)
-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core REQUIRED)
-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Gui REQUIRED)
-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Svg REQUIRED)
-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS WebEngineWidgets REQUIRED)
-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Multimedia REQUIRED)
-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets REQUIRED)
+find_package(Qt5 COMPONENTS Core REQUIRED)
+find_package(Qt5 COMPONENTS Gui REQUIRED)
+find_package(Qt5 COMPONENTS Svg REQUIRED)
+find_package(Qt5 COMPONENTS WebEngineWidgets REQUIRED)
+find_package(Qt5 COMPONENTS Multimedia REQUIRED)
+find_package(Qt5 COMPONENTS Widgets REQUIRED)
 
 set(PROJECT_SOURCES
         src/main.cpp
@@ -42,7 +40,7 @@ set(PROJECT_SOURCES
         src/resource.qrc
 )
 
-if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
+if(5 GREATER_EQUAL 6)
     qt_add_executable(dvkbuntu-easy-menu-qt
         ${PROJECT_SOURCES}
     )
@@ -59,11 +57,9 @@ else()
 endif()
 
 target_link_libraries(dvkbuntu-easy-menu-qt
-        PRIVATE
-        Qt${QT_VERSION_MAJOR}::Core
-        Qt${QT_VERSION_MAJOR}::Gui
-        Qt${QT_VERSION_MAJOR}::Svg
-        Qt${QT_VERSION_MAJOR}::WebEngineWidgets
-        Qt${QT_VERSION_MAJOR}::Multimedia
-        Qt${QT_VERSION_MAJOR}::Widgets)
-
+        Qt5::Core
+        Qt5::Gui
+        Qt5::Svg
+        Qt5::WebEngineWidgets
+        Qt5::Multimedia
+        Qt5::Widgets)

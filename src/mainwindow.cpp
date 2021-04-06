@@ -353,12 +353,13 @@ void MainWindow::on_Calculatrice_clicked()
         PIDtxt = QString::number(myPid);
         program = "/usr/bin/bash -c \"/usr/bin/WidFromPid " + PIDtxt + " \"";
         QString stdout;
-        do {
+        for (int i = 0; i < 1000; i++) {
             WidFromPid.start(program);
             WidFromPid.waitForFinished(-1);
             stdout = WidFromPid.readAllStandardOutput();
             myWinID = hexToInt(stdout);
-        } while (not myWinID);
+            if (myWinID) { break; }
+        }
         ma_fenetreC = QWindow::fromWinId(myWinID);
         myWidgetKCalc = QWidget::createWindowContainer(ma_fenetreC);
         myWidgetKCalc->setMinimumWidth(WIDTHMAIN);
@@ -388,12 +389,13 @@ void MainWindow::on_Email_clicked()
         PIDtxt = QString::number(myPid);
         program = "/usr/bin/bash -c \"/usr/bin/WidFromPid " + PIDtxt + " \"";
         QString stdout;
-        do {
+        for (int i = 0; i < 1000; i++) {
             WidFromPid.start(program);
             WidFromPid.waitForFinished(-1);
             stdout = WidFromPid.readAllStandardOutput();
             myWinID = hexToInt(stdout);
-        } while (not myWinID);
+            if (myWinID) { break; }
+        }
         ma_fenetreE = QWindow::fromWinId(myWinID);
         myWidgetemail = QWidget::createWindowContainer(ma_fenetreE);
         myWidgetemail->setMinimumWidth(WIDTHMAIN);
@@ -423,12 +425,13 @@ void MainWindow::on_Notes_clicked()
         PIDtxt = QString::number(myPid);
         program = "/usr/bin/bash -c \"/usr/bin/WidFromPid " + PIDtxt + " \"";
         QString stdout;
-        do {
+        for (int i = 0; i < 1000; i++) {
             WidFromPid.start(program);
             WidFromPid.waitForFinished(-1);
             stdout = WidFromPid.readAllStandardOutput();
             myWinID = hexToInt(stdout);
-        } while (not myWinID);
+            if (myWinID) { break; }
+        }
         ma_fenetreN = QWindow::fromWinId(myWinID);
         myWidgetOffice = QWidget::createWindowContainer(ma_fenetreN);
         myWidgetOffice->setMinimumWidth(WIDTHMAIN);
@@ -461,12 +464,13 @@ void MainWindow::on_Internet_clicked()
         PIDtxt = QString::number(myPid);
         program = "/usr/bin/bash -c \"/usr/bin/WidFromPid " + PIDtxt + " \"";
         QString stdout;
-        do {
+        for (int i = 0; i < 1000; i++) {
             WidFromPid.start(program);
             WidFromPid.waitForFinished(-1);
             stdout = WidFromPid.readAllStandardOutput();
             myWinID = hexToInt(stdout);
-        } while (not myWinID);
+            if (myWinID) { break; }
+        }
         ma_fenetreI = QWindow::fromWinId(myWinID);
         myWidgetweb = QWidget::createWindowContainer(ma_fenetreI);
         myWidgetweb->setMinimumWidth(WIDTHMAIN);
@@ -515,28 +519,31 @@ void MainWindow::on_Discord_clicked()
         PIDtxt = QString::number(myPid);
         program = "/usr/bin/bash -c \"/usr/bin/WidFromPid " + PIDtxt + " \"";
         QString stdout;
-        do {
+        for (int i = 0; i < 1000; i++) {
             WidFromPid.start(program);
             WidFromPid.waitForFinished(-1);
             stdout = WidFromPid.readAllStandardOutput();
             myWinID = hexToInt(stdout);
-        } while (not myWinID);
+            if (myWinID) { break; }
+        }
         ma_fenetreD = QWindow::fromWinId(myWinID);
         myWidgetDiscord = QWidget::createWindowContainer(ma_fenetreD);
         myWidgetDiscord->showFullScreen();
-        do {
+        for (int i = 0; i < 1000; i++) {
             WidFromPid.start(program);
             WidFromPid.waitForFinished(-1);
             stdout = WidFromPid.readAllStandardOutput();
             myWinID = hexToInt(stdout);
-        } while (myWinID);
+            if (not myWinID) { break; }
+        };
         myWidgetDiscord->close();
-        do {
+        for (int i = 0; i < 1000; i++) {
             WidFromPid.start(program);
             WidFromPid.waitForFinished(-1);
             stdout = WidFromPid.readAllStandardOutput();
             myWinID = hexToInt(stdout);
-        } while (not myWinID);
+            if (myWinID) { break; }
+        }
         ma_fenetreD = QWindow::fromWinId(myWinID);
         myWidgetDiscord = QWidget::createWindowContainer(ma_fenetreD);
         myWidgetDiscord->setMinimumWidth(WIDTHMAIN);
