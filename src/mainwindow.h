@@ -56,8 +56,10 @@ public:
     QFont fontN;
     QFont fontD;
     QFont fontM;
-    QSize QS;
-    int fSize;
+    QSize QS1;
+    int fSize1;
+    QSize QS2;
+    int fSize2;
     int HEIGHT;
     qreal WIDTH;
     int WIDTHCONTROL;
@@ -85,8 +87,6 @@ public:
 private:
     Ui::MainWindow *ui;
     bool play = false;
-<<<<<<< HEAD:mainwindow.h
-=======
     QString program;
     QString PIDtxt;
     QProcess WidFromPid;
@@ -100,7 +100,6 @@ private:
     QLayout *myLayout;
     QWidget *FenApp;
 
->>>>>>> Colorisation:src/mainwindow.h
 
 private slots:
     virtual bool eventFilter(QObject* watched, QEvent* event);
@@ -110,11 +109,7 @@ private slots:
     void on_Internet_clicked();
     void on_Music_clicked();
     void on_Discord_clicked();
-<<<<<<< HEAD:mainwindow.h
-
-=======
     static void handleStateChanged(QProcess *procss, QWidget *widget, QWidget *killtest);
->>>>>>> Colorisation:src/mainwindow.h
 };
 
 #endif // MAINWINDOW_H
