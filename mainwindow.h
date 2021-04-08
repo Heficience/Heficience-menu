@@ -11,6 +11,10 @@
 #include <QRect>
 #include <QMediaPlayer>
 #include <QMediaPlaylist>
+#include <QDesktopWidget>
+#include <QSettings>
+#include "controlmenu.h"
+#include "controlmenumain.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -29,6 +33,20 @@ public:
     QToolButton *Notes;
     QToolButton *Discord;
     QToolButton *Music;
+    int ServiceMusique;
+    QWindow* ma_fenetreG;
+    QWindow* ma_fenetreC;
+    QWindow* ma_fenetreE;
+    QWindow* ma_fenetreI;
+    QWindow* ma_fenetreN;
+    QWindow* ma_fenetreD;
+    QWidget *FenG;
+    QWidget *FenC;
+    QWidget *FenE;
+    QWidget *FenI;
+    QWidget *FenN;
+    QWidget *FenD;
+    QWidget *FenM;
     QList<QScreen*> screens;
     QScreen *screen;
     QRect screenGeometry;
@@ -41,21 +59,48 @@ public:
     QSize QS;
     int fSize;
     int HEIGHT;
+    qreal WIDTH;
+    int WIDTHCONTROL;
+    int WIDTHMAIN;
     QProcess *m_process = new QProcess;
     QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
     QMediaPlayer *player = new QMediaPlayer;
     QMediaPlaylist *playlist = new QMediaPlaylist;
-
-private:
-    Ui::MainWindow *ui;
-    QString QCMD;
+    QWidget* menuG;
+    QWidget* menuC;
+    QWidget* menuE;
+    QWidget* menuI;
+    QWidget* menuN;
+    QWidget* menuD;
+    QWidget* menuM;
     QProcess *KCalculatrice = new QProcess;
     QProcess *DiscordLauncher = new QProcess;
     QProcess *web = new QProcess;
     QProcess *office = new QProcess;
     QProcess *email = new QProcess;
-    QWebEngineView music;// = new QWebEngineView();
+    QWebEngineView *music = new QWebEngineView;
+    QString myScale;
+    QString myScale2;
+
+private:
+    Ui::MainWindow *ui;
     bool play = false;
+<<<<<<< HEAD:mainwindow.h
+=======
+    QString program;
+    QString PIDtxt;
+    QProcess WidFromPid;
+    WId myWinID;
+    int myPid;
+    QWidget* myWidgetKCalc;
+    QWidget* myWidgetemail;
+    QWidget* myWidgetOffice;
+    QWidget* myWidgetweb;
+    QWidget* myWidgetDiscord;
+    QLayout *myLayout;
+    QWidget *FenApp;
+
+>>>>>>> Colorisation:src/mainwindow.h
 
 private slots:
     virtual bool eventFilter(QObject* watched, QEvent* event);
@@ -65,7 +110,11 @@ private slots:
     void on_Internet_clicked();
     void on_Music_clicked();
     void on_Discord_clicked();
+<<<<<<< HEAD:mainwindow.h
 
+=======
+    static void handleStateChanged(QProcess *procss, QWidget *widget, QWidget *killtest);
+>>>>>>> Colorisation:src/mainwindow.h
 };
 
 #endif // MAINWINDOW_H
