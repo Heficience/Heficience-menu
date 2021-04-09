@@ -23,7 +23,7 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
-    QMainWindow::setWindowIcon(QIcon("Images/EasyMenu_Icone.svg"));
+    QMainWindow::setWindowIcon(QIcon(":/Images/EasyMenu_Icone.svg"));
 
     ui->setupUi(this);
 
