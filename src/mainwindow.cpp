@@ -352,6 +352,8 @@ void MainWindow::handleStateChanged(QProcess *procss, QWidget *widget, QWidget *
 void MainWindow::OpenNewWindows(MyWebEnginePage *myPage)
 {
     mail->setPage(myPage);
+    connect(mail->page(), SIGNAL(loadFinished(bool)),
+            this, SLOT(ExecuteJS(bool)));
     mail->setZoomFactor(myScale.toInt());
     mail->setMinimumWidth(WIDTHMAIN);
     mail->setMinimumHeight(HEIGHT);
@@ -364,6 +366,11 @@ void MainWindow::OpenNewWindows(MyWebEnginePage *myPage)
     myLayout->addWidget(menuE);
     FenE->showFullScreen();
 }
+
+void MainWindow::ExecuteJS(bool)
+{
+    mail->page()->runJavaScript("Array.from(document.querySelectorAll('a[target=\"_blank\"]')).forEach(link => link.removeAttribute('target'));");
+};
 
 void MainWindow::on_Calculatrice_clicked()
 {
@@ -433,7 +440,6 @@ void MainWindow::on_Email_clicked()
             break;
         default:
             page->load(QUrl("https://mail.google.com/"));
-            page->settings()->setAttribute(QWebEngineSettings::JavascriptEnabled, true);
     }
     OpenNewWindows(page);
  }

@@ -91,8 +91,8 @@ int MyWebEnginePage::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     return _id;
 }
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[20];
-    char stringdata0[253];
+    QByteArrayData data[21];
+    char stringdata0[263];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -120,7 +120,8 @@ QT_MOC_LITERAL(15, 196, 8), // "QWidget*"
 QT_MOC_LITERAL(16, 205, 6), // "widget"
 QT_MOC_LITERAL(17, 212, 8), // "killtest"
 QT_MOC_LITERAL(18, 221, 14), // "OpenNewWindows"
-QT_MOC_LITERAL(19, 236, 16) // "MyWebEnginePage*"
+QT_MOC_LITERAL(19, 236, 16), // "MyWebEnginePage*"
+QT_MOC_LITERAL(20, 253, 9) // "ExecuteJS"
 
     },
     "MainWindow\0eventFilter\0\0watched\0QEvent*\0"
@@ -129,7 +130,8 @@ QT_MOC_LITERAL(19, 236, 16) // "MyWebEnginePage*"
     "on_Internet_clicked\0on_Music_clicked\0"
     "on_Discord_clicked\0handleStateChanged\0"
     "QProcess*\0procss\0QWidget*\0widget\0"
-    "killtest\0OpenNewWindows\0MyWebEnginePage*"
+    "killtest\0OpenNewWindows\0MyWebEnginePage*\0"
+    "ExecuteJS"
 };
 #undef QT_MOC_LITERAL
 
@@ -139,7 +141,7 @@ static const uint qt_meta_data_MainWindow[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-       9,   14, // methods
+      10,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -147,15 +149,16 @@ static const uint qt_meta_data_MainWindow[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    2,   59,    2, 0x08 /* Private */,
-       6,    0,   64,    2, 0x08 /* Private */,
-       7,    0,   65,    2, 0x08 /* Private */,
-       8,    0,   66,    2, 0x08 /* Private */,
-       9,    0,   67,    2, 0x08 /* Private */,
-      10,    0,   68,    2, 0x08 /* Private */,
-      11,    0,   69,    2, 0x08 /* Private */,
-      12,    3,   70,    2, 0x08 /* Private */,
-      18,    1,   77,    2, 0x08 /* Private */,
+       1,    2,   64,    2, 0x08 /* Private */,
+       6,    0,   69,    2, 0x08 /* Private */,
+       7,    0,   70,    2, 0x08 /* Private */,
+       8,    0,   71,    2, 0x08 /* Private */,
+       9,    0,   72,    2, 0x08 /* Private */,
+      10,    0,   73,    2, 0x08 /* Private */,
+      11,    0,   74,    2, 0x08 /* Private */,
+      12,    3,   75,    2, 0x08 /* Private */,
+      18,    1,   82,    2, 0x08 /* Private */,
+      20,    1,   85,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Bool, QMetaType::QObjectStar, 0x80000000 | 4,    3,    5,
@@ -167,6 +170,7 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void,
     QMetaType::Void, 0x80000000 | 13, 0x80000000 | 15, 0x80000000 | 15,   14,   16,   17,
     QMetaType::Void, 0x80000000 | 19,    2,
+    QMetaType::Void, QMetaType::Bool,    2,
 
        0        // eod
 };
@@ -187,6 +191,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 6: _t->on_Discord_clicked(); break;
         case 7: _t->handleStateChanged((*reinterpret_cast< QProcess*(*)>(_a[1])),(*reinterpret_cast< QWidget*(*)>(_a[2])),(*reinterpret_cast< QWidget*(*)>(_a[3]))); break;
         case 8: _t->OpenNewWindows((*reinterpret_cast< MyWebEnginePage*(*)>(_a[1]))); break;
+        case 9: _t->ExecuteJS((*reinterpret_cast< bool(*)>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
@@ -242,13 +247,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 9)
+        if (_id < 10)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 9;
+        _id -= 10;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 9)
+        if (_id < 10)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 9;
+        _id -= 10;
     }
     return _id;
 }
