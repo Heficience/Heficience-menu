@@ -2,20 +2,29 @@
 #include "ui_mainwindow.h"
 #include "controlmenu.h"
 #include "ui_controlmenu.h"
+#include "controlmenumail.h"
+#include "ui_controlmenumail.h"
 #include "controlmenumain.h"
 #include "ui_controlmenumain.h"
 #include <QDesktopWidget>
 #include <string>
 #include <QRect>
-#include <QScreen>
 #include <QWindow>
-#include <QTextStream>
 #include <QDockWidget>
 #include <QTreeWidget>
 #include <map>
 #include <QHBoxLayout>
 #include <QGuiApplication>
-#include <QSettings>
+#include <QWebEngineProfile>
+#include <QWebChannel>
+#include <QWebEngineUrlRequestInfo>
+#include <QWebEnginePage>
+#include <QWebEngineSettings>
+
+QWebEnginePage* MyWebEnginePage::createWindow(QWebEnginePage::WebWindowType)
+{
+    return this;
+}
 
 std::map<std::string, QString> QStringMap;
 
@@ -65,7 +74,6 @@ MainWindow::MainWindow(QWidget *parent)
     QS2 = QSize((int)(HEIGHT*.05),(int)(HEIGHT*.05));
     fSize2 = (int)((120*HEIGHT/2160)*72/dpi);
 
-    QProcess GetValue;
     GetValue.start("cat \"" + env.value("HOME") +"/.easymenu/MusiqueService\"");
     GetValue.waitForFinished(-1);
     QString ServiceMusiqueString = GetValue.readAllStandardOutput();
@@ -341,6 +349,22 @@ void MainWindow::handleStateChanged(QProcess *procss, QWidget *widget, QWidget *
     }
 }
 
+void MainWindow::OpenNewWindows(MyWebEnginePage *myPage)
+{
+    mail->setPage(myPage);
+    mail->setZoomFactor(myScale.toInt());
+    mail->setMinimumWidth(WIDTHMAIN);
+    mail->setMinimumHeight(HEIGHT);
+    FenE = new QWidget;
+    myLayout = new QHBoxLayout(FenE);
+    myLayout->addWidget(mail);
+    menuE = new ControlMenuMail();
+    menuE->setMaximumWidth(WIDTHCONTROL);
+    menuE->setMaximumHeight(HEIGHT);
+    myLayout->addWidget(menuE);
+    FenE->showFullScreen();
+}
+
 void MainWindow::on_Calculatrice_clicked()
 {
     if (KCalculatrice->state() == QProcess::Running) {
@@ -379,39 +403,40 @@ void MainWindow::on_Calculatrice_clicked()
 
 void MainWindow::on_Email_clicked()
 {
-    if (email->state() == QProcess::Running) {
-        FenE->showFullScreen();
-    } else {
-        email->start("pkill -f trojita");
-        email->waitForFinished(-1);
-        email->start("env QT_SCALE_FACTOR=" + myScale + " /usr/bin/trojita");
-        myPid = email->pid();
-        PIDtxt = QString::number(myPid);
-        program = "/usr/bin/bash -c \"/usr/bin/WidFromPid " + PIDtxt + " \"";
-        QString stdout;
-        for (int i = 0; i < 1000; i++) {
-            WidFromPid.start(program);
-            WidFromPid.waitForFinished(-1);
-            stdout = WidFromPid.readAllStandardOutput();
-            myWinID = hexToInt(stdout);
-            if (myWinID) { break; }
-        }
-        ma_fenetreE = QWindow::fromWinId(myWinID);
-        myWidgetemail = QWidget::createWindowContainer(ma_fenetreE);
-        myWidgetemail->setMinimumWidth(WIDTHMAIN);
-        myWidgetemail->setMinimumHeight(HEIGHT);
-        FenE = new QWidget;
-        myLayout = new QHBoxLayout(FenE);
-        myLayout->addWidget(myWidgetemail);
-        menuE = new ControlMenu();
-        menuE->setMaximumWidth(WIDTHCONTROL);
-        menuE->setMaximumHeight(HEIGHT);
-        myLayout->addWidget(menuE);
-        FenE->showFullScreen();
+    MyWebEnginePage *page = new MyWebEnginePage();
+    GetValue.start("cat \"" + env.value("HOME") +"/.easymenu/ServiceMail\"");
+    GetValue.waitForFinished(-1);
+    QString ServiceMailString = GetValue.readAllStandardOutput();
+    ServiceMail = ServiceMailString.toInt();
+    switch ( ServiceMail )
+    {
+        case 1:
+            page->load(QUrl("https://outlook.live.com/owa/"));
+            break;
+        case 2:
+            page->load(QUrl("https://login.yahoo.com/?.src=ym&lang=fr-FR&done=https%3A%2F%2Ffr.mail.yahoo.com"));
+            break;
+        case 3:
+            page->load(QUrl("https://login.orange.fr/?return_url=https://rms.orange.fr/mail/inbox%3F"));
+            break;
+        case 4:
+            page->load(QUrl("https://www.sfr.fr/cas/login?service=https%3A%2F%2Fwebmail.sfr.fr%2Fwebmail%2Fj_spring_cas_security_check"));
+            break;
+        case 5:
+            page->load(QUrl("https://zimbra.free.fr/"));
+            break;
+        case 6:
+            page->load(QUrl("https://www.mon-compte.bouyguestelecom.fr/cas/login?service=https%3A%2F%2Foauth2.bouyguestelecom.fr%2Fcallback%2Fpicasso%2Fprotocol%2Fcas%3Fid%3Dar-33df094b-d8fb-4aca-afba-fb33f42ab763%26client_id%3Dwebmail.bouyguestelecom.fr"));
+            break;
+        case 7:
+            page->load(QUrl("https://www.laposte.net/accueil"));
+            break;
+        default:
+            page->load(QUrl("https://mail.google.com/"));
+            page->settings()->setAttribute(QWebEngineSettings::JavascriptEnabled, true);
     }
-    connect(email, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished),
-            [=](int exitCode, QProcess::ExitStatus exitStatus){ handleStateChanged(email, myWidgetemail, FenE); });
-}
+    OpenNewWindows(page);
+ }
 
 void MainWindow::on_Notes_clicked()
 {
@@ -458,7 +483,7 @@ void MainWindow::on_Internet_clicked()
         //web->start("pkill -f sielo-browser");
         web->waitForFinished(-1);
 
-        web->start("env QT_SCALE_FACTOR=" + myScale + " /usr/bin/falkon -c https://doosearch.sielo.app/search.php");
+        web->start("env QT_SCALE_FACTOR=" + myScale + " /usr/bin/falkon -c https://www.search.handy-open-source.org/search.php");
         //web->start("/usr/bin/sielo-browser");
         myPid = web->pid();
         PIDtxt = QString::number(myPid);

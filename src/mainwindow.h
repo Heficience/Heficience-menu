@@ -14,11 +14,19 @@
 #include <QDesktopWidget>
 #include <QSettings>
 #include "controlmenu.h"
+#include "controlmenumail.h"
 #include "controlmenumain.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
+
+class MyWebEnginePage : public QWebEnginePage
+{
+Q_OBJECT
+public:
+    QWebEnginePage *createWindow(MyWebEnginePage::WebWindowType type);
+};
 
 class MainWindow : public QMainWindow
 {
@@ -34,6 +42,7 @@ public:
     QToolButton *Discord;
     QToolButton *Music;
     int ServiceMusique;
+    int ServiceMail;
     QWindow* ma_fenetreG;
     QWindow* ma_fenetreC;
     QWindow* ma_fenetreE;
@@ -67,7 +76,6 @@ public:
     QProcess *m_process = new QProcess;
     QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
     QMediaPlayer *player = new QMediaPlayer;
-    QMediaPlaylist *playlist = new QMediaPlaylist;
     QWidget* menuG;
     QWidget* menuC;
     QWidget* menuE;
@@ -79,10 +87,12 @@ public:
     QProcess *DiscordLauncher = new QProcess;
     QProcess *web = new QProcess;
     QProcess *office = new QProcess;
-    QProcess *email = new QProcess;
     QWebEngineView *music = new QWebEngineView;
+    QWebEngineView *mail = new QWebEngineView;
     QString myScale;
     QString myScale2;
+    QLayout *myLayout;
+    QProcess GetValue;
 
 private:
     Ui::MainWindow *ui;
@@ -93,13 +103,10 @@ private:
     WId myWinID;
     int myPid;
     QWidget* myWidgetKCalc;
-    QWidget* myWidgetemail;
     QWidget* myWidgetOffice;
     QWidget* myWidgetweb;
     QWidget* myWidgetDiscord;
-    QLayout *myLayout;
     QWidget *FenApp;
-
 
 private slots:
     virtual bool eventFilter(QObject* watched, QEvent* event);
@@ -110,6 +117,7 @@ private slots:
     void on_Music_clicked();
     void on_Discord_clicked();
     static void handleStateChanged(QProcess *procss, QWidget *widget, QWidget *killtest);
+    void OpenNewWindows(MyWebEnginePage *);
 };
 
 #endif // MAINWINDOW_H

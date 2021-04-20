@@ -217,6 +217,33 @@ src/controlmenu.cpp.s:
 	$(MAKE) -f CMakeFiles/dvkbuntu-easy-menu-qt.dir/build.make CMakeFiles/dvkbuntu-easy-menu-qt.dir/src/controlmenu.cpp.s
 .PHONY : src/controlmenu.cpp.s
 
+src/controlmenumail.o: src/controlmenumail.cpp.o
+
+.PHONY : src/controlmenumail.o
+
+# target to build an object file
+src/controlmenumail.cpp.o:
+	$(MAKE) -f CMakeFiles/dvkbuntu-easy-menu-qt.dir/build.make CMakeFiles/dvkbuntu-easy-menu-qt.dir/src/controlmenumail.cpp.o
+.PHONY : src/controlmenumail.cpp.o
+
+src/controlmenumail.i: src/controlmenumail.cpp.i
+
+.PHONY : src/controlmenumail.i
+
+# target to preprocess a source file
+src/controlmenumail.cpp.i:
+	$(MAKE) -f CMakeFiles/dvkbuntu-easy-menu-qt.dir/build.make CMakeFiles/dvkbuntu-easy-menu-qt.dir/src/controlmenumail.cpp.i
+.PHONY : src/controlmenumail.cpp.i
+
+src/controlmenumail.s: src/controlmenumail.cpp.s
+
+.PHONY : src/controlmenumail.s
+
+# target to generate assembly for a file
+src/controlmenumail.cpp.s:
+	$(MAKE) -f CMakeFiles/dvkbuntu-easy-menu-qt.dir/build.make CMakeFiles/dvkbuntu-easy-menu-qt.dir/src/controlmenumail.cpp.s
+.PHONY : src/controlmenumail.cpp.s
+
 src/controlmenumain.o: src/controlmenumain.cpp.o
 
 .PHONY : src/controlmenumain.o
@@ -344,6 +371,9 @@ help:
 	@echo "... src/controlmenu.o"
 	@echo "... src/controlmenu.i"
 	@echo "... src/controlmenu.s"
+	@echo "... src/controlmenumail.o"
+	@echo "... src/controlmenumail.i"
+	@echo "... src/controlmenumail.s"
 	@echo "... src/controlmenumain.o"
 	@echo "... src/controlmenumain.i"
 	@echo "... src/controlmenumain.s"

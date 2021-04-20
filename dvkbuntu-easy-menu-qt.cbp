@@ -170,6 +170,15 @@
 		<Unit filename="/home/paul/qtcreator_project/dvkbuntu-easy-menu-qt/src/controlmenu.ui">
 			<Option target="dvkbuntu-easy-menu-qt"/>
 		</Unit>
+		<Unit filename="/home/paul/qtcreator_project/dvkbuntu-easy-menu-qt/src/controlmenumail.cpp">
+			<Option target="dvkbuntu-easy-menu-qt"/>
+		</Unit>
+		<Unit filename="/home/paul/qtcreator_project/dvkbuntu-easy-menu-qt/src/controlmenumail.h">
+			<Option target="dvkbuntu-easy-menu-qt"/>
+		</Unit>
+		<Unit filename="/home/paul/qtcreator_project/dvkbuntu-easy-menu-qt/src/controlmenumail.ui">
+			<Option target="dvkbuntu-easy-menu-qt"/>
+		</Unit>
 		<Unit filename="/home/paul/qtcreator_project/dvkbuntu-easy-menu-qt/src/controlmenumain.cpp">
 			<Option target="dvkbuntu-easy-menu-qt"/>
 		</Unit>

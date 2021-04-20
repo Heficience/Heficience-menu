@@ -33,6 +33,9 @@ set(PROJECT_SOURCES
         src/controlmenu.cpp
         src/controlmenu.h
         src/controlmenu.ui
+        src/controlmenumail.cpp
+        src/controlmenumail.h
+        src/controlmenumail.ui
         src/controlmenumain.cpp
         src/controlmenumain.h
         src/controlmenumain.ui
@@ -40,7 +43,7 @@ set(PROJECT_SOURCES
         src/options.h
         src/options.ui
         src/resource.qrc
-)
+        )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(dvkbuntu-easy-menu-qt

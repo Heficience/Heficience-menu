@@ -36,5 +36,13 @@
         <file>../Images/0-Categorie/globe-africa-color.svg</file>
         <file>../Images/0-Categorie/music-color.svg</file>
         <file>../Images/1-NavigateurWeb/close-alt.svg</file>
+        <file>../Images/4-Courriel/Gmail.svg</file>
+        <file>../Images/4-Courriel/Outlook.svg</file>
+        <file>../Images/4-Courriel/Yahoo.svg</file>
+        <file>../Images/4-Courriel/Orange.svg</file>
+        <file>../Images/4-Courriel/SFR.svg</file>
+        <file>../Images/4-Courriel/Free.svg</file>
+        <file>../Images/4-Courriel/Bouygues.svg</file>
+        <file>../Images/4-Courriel/LaPoste.svg</file>
     </qresource>
 </RCC>
