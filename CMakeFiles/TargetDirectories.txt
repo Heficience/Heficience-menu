@@ -1,0 +1,4 @@
+/home/paul/qtcreator_project/dvkbuntu-easy-menu-qt/CMakeFiles/rebuild_cache.dir
+/home/paul/qtcreator_project/dvkbuntu-easy-menu-qt/CMakeFiles/edit_cache.dir
+/home/paul/qtcreator_project/dvkbuntu-easy-menu-qt/CMakeFiles/dvkbuntu-easy-menu-qt.dir
+/home/paul/qtcreator_project/dvkbuntu-easy-menu-qt/CMakeFiles/dvkbuntu-easy-menu-qt_autogen.dir

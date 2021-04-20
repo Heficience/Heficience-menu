@@ -56,6 +56,7 @@ private slots:
     void on_Bouygues_clicked();
     void on_LaPoste_clicked();
     void showTime();
+    void ExecuteJS(bool);
 };
 
 #endif // CONTROLMENUMAIL_H

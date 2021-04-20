@@ -101,6 +101,11 @@ ControlMenuMail::~ControlMenuMail()
     delete ui;
 }
 
+void ControlMenuMail::ExecuteJS(bool)
+{
+    mail->page()->runJavaScript("Array.from(document.querySelectorAll('a[target=\"_blank\"]')).forEach(link => link.removeAttribute('target'));");
+};
+
 void ControlMenuMail::on_Fermeture_clicked()
 {
     this->parentWidget()->close();
@@ -123,6 +128,9 @@ void ControlMenuMail::on_Gmail_clicked() {
     mail->setPage(page);
 
     mail->load(QUrl("https://mail.google.com/"));
+
+    connect(mail->page(), SIGNAL(loadFinished(bool)),
+            this, SLOT(ExecuteJS(bool)));
 
     mail->setZoomFactor(myScale.toInt());
     mail->setMinimumWidth(WIDTHMAIN);
@@ -147,6 +155,10 @@ void ControlMenuMail::on_Outlook_clicked() {
     mail->setPage(page);
 
     mail->load(QUrl("https://outlook.live.com/owa/"));
+
+    connect(mail->page(), SIGNAL(loadFinished(bool)),
+            this, SLOT(ExecuteJS(bool)));
+
     mail->setZoomFactor(myScale.toInt());
     mail->setMinimumWidth(WIDTHMAIN);
     mail->setMinimumHeight(HEIGHT);
@@ -170,6 +182,10 @@ void ControlMenuMail::on_Yahoo_clicked() {
     mail->setPage(page);
 
     mail->load(QUrl("https://login.yahoo.com/?.src=ym&lang=fr-FR&done=https%3A%2F%2Ffr.mail.yahoo.com"));
+
+    connect(mail->page(), SIGNAL(loadFinished(bool)),
+            this, SLOT(ExecuteJS(bool)));
+
     mail->setZoomFactor(myScale.toInt());
     mail->setMinimumWidth(WIDTHMAIN);
     mail->setMinimumHeight(HEIGHT);
@@ -193,6 +209,10 @@ void ControlMenuMail::on_Orange_clicked() {
     mail->setPage(page);
 
     mail->load(QUrl("https://login.orange.fr/?return_url=https://rms.orange.fr/mail/inbox%3F"));
+
+    connect(mail->page(), SIGNAL(loadFinished(bool)),
+            this, SLOT(ExecuteJS(bool)));
+
     mail->setZoomFactor(myScale.toInt());
     mail->setMinimumWidth(WIDTHMAIN);
     mail->setMinimumHeight(HEIGHT);
@@ -216,6 +236,10 @@ void ControlMenuMail::on_SFR_clicked() {
     mail->setPage(page);
 
     mail->load(QUrl("https://www.sfr.fr/cas/login?service=https%3A%2F%2Fwebmail.sfr.fr%2Fwebmail%2Fj_spring_cas_security_check"));
+
+    connect(mail->page(), SIGNAL(loadFinished(bool)),
+            this, SLOT(ExecuteJS(bool)));
+
     mail->setZoomFactor(myScale.toInt());
     mail->setMinimumWidth(WIDTHMAIN);
     mail->setMinimumHeight(HEIGHT);
@@ -239,6 +263,10 @@ void ControlMenuMail::on_Free_clicked() {
     mail->setPage(page);
 
     mail->load(QUrl("https://zimbra.free.fr/"));
+
+    connect(mail->page(), SIGNAL(loadFinished(bool)),
+            this, SLOT(ExecuteJS(bool)));
+
     mail->setZoomFactor(myScale.toInt());
     mail->setMinimumWidth(WIDTHMAIN);
     mail->setMinimumHeight(HEIGHT);
@@ -262,6 +290,10 @@ void ControlMenuMail::on_Bouygues_clicked() {
     mail->setPage(page);
 
     mail->load(QUrl("https://www.mon-compte.bouyguestelecom.fr/cas/login?service=https%3A%2F%2Foauth2.bouyguestelecom.fr%2Fcallback%2Fpicasso%2Fprotocol%2Fcas%3Fid%3Dar-33df094b-d8fb-4aca-afba-fb33f42ab763%26client_id%3Dwebmail.bouyguestelecom.fr"));
+
+    connect(mail->page(), SIGNAL(loadFinished(bool)),
+            this, SLOT(ExecuteJS(bool)));
+
     mail->setZoomFactor(myScale.toInt());
     mail->setMinimumWidth(WIDTHMAIN);
     mail->setMinimumHeight(HEIGHT);
@@ -285,6 +317,10 @@ void ControlMenuMail::on_LaPoste_clicked() {
     mail->setPage(page);
 
     mail->load(QUrl("https://www.laposte.net/accueil"));
+
+    connect(mail->page(), SIGNAL(loadFinished(bool)),
+            this, SLOT(ExecuteJS(bool)));
+
     mail->setZoomFactor(myScale.toInt());
     mail->setMinimumWidth(WIDTHMAIN);
     mail->setMinimumHeight(HEIGHT);
