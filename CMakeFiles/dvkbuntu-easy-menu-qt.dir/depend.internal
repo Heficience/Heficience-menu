@@ -174,11 +174,13 @@ CMakeFiles/dvkbuntu-easy-menu-qt.dir/dvkbuntu-easy-menu-qt_autogen/mocs_compilat
  /usr/include/x86_64-linux-gnu/qt5/QtWebEngineCore/qtwebenginecoreglobal.h
  /usr/include/x86_64-linux-gnu/qt5/QtWebEngineCore/qwebenginecallback.h
  /usr/include/x86_64-linux-gnu/qt5/QtWebEngineCore/qwebenginehttprequest.h
+ /usr/include/x86_64-linux-gnu/qt5/QtWebEngineWidgets/QWebEngineProfile
  /usr/include/x86_64-linux-gnu/qt5/QtWebEngineWidgets/QWebEngineView
  /usr/include/x86_64-linux-gnu/qt5/QtWebEngineWidgets/qtwebenginewidgetsglobal.h
  /usr/include/x86_64-linux-gnu/qt5/QtWebEngineWidgets/qwebengineclientcertificateselection.h
  /usr/include/x86_64-linux-gnu/qt5/QtWebEngineWidgets/qwebenginedownloaditem.h
  /usr/include/x86_64-linux-gnu/qt5/QtWebEngineWidgets/qwebenginepage.h
+ /usr/include/x86_64-linux-gnu/qt5/QtWebEngineWidgets/qwebengineprofile.h
  /usr/include/x86_64-linux-gnu/qt5/QtWebEngineWidgets/qwebengineview.h
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QApplication
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QDesktopWidget
@@ -409,11 +411,13 @@ CMakeFiles/dvkbuntu-easy-menu-qt.dir/src/controlmenu.cpp.o
  /usr/include/x86_64-linux-gnu/qt5/QtWebEngineCore/qtwebenginecoreglobal.h
  /usr/include/x86_64-linux-gnu/qt5/QtWebEngineCore/qwebenginecallback.h
  /usr/include/x86_64-linux-gnu/qt5/QtWebEngineCore/qwebenginehttprequest.h
+ /usr/include/x86_64-linux-gnu/qt5/QtWebEngineWidgets/QWebEngineProfile
  /usr/include/x86_64-linux-gnu/qt5/QtWebEngineWidgets/QWebEngineView
  /usr/include/x86_64-linux-gnu/qt5/QtWebEngineWidgets/qtwebenginewidgetsglobal.h
  /usr/include/x86_64-linux-gnu/qt5/QtWebEngineWidgets/qwebengineclientcertificateselection.h
  /usr/include/x86_64-linux-gnu/qt5/QtWebEngineWidgets/qwebenginedownloaditem.h
  /usr/include/x86_64-linux-gnu/qt5/QtWebEngineWidgets/qwebenginepage.h
+ /usr/include/x86_64-linux-gnu/qt5/QtWebEngineWidgets/qwebengineprofile.h
  /usr/include/x86_64-linux-gnu/qt5/QtWebEngineWidgets/qwebengineview.h
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QApplication
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QDesktopWidget
@@ -656,11 +660,13 @@ CMakeFiles/dvkbuntu-easy-menu-qt.dir/src/controlmenumail.cpp.o
  /usr/include/x86_64-linux-gnu/qt5/QtWebEngineCore/qtwebenginecoreglobal.h
  /usr/include/x86_64-linux-gnu/qt5/QtWebEngineCore/qwebenginecallback.h
  /usr/include/x86_64-linux-gnu/qt5/QtWebEngineCore/qwebenginehttprequest.h
+ /usr/include/x86_64-linux-gnu/qt5/QtWebEngineWidgets/QWebEngineProfile
  /usr/include/x86_64-linux-gnu/qt5/QtWebEngineWidgets/QWebEngineView
  /usr/include/x86_64-linux-gnu/qt5/QtWebEngineWidgets/qtwebenginewidgetsglobal.h
  /usr/include/x86_64-linux-gnu/qt5/QtWebEngineWidgets/qwebengineclientcertificateselection.h
  /usr/include/x86_64-linux-gnu/qt5/QtWebEngineWidgets/qwebenginedownloaditem.h
  /usr/include/x86_64-linux-gnu/qt5/QtWebEngineWidgets/qwebenginepage.h
+ /usr/include/x86_64-linux-gnu/qt5/QtWebEngineWidgets/qwebengineprofile.h
  /usr/include/x86_64-linux-gnu/qt5/QtWebEngineWidgets/qwebengineview.h
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QAction
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QApplication
@@ -904,11 +910,13 @@ CMakeFiles/dvkbuntu-easy-menu-qt.dir/src/controlmenumain.cpp.o
  /usr/include/x86_64-linux-gnu/qt5/QtWebEngineCore/qtwebenginecoreglobal.h
  /usr/include/x86_64-linux-gnu/qt5/QtWebEngineCore/qwebenginecallback.h
  /usr/include/x86_64-linux-gnu/qt5/QtWebEngineCore/qwebenginehttprequest.h
+ /usr/include/x86_64-linux-gnu/qt5/QtWebEngineWidgets/QWebEngineProfile
  /usr/include/x86_64-linux-gnu/qt5/QtWebEngineWidgets/QWebEngineView
  /usr/include/x86_64-linux-gnu/qt5/QtWebEngineWidgets/qtwebenginewidgetsglobal.h
  /usr/include/x86_64-linux-gnu/qt5/QtWebEngineWidgets/qwebengineclientcertificateselection.h
  /usr/include/x86_64-linux-gnu/qt5/QtWebEngineWidgets/qwebenginedownloaditem.h
  /usr/include/x86_64-linux-gnu/qt5/QtWebEngineWidgets/qwebenginepage.h
+ /usr/include/x86_64-linux-gnu/qt5/QtWebEngineWidgets/qwebengineprofile.h
  /usr/include/x86_64-linux-gnu/qt5/QtWebEngineWidgets/qwebengineview.h
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QApplication
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QDesktopWidget
@@ -1510,6 +1518,7 @@ CMakeFiles/dvkbuntu-easy-menu-qt.dir/src/main.cpp.o
  /usr/include/x86_64-linux-gnu/qt5/QtWebEngineCore/qwebengineurlrequestjob.h
  /usr/include/x86_64-linux-gnu/qt5/QtWebEngineCore/qwebengineurlscheme.h
  /usr/include/x86_64-linux-gnu/qt5/QtWebEngineCore/qwebengineurlschemehandler.h
+ /usr/include/x86_64-linux-gnu/qt5/QtWebEngineWidgets/QWebEngineProfile
  /usr/include/x86_64-linux-gnu/qt5/QtWebEngineWidgets/QWebEngineSettings
  /usr/include/x86_64-linux-gnu/qt5/QtWebEngineWidgets/QWebEngineView
  /usr/include/x86_64-linux-gnu/qt5/QtWebEngineWidgets/QtWebEngineWidgets
@@ -2111,11 +2120,13 @@ CMakeFiles/dvkbuntu-easy-menu-qt.dir/src/options.cpp.o
  /usr/include/x86_64-linux-gnu/qt5/QtWebEngineCore/qtwebenginecoreglobal.h
  /usr/include/x86_64-linux-gnu/qt5/QtWebEngineCore/qwebenginecallback.h
  /usr/include/x86_64-linux-gnu/qt5/QtWebEngineCore/qwebenginehttprequest.h
+ /usr/include/x86_64-linux-gnu/qt5/QtWebEngineWidgets/QWebEngineProfile
  /usr/include/x86_64-linux-gnu/qt5/QtWebEngineWidgets/QWebEngineView
  /usr/include/x86_64-linux-gnu/qt5/QtWebEngineWidgets/qtwebenginewidgetsglobal.h
  /usr/include/x86_64-linux-gnu/qt5/QtWebEngineWidgets/qwebengineclientcertificateselection.h
  /usr/include/x86_64-linux-gnu/qt5/QtWebEngineWidgets/qwebenginedownloaditem.h
  /usr/include/x86_64-linux-gnu/qt5/QtWebEngineWidgets/qwebenginepage.h
+ /usr/include/x86_64-linux-gnu/qt5/QtWebEngineWidgets/qwebengineprofile.h
  /usr/include/x86_64-linux-gnu/qt5/QtWebEngineWidgets/qwebengineview.h
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QApplication
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QDesktopWidget

@@ -15,6 +15,7 @@
 #include <map>
 #include <QSettings>
 #include <QAction>
+#include <QWebEngineProfile>
 
 ControlMenuMail::ControlMenuMail(QWidget *parent) :
     QWidget(parent),
@@ -94,6 +95,9 @@ ControlMenuMail::ControlMenuMail(QWidget *parent) :
     timer->start(1000);
 
     showTime();
+
+    profile = mail->page()->profile();
+    profile->setHttpUserAgent("Mozilla/5.0 ({os_info}; rv:71.0) Gecko/20100101 Firefox/71.0");
 }
 
 ControlMenuMail::~ControlMenuMail()
@@ -154,7 +158,7 @@ void ControlMenuMail::on_Outlook_clicked() {
     MyWebEnginePage *page = new MyWebEnginePage();
     mail->setPage(page);
 
-    mail->load(QUrl("https://outlook.live.com/owa/"));
+    mail->load(QUrl("https://outlook.live.com/mail/0/inbox"));
 
     connect(mail->page(), SIGNAL(loadFinished(bool)),
             this, SLOT(ExecuteJS(bool)));

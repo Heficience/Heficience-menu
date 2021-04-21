@@ -149,6 +149,9 @@ MainWindow::MainWindow(QWidget *parent)
     ui->Discord->installEventFilter(this);
     ui->Music->installEventFilter(this);
 
+    profile = mail->page()->profile();
+    profile->setHttpUserAgent("Mozilla/5.0 ({os_info}; rv:71.0) Gecko/20100101 Firefox/71.0");
+
 }
 
 MainWindow::~MainWindow()
@@ -418,7 +421,7 @@ void MainWindow::on_Email_clicked()
     switch ( ServiceMail )
     {
         case 1:
-            page->load(QUrl("https://outlook.live.com/owa/"));
+            page->load(QUrl("https://outlook.live.com/mail/0/inbox"));
             break;
         case 2:
             page->load(QUrl("https://login.yahoo.com/?.src=ym&lang=fr-FR&done=https%3A%2F%2Ffr.mail.yahoo.com"));

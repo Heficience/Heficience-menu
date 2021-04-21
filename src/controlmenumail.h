@@ -5,6 +5,7 @@
 #include <QMainWindow>
 #include <QRect>
 #include <QScreen>
+#include <QWebEngineProfile>
 #include "ui_mainwindow.h"
 #include "mainwindow.h"
 #include "options.h"
@@ -27,6 +28,7 @@ public:
     QWidget *FenE;
     QWidget* menuE;
     QWebEngineView *mail = new QWebEngineView;
+    QWebEngineProfile *profile = new QWebEngineProfile;
     QString myScale;
     QProcess *m_process = new QProcess;
 

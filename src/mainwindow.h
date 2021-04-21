@@ -13,6 +13,7 @@
 #include <QMediaPlaylist>
 #include <QDesktopWidget>
 #include <QSettings>
+#include <QWebEngineProfile>
 #include "controlmenu.h"
 #include "controlmenumail.h"
 #include "controlmenumain.h"
@@ -89,6 +90,7 @@ public:
     QProcess *office = new QProcess;
     QWebEngineView *music = new QWebEngineView;
     QWebEngineView *mail = new QWebEngineView;
+    QWebEngineProfile *profile = new QWebEngineProfile;
     QString myScale;
     QString myScale2;
     QLayout *myLayout;
