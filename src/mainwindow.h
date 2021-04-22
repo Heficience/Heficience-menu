@@ -89,7 +89,7 @@ public:
     QProcess *web = new QProcess;
     QProcess *office = new QProcess;
     QWebEngineView *music = new QWebEngineView;
-    QWebEngineView *mail = new QWebEngineView;
+    QWebEngineView *mail = new QWebEngineView();
     QWebEngineProfile *profile = new QWebEngineProfile;
     QString myScale;
     QString myScale2;
@@ -121,6 +121,7 @@ private slots:
     static void handleStateChanged(QProcess *procss, QWidget *widget, QWidget *killtest);
     void OpenNewWindows(MyWebEnginePage *);
     void ExecuteJS(bool);
+    void ReExecuteJS(QString);
 };
 
 #endif // MAINWINDOW_H

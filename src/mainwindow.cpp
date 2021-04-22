@@ -357,6 +357,9 @@ void MainWindow::OpenNewWindows(MyWebEnginePage *myPage)
     mail->setPage(myPage);
     connect(mail->page(), SIGNAL(loadFinished(bool)),
             this, SLOT(ExecuteJS(bool)));
+    connect(mail->page(), SIGNAL(titleChanged(QString)),
+            this, SLOT(ReExecuteJS(QString)));
+    mail->page()->action(QWebEnginePage::OpenLinkInNewTab);
     mail->setZoomFactor(myScale.toInt());
     mail->setMinimumWidth(WIDTHMAIN);
     mail->setMinimumHeight(HEIGHT);
@@ -373,6 +376,12 @@ void MainWindow::OpenNewWindows(MyWebEnginePage *myPage)
 void MainWindow::ExecuteJS(bool)
 {
     mail->page()->runJavaScript("Array.from(document.querySelectorAll('a[target=\"_blank\"]')).forEach(link => link.removeAttribute('target'));");
+};
+
+void MainWindow::ReExecuteJS(QString)
+{
+    connect(mail->page(), SIGNAL(loadFinished(bool)),
+            this, SLOT(ExecuteJS(bool)));
 };
 
 void MainWindow::on_Calculatrice_clicked()

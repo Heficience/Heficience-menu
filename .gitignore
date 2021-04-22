@@ -1,0 +1,11 @@
+/CMakeFiles/
+/include/
+/Testing/
+/dvkbuntu-easy-menu-qt_autogen/
+cmake_install.cmake
+CMakeCache.txt
+CMakeLists.txt.user
+CMakeLists.txt-save
+dvkbuntu-easy-menu-qt
+dvkbuntu-easy-menu-qt.cbp
+Makefile
