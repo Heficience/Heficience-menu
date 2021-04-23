@@ -1,3 +1,0 @@
-# Hashes of file build rules.
-54a9a3653874bb23b5762c4fd916e33f CMakeFiles/dvkbuntu-easy-menu-qt_autogen
-3167a74043bd1d2ebd8a9265bd945fe7 dvkbuntu-easy-menu-qt_autogen/UVLADIE3JM/qrc_resource.cpp
