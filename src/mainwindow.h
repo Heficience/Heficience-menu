@@ -6,6 +6,8 @@
 #include <QMouseEvent>
 #include <QProcess>
 #include <QWidget>
+#include <QApplication>
+#include <QUrl>
 #include <QMessageBox>
 #include <QWebEngineView>
 #include <QRect>
@@ -17,17 +19,11 @@
 #include "controlmenu.h"
 #include "controlmenumail.h"
 #include "controlmenumain.h"
+#include "mywebenginepage.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
-
-class MyWebEnginePage : public QWebEnginePage
-{
-Q_OBJECT
-public:
-    QWebEnginePage *createWindow(MyWebEnginePage::WebWindowType type);
-};
 
 class MainWindow : public QMainWindow
 {
@@ -45,11 +41,6 @@ public:
     int ServiceMusique;
     int ServiceMail;
     QWindow* ma_fenetreG;
-    QWindow* ma_fenetreC;
-    QWindow* ma_fenetreE;
-    QWindow* ma_fenetreI;
-    QWindow* ma_fenetreN;
-    QWindow* ma_fenetreD;
     QWidget *FenG;
     QWidget *FenC;
     QWidget *FenE;
@@ -84,13 +75,14 @@ public:
     QWidget* menuN;
     QWidget* menuD;
     QWidget* menuM;
-    QProcess *KCalculatrice = new QProcess;
-    QProcess *DiscordLauncher = new QProcess;
-    QProcess *web = new QProcess;
-    QProcess *office = new QProcess;
+    QWebEngineView *KCalculatrice = new QWebEngineView;
+    QWebEngineView *DiscordLauncher = new QWebEngineView;
+    QWebEngineView *web = new QWebEngineView;
+    QWebEngineView *office = new QWebEngineView;
     QWebEngineView *music = new QWebEngineView;
     QWebEngineView *mail = new QWebEngineView;
-    QWebEngineProfile *profile = new QWebEngineProfile;
+    QWebEngineProfile *profileE = new QWebEngineProfile;
+    QWebEngineProfile *profileD = new QWebEngineProfile;
     QString myScale;
     QString myScale2;
     QLayout *myLayout;

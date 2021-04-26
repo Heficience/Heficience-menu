@@ -6,6 +6,7 @@
 #include "ui_controlmenumail.h"
 #include "controlmenumain.h"
 #include "ui_controlmenumain.h"
+#include "mywebenginepage.h"
 #include <QDesktopWidget>
 #include <string>
 #include <QRect>
@@ -20,11 +21,7 @@
 #include <QWebEngineUrlRequestInfo>
 #include <QWebEnginePage>
 #include <QWebEngineSettings>
-
-QWebEnginePage* MyWebEnginePage::createWindow(QWebEnginePage::WebWindowType)
-{
-    return this;
-}
+#include <QtWebEngineWidgets>
 
 std::map<std::string, QString> QStringMap;
 
@@ -149,9 +146,10 @@ MainWindow::MainWindow(QWidget *parent)
     ui->Discord->installEventFilter(this);
     ui->Music->installEventFilter(this);
 
-    profile = mail->page()->profile();
-    profile->setHttpUserAgent("Mozilla/5.0 ({os_info}; rv:71.0) Gecko/20100101 Firefox/71.0");
-
+    profileE = mail->page()->profile();
+    profileE->setHttpUserAgent("Mozilla/5.0 ({os_info}; rv:71.0) Gecko/20100101 Firefox/71.0");
+    profileD = DiscordLauncher->page()->profile();
+    profileD->setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36");//"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36");
 }
 
 MainWindow::~MainWindow()
@@ -328,21 +326,6 @@ bool MainWindow::eventFilter(QObject* watched, QEvent* event)
     return false;
 }
 
-uint64_t hexToInt(QString str){
-    std::string std_str = str.toUtf8().constData();
-    uint64_t n=0;
-    for(int i=std_str.find('x')+1; i < std_str.length(); ++i){
-        char c = std_str[i];
-        if('0' <= c and c <= '9') c -= '0';
-        else if('a' <= c and c <= 'f') c -= 'a'-10;
-        else if('A' <= c and c <= 'F') c -= 'A'-10;
-        else break;
-        n <<= 4;
-        n |= (int)c;
-    }
-    return n;
-}
-
 void MainWindow::handleStateChanged(QProcess *procss, QWidget *widget, QWidget *testkill)
 {
     if (procss->state() == QProcess::NotRunning)
@@ -377,38 +360,22 @@ void MainWindow::ExecuteJS(bool)
 
 void MainWindow::on_Calculatrice_clicked()
 {
-    if (KCalculatrice->state() == QProcess::Running) {
+    if (KCalculatrice->isVisible()) {
         FenC->showFullScreen();
     } else {
-        KCalculatrice->start("killall -f kcalc");
-        KCalculatrice->waitForFinished(-1);
-        KCalculatrice->start("env QT_SCALE_FACTOR=" + myScale2 + " /usr/bin/kcalc");
-        myPid = KCalculatrice->pid();
-        PIDtxt = QString::number(myPid);
-        program = "/usr/bin/bash -c \"/usr/bin/WidFromPid " + PIDtxt + " \"";
-        QString stdout;
-        for (int i = 0; i < 1000; i++) {
-            WidFromPid.start(program);
-            WidFromPid.waitForFinished(-1);
-            stdout = WidFromPid.readAllStandardOutput();
-            myWinID = hexToInt(stdout);
-            if (myWinID) { break; }
-        }
-        ma_fenetreC = QWindow::fromWinId(myWinID);
-        myWidgetKCalc = QWidget::createWindowContainer(ma_fenetreC);
-        myWidgetKCalc->setMinimumWidth(WIDTHMAIN);
-        myWidgetKCalc->setMinimumHeight(HEIGHT);
+        KCalculatrice->load(QUrl("https://www.desmos.com/scientific?lang=fr"));
+        KCalculatrice->setZoomFactor(myScale.toInt());
+        KCalculatrice->setMinimumWidth(WIDTHMAIN);
+        KCalculatrice->setMinimumHeight(HEIGHT);
         FenC = new QWidget;
         myLayout = new QHBoxLayout(FenC);
-        myLayout->addWidget(myWidgetKCalc);
+        myLayout->addWidget(KCalculatrice);
         menuC = new ControlMenu();
         menuC->setMaximumWidth(WIDTHCONTROL);
         menuC->setMaximumHeight(HEIGHT);
         myLayout->addWidget(menuC);
         FenC->showFullScreen();
     }
-    connect(KCalculatrice, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished),
-            [=](int exitCode, QProcess::ExitStatus exitStatus){ handleStateChanged(KCalculatrice, myWidgetKCalc, FenC); });
 }
 
 void MainWindow::on_Email_clicked()
@@ -449,77 +416,42 @@ void MainWindow::on_Email_clicked()
 
 void MainWindow::on_Notes_clicked()
 {
-    if (office->state() == QProcess::Running) {
+    if (office->isVisible()) {
         FenN->showFullScreen();
     } else {
-        office->start("pkill -f DesktopEditors");
-        office->waitForFinished(-1);
-        office->start("/usr/bin/onlyoffice-desktopeditors");
-        myPid = office->pid();
-        PIDtxt = QString::number(myPid);
-        program = "/usr/bin/bash -c \"/usr/bin/WidFromPid " + PIDtxt + " \"";
-        QString stdout;
-        for (int i = 0; i < 1000; i++) {
-            WidFromPid.start(program);
-            WidFromPid.waitForFinished(-1);
-            stdout = WidFromPid.readAllStandardOutput();
-            myWinID = hexToInt(stdout);
-            if (myWinID) { break; }
-        }
-        ma_fenetreN = QWindow::fromWinId(myWinID);
-        myWidgetOffice = QWidget::createWindowContainer(ma_fenetreN);
-        myWidgetOffice->setMinimumWidth(WIDTHMAIN);
-        myWidgetOffice->setMinimumHeight(HEIGHT);
+        office->load(QUrl("https://personal.onlyoffice.com"));
+        office->setZoomFactor(myScale.toInt());
+        office->setMinimumWidth(WIDTHMAIN);
+        office->setMinimumHeight(HEIGHT);
         FenN = new QWidget;
         myLayout = new QHBoxLayout(FenN);
-        myLayout->addWidget(myWidgetOffice);
+        myLayout->addWidget(office);
         menuN = new ControlMenu();
         menuN->setMaximumWidth(WIDTHCONTROL);
         menuN->setMaximumHeight(HEIGHT);
         myLayout->addWidget(menuN);
         FenN->showFullScreen();
     }
-    connect(office, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished),
-            [=](int exitCode, QProcess::ExitStatus exitStatus){ handleStateChanged(office, myWidgetOffice, FenN); });
 }
 
 void MainWindow::on_Internet_clicked()
 {
-    if (web->state() == QProcess::Running) {
+    if (web->isVisible()) {
         FenI->showFullScreen();
     } else {
-        web->start("pkill -f falkon");
-        //web->start("pkill -f sielo-browser");
-        web->waitForFinished(-1);
-
-        web->start("env QT_SCALE_FACTOR=" + myScale + " /usr/bin/falkon -c https://www.search.handy-open-source.org/search.php");
-        //web->start("/usr/bin/sielo-browser");
-        myPid = web->pid();
-        PIDtxt = QString::number(myPid);
-        program = "/usr/bin/bash -c \"/usr/bin/WidFromPid " + PIDtxt + " \"";
-        QString stdout;
-        for (int i = 0; i < 1000; i++) {
-            WidFromPid.start(program);
-            WidFromPid.waitForFinished(-1);
-            stdout = WidFromPid.readAllStandardOutput();
-            myWinID = hexToInt(stdout);
-            if (myWinID) { break; }
-        }
-        ma_fenetreI = QWindow::fromWinId(myWinID);
-        myWidgetweb = QWidget::createWindowContainer(ma_fenetreI);
-        myWidgetweb->setMinimumWidth(WIDTHMAIN);
-        myWidgetweb->setMinimumHeight(HEIGHT);
+        web->load(QUrl("https://www.search.handy-open-source.org/search.php"));
+        web->setZoomFactor(myScale.toInt());
+        web->setMinimumWidth(WIDTHMAIN);
+        web->setMinimumHeight(HEIGHT);
         FenI = new QWidget;
         myLayout = new QHBoxLayout(FenI);
-        myLayout->addWidget(myWidgetweb);
+        myLayout->addWidget(web);
         menuI = new ControlMenu();
         menuI->setMaximumWidth(WIDTHCONTROL);
         menuI->setMaximumHeight(HEIGHT);
         myLayout->addWidget(menuI);
         FenI->showFullScreen();
-    }
-    connect(web, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished),
-            [=](int exitCode, QProcess::ExitStatus exitStatus){ handleStateChanged(web, myWidgetweb, FenI); });
+}
 }
 
 void MainWindow::on_Music_clicked()
@@ -543,54 +475,21 @@ void MainWindow::on_Music_clicked()
 
 void MainWindow::on_Discord_clicked()
 {
-    if (DiscordLauncher->state() == QProcess::Running) {
+    if (DiscordLauncher->isVisible()) {
         FenD->showFullScreen();
     } else {
-        DiscordLauncher->start("pkill -f discord");
-        DiscordLauncher->waitForFinished(-1);
-        DiscordLauncher->start("env QT_SCALE_FACTOR=" + myScale + " /usr/bin/discord");
-        myPid = DiscordLauncher->pid();
-        PIDtxt = QString::number(myPid);
-        program = "/usr/bin/bash -c \"/usr/bin/WidFromPid " + PIDtxt + " \"";
-        QString stdout;
-        for (int i = 0; i < 1000; i++) {
-            WidFromPid.start(program);
-            WidFromPid.waitForFinished(-1);
-            stdout = WidFromPid.readAllStandardOutput();
-            myWinID = hexToInt(stdout);
-            if (myWinID) { break; }
-        }
-        ma_fenetreD = QWindow::fromWinId(myWinID);
-        myWidgetDiscord = QWidget::createWindowContainer(ma_fenetreD);
-        myWidgetDiscord->showFullScreen();
-        for (int i = 0; i < 1000; i++) {
-            WidFromPid.start(program);
-            WidFromPid.waitForFinished(-1);
-            stdout = WidFromPid.readAllStandardOutput();
-            myWinID = hexToInt(stdout);
-            if (not myWinID) { break; }
-        };
-        myWidgetDiscord->close();
-        for (int i = 0; i < 1000; i++) {
-            WidFromPid.start(program);
-            WidFromPid.waitForFinished(-1);
-            stdout = WidFromPid.readAllStandardOutput();
-            myWinID = hexToInt(stdout);
-            if (myWinID) { break; }
-        }
-        ma_fenetreD = QWindow::fromWinId(myWinID);
-        myWidgetDiscord = QWidget::createWindowContainer(ma_fenetreD);
-        myWidgetDiscord->setMinimumWidth(WIDTHMAIN);
-        myWidgetDiscord->setMinimumHeight(HEIGHT);
+        DiscordLauncher->setPage(new MyWebEnginePage);
+        DiscordLauncher->setUrl(QUrl("https://discord.com/channels/@me"));
+        DiscordLauncher->setZoomFactor(myScale.toInt());
+        DiscordLauncher->setMinimumWidth(WIDTHMAIN);
+        DiscordLauncher->setMinimumHeight(HEIGHT);
         FenD = new QWidget;
         myLayout = new QHBoxLayout(FenD);
-        myLayout->addWidget(myWidgetDiscord);
+        myLayout->addWidget(DiscordLauncher);
         menuD = new ControlMenu();
         menuD->setMaximumWidth(WIDTHCONTROL);
         menuD->setMaximumHeight(HEIGHT);
         myLayout->addWidget(menuD);
         FenD->showFullScreen();
     }
-    connect(DiscordLauncher, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished),
-            [=](int exitCode, QProcess::ExitStatus exitStatus){ handleStateChanged(DiscordLauncher, myWidgetDiscord, FenD); });
 }

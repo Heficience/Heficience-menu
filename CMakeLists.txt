@@ -18,14 +18,16 @@ find_package(QT NAMES Qt5 COMPONENTS Svg REQUIRED)
 find_package(QT NAMES Qt5 COMPONENTS WebEngineWidgets REQUIRED)
 find_package(QT NAMES Qt5 COMPONENTS Multimedia REQUIRED)
 find_package(QT NAMES Qt5 COMPONENTS Widgets REQUIRED)
+find_package(QT NAMES Qt5 COMPONENTS TextToSpeech REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Gui REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Svg REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS WebEngineWidgets REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Multimedia REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets REQUIRED)
+find_package(Qt${QT_VERSION_MAJOR} COMPONENTS TextToSpeech REQUIRED)
 
-set(PROJECT_SOURCES
+        set(PROJECT_SOURCES
         src/main.cpp
         src/mainwindow.cpp
         src/mainwindow.h
@@ -42,8 +44,9 @@ set(PROJECT_SOURCES
         src/options.cpp
         src/options.h
         src/options.ui
-        src/resource.qrc
-        )
+        src/mywebenginepage.cpp
+        src/mywebenginepage.h
+        src/resource.qrc)
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(dvkbuntu-easy-menu-qt
