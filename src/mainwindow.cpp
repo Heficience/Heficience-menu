@@ -22,6 +22,7 @@
 #include <QWebEnginePage>
 #include <QWebEngineSettings>
 #include <QtWebEngineWidgets>
+#include <QObject>
 
 std::map<std::string, QString> QStringMap;
 
