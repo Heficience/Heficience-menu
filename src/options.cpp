@@ -42,6 +42,12 @@ Options::Options(QWidget *parent)
 
     ui->gridWidget->resize(WIDTH, HEIGHT);
 
+    QPalette pal = palette();
+    pal.setColor(QPalette::Background, Qt::black);
+    this->setAutoFillBackground(true);
+    this->setPalette(pal);
+    this->setStyleSheet("background-color:black;");
+
     this->showFullScreen();
 }
 

@@ -81,8 +81,12 @@ public:
     QWebEngineView *office = new QWebEngineView;
     QWebEngineView *music = new QWebEngineView;
     QWebEngineView *mail = new QWebEngineView;
+    QWebEngineProfile *profileC = new QWebEngineProfile;
     QWebEngineProfile *profileE = new QWebEngineProfile;
+    QWebEngineProfile *profileI = new QWebEngineProfile;
+    QWebEngineProfile *profileN = new QWebEngineProfile;
     QWebEngineProfile *profileD = new QWebEngineProfile;
+    QWebEngineProfile *profileM = new QWebEngineProfile;
     QString myScale;
     QString myScale2;
     QLayout *myLayout;

@@ -93,6 +93,11 @@ void ControlMenuMain::on_Home_clicked() {
 
 void ControlMenuMain::on_Options_clicked() {
     Options *myOptions = new Options();
+    QPalette pal = palette();
+    pal.setColor(QPalette::Background, Qt::black);
+    myOptions->setAutoFillBackground(true);
+    myOptions->setPalette(pal);
+    myOptions->setStyleSheet("background-color:black;");
     myOptions->show();
 }
 

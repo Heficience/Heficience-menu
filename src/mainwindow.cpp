@@ -23,6 +23,7 @@
 #include <QWebEngineSettings>
 #include <QtWebEngineWidgets>
 #include <QObject>
+#include <QPalette>
 
 std::map<std::string, QString> QStringMap;
 
@@ -53,6 +54,11 @@ MainWindow::MainWindow(QWidget *parent)
     menuG->setMaximumHeight(HEIGHT);
     myLayout->addWidget(FenApp);
     myLayout->addWidget(menuG);
+    QPalette pal = palette();
+    pal.setColor(QPalette::Background, Qt::black);
+    FenG->setAutoFillBackground(true);
+    FenG->setPalette(pal);
+    FenG->setStyleSheet("background-color:black;");
     FenG->showFullScreen();
 
     fontC = ui->Calculatrice->font();
@@ -147,10 +153,18 @@ MainWindow::MainWindow(QWidget *parent)
     ui->Discord->installEventFilter(this);
     ui->Music->installEventFilter(this);
 
+    profileC = KCalculatrice->page()->profile();
+    profileC->setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36");
     profileE = mail->page()->profile();
-    profileE->setHttpUserAgent("Mozilla/5.0 ({os_info}; rv:71.0) Gecko/20100101 Firefox/71.0");
+    profileE->setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36");
+    profileI = web->page()->profile();
+    profileI->setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36");
+    profileN = office->page()->profile();
+    profileN->setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36");
     profileD = DiscordLauncher->page()->profile();
-    profileD->setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36");//"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36");
+    profileD->setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36");
+    profileM = music->page()->profile();
+    profileM->setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36");
 }
 
 MainWindow::~MainWindow()
@@ -351,6 +365,11 @@ void MainWindow::OpenNewWindows(MyWebEnginePage *myPage)
     menuE->setMaximumWidth(WIDTHCONTROL);
     menuE->setMaximumHeight(HEIGHT);
     myLayout->addWidget(menuE);
+    QPalette pal = palette();
+    pal.setColor(QPalette::Background, Qt::black);
+    FenE->setAutoFillBackground(true);
+    FenE->setPalette(pal);
+    FenE->setStyleSheet("background-color:black;");
     FenE->showFullScreen();
 }
 
@@ -365,7 +384,7 @@ void MainWindow::on_Calculatrice_clicked()
         FenC->showFullScreen();
     } else {
         KCalculatrice->load(QUrl("https://www.desmos.com/scientific?lang=fr"));
-        KCalculatrice->setZoomFactor(myScale.toInt());
+        KCalculatrice->setZoomFactor(2 * myScale.toInt());
         KCalculatrice->setMinimumWidth(WIDTHMAIN);
         KCalculatrice->setMinimumHeight(HEIGHT);
         FenC = new QWidget;
@@ -375,6 +394,11 @@ void MainWindow::on_Calculatrice_clicked()
         menuC->setMaximumWidth(WIDTHCONTROL);
         menuC->setMaximumHeight(HEIGHT);
         myLayout->addWidget(menuC);
+        QPalette pal = palette();
+        pal.setColor(QPalette::Background, Qt::black);
+        FenC->setAutoFillBackground(true);
+        FenC->setPalette(pal);
+        FenC->setStyleSheet("background-color:black;");
         FenC->showFullScreen();
     }
 }
@@ -431,6 +455,11 @@ void MainWindow::on_Notes_clicked()
         menuN->setMaximumWidth(WIDTHCONTROL);
         menuN->setMaximumHeight(HEIGHT);
         myLayout->addWidget(menuN);
+        QPalette pal = palette();
+        pal.setColor(QPalette::Background, Qt::black);
+        FenN->setAutoFillBackground(true);
+        FenN->setPalette(pal);
+        FenN->setStyleSheet("background-color:black;");
         FenN->showFullScreen();
     }
 }
@@ -451,6 +480,11 @@ void MainWindow::on_Internet_clicked()
         menuI->setMaximumWidth(WIDTHCONTROL);
         menuI->setMaximumHeight(HEIGHT);
         myLayout->addWidget(menuI);
+        QPalette pal = palette();
+        pal.setColor(QPalette::Background, Qt::black);
+        FenI->setAutoFillBackground(true);
+        FenI->setPalette(pal);
+        FenI->setStyleSheet("background-color:black;");
         FenI->showFullScreen();
 }
 }
@@ -470,6 +504,11 @@ void MainWindow::on_Music_clicked()
         menuM->setMaximumWidth(WIDTHCONTROL);
         menuM->setMaximumHeight(HEIGHT);
         myLayout->addWidget(menuM);
+        QPalette pal = palette();
+        pal.setColor(QPalette::Background, Qt::black);
+        FenM->setAutoFillBackground(true);
+        FenM->setPalette(pal);
+        FenM->setStyleSheet("background-color:black;");
         FenM->showFullScreen();
     }
 }
@@ -491,6 +530,11 @@ void MainWindow::on_Discord_clicked()
         menuD->setMaximumWidth(WIDTHCONTROL);
         menuD->setMaximumHeight(HEIGHT);
         myLayout->addWidget(menuD);
+        QPalette pal = palette();
+        pal.setColor(QPalette::Background, Qt::black);
+        FenD->setAutoFillBackground(true);
+        FenD->setPalette(pal);
+        FenD->setStyleSheet("background-color:black;");
         FenD->showFullScreen();
     }
 }
