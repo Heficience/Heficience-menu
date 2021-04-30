@@ -44,6 +44,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     m_speech = new QTextToSpeech(this);
+    m_speech->setLocale(QLocale::French);
     screens = QGuiApplication::screens();
     screen = screens.first();
     screenGeometry = screen->geometry();
