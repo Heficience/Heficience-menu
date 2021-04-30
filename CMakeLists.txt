@@ -1,8 +1,16 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(dvkbuntu-easy-menu-qt LANGUAGES CXX)
+if(WIN32)
+    project(dvkbuntu-easy-menu-qt)
+else()
+    project(dvkbuntu-easy-menu-qt LANGUAGES CXX)
+endif()
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
+
+if(WIN32)
+set(CMAKE_PREFIX_PATH "C:\\Qt\\5.15.2\\msvc2019_64\\")
+endif()
 
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
@@ -46,7 +54,11 @@ find_package(Qt${QT_VERSION_MAJOR} COMPONENTS TextToSpeech REQUIRED)
         src/options.ui
         src/mywebenginepage.cpp
         src/mywebenginepage.h
-        src/resource.qrc)
+        src/resource.qrc
+        src/icon.rc)
+if (WIN32)
+qt5_add_resources(src/icon.rc)
+endif()
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(dvkbuntu-easy-menu-qt

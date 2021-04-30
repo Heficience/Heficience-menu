@@ -6,6 +6,7 @@
 #include <QRect>
 #include <QScreen>
 #include <QWebEngineProfile>
+#include <QSettings>
 #include "ui_mainwindow.h"
 #include "mainwindow.h"
 #include "options.h"
@@ -31,6 +32,7 @@ public:
     QWebEngineProfile *profile = new QWebEngineProfile;
     QString myScale;
     QProcess *m_process = new QProcess;
+    QSettings mySettings;
 
 private:
     Ui::ControlMenuMail *ui;
@@ -58,7 +60,6 @@ private slots:
     void on_Bouygues_clicked();
     void on_LaPoste_clicked();
     void showTime();
-    void ExecuteJS(bool);
 };
 
 #endif // CONTROLMENUMAIL_H

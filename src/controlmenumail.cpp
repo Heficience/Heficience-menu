@@ -105,15 +105,11 @@ ControlMenuMail::~ControlMenuMail()
     delete ui;
 }
 
-void ControlMenuMail::ExecuteJS(bool)
-{
-    mail->page()->runJavaScript("Array.from(document.querySelectorAll('a[target=\"_blank\"]')).forEach(link => link.removeAttribute('target'));");
-};
-
 void ControlMenuMail::on_Fermeture_clicked()
 {
     this->parentWidget()->close();
 }
+
 void ControlMenuMail::on_Home_clicked() {
     this->parentWidget()->close();
 }
@@ -122,25 +118,24 @@ void ControlMenuMail::on_Options_clicked() {
     Options *myOptions = new Options();
     QPalette pal = palette();
     pal.setColor(QPalette::Background, Qt::black);
+    pal.setColor(QPalette::Foreground, Qt::white);
     myOptions->setAutoFillBackground(true);
     myOptions->setPalette(pal);
-    myOptions->setStyleSheet("background-color:black;");
+    myOptions->setStyleSheet("background-color:black; color:#fff");
     myOptions->show();
 }
 
 void ControlMenuMail::on_Gmail_clicked() {
-    ChoixServiceMail = QString::fromUtf8("0");
-    SetValue.start("bash -c \"mkdir -p \"$HOME\"/.easymenu && echo \"" + ChoixServiceMail + "\" > \"$HOME\"/.easymenu/ServiceMail\"");
-    SetValue.waitForFinished(-1);
+
+    mySettings.beginGroup("ChoixMail");
+    mySettings.setValue("Mail", 0);
+    mySettings.endGroup();
 
     MyWebEnginePage *page = new MyWebEnginePage();
     mail->setPage(page);
 
     mail->load(QUrl("https://mail.google.com/"));
 
-    connect(mail->page(), SIGNAL(loadFinished(bool)),
-            this, SLOT(ExecuteJS(bool)));
-
     mail->setZoomFactor(myScale.toInt());
     mail->setMinimumWidth(WIDTHMAIN);
     mail->setMinimumHeight(HEIGHT);
@@ -153,26 +148,25 @@ void ControlMenuMail::on_Gmail_clicked() {
     myLayout->addWidget(menuE);
     QPalette pal = palette();
     pal.setColor(QPalette::Background, Qt::black);
+    pal.setColor(QPalette::Foreground, Qt::white);
     FenE->setAutoFillBackground(true);
     FenE->setPalette(pal);
-    FenE->setStyleSheet("background-color:black;");
+    FenE->setStyleSheet("background-color:black; color:#fff");
     FenE->showFullScreen();
     this->parentWidget()->close();
 }
 
 void ControlMenuMail::on_Outlook_clicked() {
-    ChoixServiceMail = QString::fromUtf8("1");
-    SetValue.start("bash -c \"mkdir -p \"$HOME\"/.easymenu && echo \"" + ChoixServiceMail + "\" > \"$HOME\"/.easymenu/ServiceMail\"");
-    SetValue.waitForFinished(-1);
+
+    mySettings.beginGroup("ChoixMail");
+    mySettings.setValue("Mail", 1);
+    mySettings.endGroup();
 
     MyWebEnginePage *page = new MyWebEnginePage();
     mail->setPage(page);
 
     mail->load(QUrl("https://outlook.live.com/mail/0/inbox"));
 
-    connect(mail->page(), SIGNAL(loadFinished(bool)),
-            this, SLOT(ExecuteJS(bool)));
-
     mail->setZoomFactor(myScale.toInt());
     mail->setMinimumWidth(WIDTHMAIN);
     mail->setMinimumHeight(HEIGHT);
@@ -185,26 +179,25 @@ void ControlMenuMail::on_Outlook_clicked() {
     myLayout->addWidget(menuE);
     QPalette pal = palette();
     pal.setColor(QPalette::Background, Qt::black);
+    pal.setColor(QPalette::Foreground, Qt::white);
     FenE->setAutoFillBackground(true);
     FenE->setPalette(pal);
-    FenE->setStyleSheet("background-color:black;");
+    FenE->setStyleSheet("background-color:black; color:#fff");
     FenE->showFullScreen();
     this->parentWidget()->close();
 }
 
 void ControlMenuMail::on_Yahoo_clicked() {
-    ChoixServiceMail = QString::fromUtf8("2");
-    SetValue.start("bash -c \"mkdir -p \"$HOME\"/.easymenu && echo \"" + ChoixServiceMail + "\" > \"$HOME\"/.easymenu/ServiceMail\"");
-    SetValue.waitForFinished(-1);
+
+    mySettings.beginGroup("ChoixMail");
+    mySettings.setValue("Mail", 2);
+    mySettings.endGroup();
 
     MyWebEnginePage *page = new MyWebEnginePage();
     mail->setPage(page);
 
     mail->load(QUrl("https://login.yahoo.com/?.src=ym&lang=fr-FR&done=https%3A%2F%2Ffr.mail.yahoo.com"));
 
-    connect(mail->page(), SIGNAL(loadFinished(bool)),
-            this, SLOT(ExecuteJS(bool)));
-
     mail->setZoomFactor(myScale.toInt());
     mail->setMinimumWidth(WIDTHMAIN);
     mail->setMinimumHeight(HEIGHT);
@@ -217,26 +210,25 @@ void ControlMenuMail::on_Yahoo_clicked() {
     myLayout->addWidget(menuE);
     QPalette pal = palette();
     pal.setColor(QPalette::Background, Qt::black);
+    pal.setColor(QPalette::Foreground, Qt::white);
     FenE->setAutoFillBackground(true);
     FenE->setPalette(pal);
-    FenE->setStyleSheet("background-color:black;");
+    FenE->setStyleSheet("background-color:black; color:#fff");
     FenE->showFullScreen();
     this->parentWidget()->close();
 }
 
 void ControlMenuMail::on_Orange_clicked() {
-    ChoixServiceMail = QString::fromUtf8("3");
-    SetValue.start("bash -c \"mkdir -p \"$HOME\"/.easymenu && echo \"" + ChoixServiceMail + "\" > \"$HOME\"/.easymenu/ServiceMail\"");
-    SetValue.waitForFinished(-1);
+
+    mySettings.beginGroup("ChoixMail");
+    mySettings.setValue("Mail", 3);
+    mySettings.endGroup();
 
     MyWebEnginePage *page = new MyWebEnginePage();
     mail->setPage(page);
 
     mail->load(QUrl("https://login.orange.fr/?return_url=https://rms.orange.fr/mail/inbox%3F"));
 
-    connect(mail->page(), SIGNAL(loadFinished(bool)),
-            this, SLOT(ExecuteJS(bool)));
-
     mail->setZoomFactor(myScale.toInt());
     mail->setMinimumWidth(WIDTHMAIN);
     mail->setMinimumHeight(HEIGHT);
@@ -249,26 +241,25 @@ void ControlMenuMail::on_Orange_clicked() {
     myLayout->addWidget(menuE);
     QPalette pal = palette();
     pal.setColor(QPalette::Background, Qt::black);
+    pal.setColor(QPalette::Foreground, Qt::white);
     FenE->setAutoFillBackground(true);
     FenE->setPalette(pal);
-    FenE->setStyleSheet("background-color:black;");
+    FenE->setStyleSheet("background-color:black; color:#fff");
     FenE->showFullScreen();
     this->parentWidget()->close();
 }
 
 void ControlMenuMail::on_SFR_clicked() {
-    ChoixServiceMail = QString::fromUtf8("4");
-    SetValue.start("bash -c \"mkdir -p \"$HOME\"/.easymenu && echo \"" + ChoixServiceMail + "\" > \"$HOME\"/.easymenu/ServiceMail\"");
-    SetValue.waitForFinished(-1);
+
+    mySettings.beginGroup("ChoixMail");
+    mySettings.setValue("Mail", 4);
+    mySettings.endGroup();
 
     MyWebEnginePage *page = new MyWebEnginePage();
     mail->setPage(page);
 
     mail->load(QUrl("https://www.sfr.fr/cas/login?service=https%3A%2F%2Fwebmail.sfr.fr%2Fwebmail%2Fj_spring_cas_security_check"));
 
-    connect(mail->page(), SIGNAL(loadFinished(bool)),
-            this, SLOT(ExecuteJS(bool)));
-
     mail->setZoomFactor(myScale.toInt());
     mail->setMinimumWidth(WIDTHMAIN);
     mail->setMinimumHeight(HEIGHT);
@@ -281,26 +272,25 @@ void ControlMenuMail::on_SFR_clicked() {
     myLayout->addWidget(menuE);
     QPalette pal = palette();
     pal.setColor(QPalette::Background, Qt::black);
+    pal.setColor(QPalette::Foreground, Qt::white);
     FenE->setAutoFillBackground(true);
     FenE->setPalette(pal);
-    FenE->setStyleSheet("background-color:black;");
+    FenE->setStyleSheet("background-color:black; color:#fff");
     FenE->showFullScreen();
     this->parentWidget()->close();
 }
 
 void ControlMenuMail::on_Free_clicked() {
-    ChoixServiceMail = QString::fromUtf8("5");
-    SetValue.start("bash -c \"mkdir -p \"$HOME\"/.easymenu && echo \"" + ChoixServiceMail + "\" > \"$HOME\"/.easymenu/ServiceMail\"");
-    SetValue.waitForFinished(-1);
+
+    mySettings.beginGroup("ChoixMail");
+    mySettings.setValue("Mail", 5);
+    mySettings.endGroup();
 
     MyWebEnginePage *page = new MyWebEnginePage();
     mail->setPage(page);
 
     mail->load(QUrl("https://zimbra.free.fr/"));
 
-    connect(mail->page(), SIGNAL(loadFinished(bool)),
-            this, SLOT(ExecuteJS(bool)));
-
     mail->setZoomFactor(myScale.toInt());
     mail->setMinimumWidth(WIDTHMAIN);
     mail->setMinimumHeight(HEIGHT);
@@ -313,26 +303,25 @@ void ControlMenuMail::on_Free_clicked() {
     myLayout->addWidget(menuE);
     QPalette pal = palette();
     pal.setColor(QPalette::Background, Qt::black);
+    pal.setColor(QPalette::Foreground, Qt::white);
     FenE->setAutoFillBackground(true);
     FenE->setPalette(pal);
-    FenE->setStyleSheet("background-color:black;");
+    FenE->setStyleSheet("background-color:black; color:#fff");
     FenE->showFullScreen();
     this->parentWidget()->close();
 }
 
 void ControlMenuMail::on_Bouygues_clicked() {
-    ChoixServiceMail = QString::fromUtf8("6");
-    SetValue.start("bash -c \"mkdir -p \"$HOME\"/.easymenu && echo \"" + ChoixServiceMail + "\" > \"$HOME\"/.easymenu/ServiceMail\"");
-    SetValue.waitForFinished(-1);
+
+    mySettings.beginGroup("ChoixMail");
+    mySettings.setValue("Mail", 6);
+    mySettings.endGroup();
 
     MyWebEnginePage *page = new MyWebEnginePage();
     mail->setPage(page);
 
     mail->load(QUrl("https://www.mon-compte.bouyguestelecom.fr/cas/login?service=https%3A%2F%2Foauth2.bouyguestelecom.fr%2Fcallback%2Fpicasso%2Fprotocol%2Fcas%3Fid%3Dar-33df094b-d8fb-4aca-afba-fb33f42ab763%26client_id%3Dwebmail.bouyguestelecom.fr"));
 
-    connect(mail->page(), SIGNAL(loadFinished(bool)),
-            this, SLOT(ExecuteJS(bool)));
-
     mail->setZoomFactor(myScale.toInt());
     mail->setMinimumWidth(WIDTHMAIN);
     mail->setMinimumHeight(HEIGHT);
@@ -345,26 +334,25 @@ void ControlMenuMail::on_Bouygues_clicked() {
     myLayout->addWidget(menuE);
     QPalette pal = palette();
     pal.setColor(QPalette::Background, Qt::black);
+    pal.setColor(QPalette::Foreground, Qt::white);
     FenE->setAutoFillBackground(true);
     FenE->setPalette(pal);
-    FenE->setStyleSheet("background-color:black;");
+    FenE->setStyleSheet("background-color:black; color:#fff");
     FenE->showFullScreen();
     this->parentWidget()->close();
 }
 
 void ControlMenuMail::on_LaPoste_clicked() {
-    ChoixServiceMail = QString::fromUtf8("7");
-    SetValue.start("bash -c \"mkdir -p \"$HOME\"/.easymenu && echo \"" + ChoixServiceMail + "\" > \"$HOME\"/.easymenu/ServiceMail\"");
-    SetValue.waitForFinished(-1);
+
+    mySettings.beginGroup("ChoixMail");
+    mySettings.setValue("Mail", 7);
+    mySettings.endGroup();
 
     MyWebEnginePage *page = new MyWebEnginePage();
     mail->setPage(page);
 
     mail->load(QUrl("https://www.laposte.net/accueil"));
 
-    connect(mail->page(), SIGNAL(loadFinished(bool)),
-            this, SLOT(ExecuteJS(bool)));
-
     mail->setZoomFactor(myScale.toInt());
     mail->setMinimumWidth(WIDTHMAIN);
     mail->setMinimumHeight(HEIGHT);
@@ -377,9 +365,10 @@ void ControlMenuMail::on_LaPoste_clicked() {
     myLayout->addWidget(menuE);
     QPalette pal = palette();
     pal.setColor(QPalette::Background, Qt::black);
+    pal.setColor(QPalette::Foreground, Qt::white);
     FenE->setAutoFillBackground(true);
     FenE->setPalette(pal);
-    FenE->setStyleSheet("background-color:black;");
+    FenE->setStyleSheet("background-color:black; color:#fff");
     FenE->showFullScreen();
     this->parentWidget()->close();
 }

@@ -95,15 +95,20 @@ void ControlMenuMain::on_Options_clicked() {
     Options *myOptions = new Options();
     QPalette pal = palette();
     pal.setColor(QPalette::Background, Qt::black);
+    pal.setColor(QPalette::Foreground, Qt::white);
     myOptions->setAutoFillBackground(true);
     myOptions->setPalette(pal);
-    myOptions->setStyleSheet("background-color:black;");
+    myOptions->setStyleSheet("background-color:black; color:#fff");
     myOptions->show();
 }
 
 void ControlMenuMain::on_PowerOff_clicked() {
     QProcess Extinction;
+#ifdef __linux__
     Extinction.startDetached("shutdown -P now");
+#elif _WIN32
+    Extinction.startDetached("shutdown -s -f -t 00");
+#endif
 }
 
 void ControlMenuMain::showTime()

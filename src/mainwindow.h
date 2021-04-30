@@ -16,6 +16,7 @@
 #include <QDesktopWidget>
 #include <QSettings>
 #include <QWebEngineProfile>
+#include <QSettings>
 #include "controlmenu.h"
 #include "controlmenumail.h"
 #include "controlmenumain.h"
@@ -65,6 +66,7 @@ public:
     qreal WIDTH;
     int WIDTHCONTROL;
     int WIDTHMAIN;
+    QString musicText;
     QProcess *m_process = new QProcess;
     QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
     QMediaPlayer *player = new QMediaPlayer;
@@ -91,6 +93,8 @@ public:
     QString myScale2;
     QLayout *myLayout;
     QProcess GetValue;
+    QSettings mySettings;
+    WId myWid;
 
 private:
     Ui::MainWindow *ui;
@@ -116,7 +120,6 @@ private slots:
     void on_Discord_clicked();
     static void handleStateChanged(QProcess *procss, QWidget *widget, QWidget *killtest);
     void OpenNewWindows(MyWebEnginePage *);
-    void ExecuteJS(bool);
 };
 
 #endif // MAINWINDOW_H

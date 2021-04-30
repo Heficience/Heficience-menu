@@ -20,6 +20,8 @@ public:
     Options(QWidget *parent = nullptr);
     ~Options();
     QString ChoixServiceMusique;
+    QSettings mySettings;
+    bool CanUse = false;
 
 private:
     Ui::Options *ui;
@@ -37,7 +39,5 @@ private slots:
     void on_Jamendo_toggled();
     void on_YouTube_toggled();
     void on_Deezer_toggled();
-    void on_buttonBox_accepted();
-    void on_buttonBox_rejected();
 };
 #endif // OPTIONS_H

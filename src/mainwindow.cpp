@@ -24,6 +24,7 @@
 #include <QtWebEngineWidgets>
 #include <QObject>
 #include <QPalette>
+#include <QSettings>
 
 std::map<std::string, QString> QStringMap;
 
@@ -31,7 +32,12 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
+
+#ifdef __linux__
     QMainWindow::setWindowIcon(QIcon(":/Images/EasyMenu_Icone.svg"));
+#elif _WIN32
+    QMainWindow::setWindowIcon(QIcon(":/Images/EasyMenu_Icone.ico"));
+#endif
 
     ui->setupUi(this);
 
@@ -44,8 +50,8 @@ MainWindow::MainWindow(QWidget *parent)
     WIDTHMAIN = WIDTH -WIDTHCONTROL;
     FenG = new QWidget;
     menuG = new ControlMenuMain();
-    WId WidFromPid = this->winId();
-    ma_fenetreG = QWindow::fromWinId(WidFromPid);
+    myWid = this->winId();
+    ma_fenetreG = QWindow::fromWinId(myWid);
     FenApp = QWidget::createWindowContainer(ma_fenetreG);
     FenApp->setMinimumWidth(WIDTHMAIN);
     FenApp->setMinimumHeight(HEIGHT);
@@ -56,9 +62,10 @@ MainWindow::MainWindow(QWidget *parent)
     myLayout->addWidget(menuG);
     QPalette pal = palette();
     pal.setColor(QPalette::Background, Qt::black);
+    pal.setColor(QPalette::Foreground, Qt::white);
     FenG->setAutoFillBackground(true);
     FenG->setPalette(pal);
-    FenG->setStyleSheet("background-color:black;");
+    FenG->setStyleSheet("background-color:black; color:#fff");
     FenG->showFullScreen();
 
     fontC = ui->Calculatrice->font();
@@ -78,14 +85,11 @@ MainWindow::MainWindow(QWidget *parent)
     QS2 = QSize((int)(HEIGHT*.05),(int)(HEIGHT*.05));
     fSize2 = (int)((120*HEIGHT/2160)*72/dpi);
 
-    GetValue.start("cat \"" + env.value("HOME") +"/.easymenu/MusiqueService\"");
-    GetValue.waitForFinished(-1);
-    QString ServiceMusiqueString = GetValue.readAllStandardOutput();
-    ServiceMusique = ServiceMusiqueString.toInt();
+    mySettings.beginGroup("ChoixMusic");
+    int myInt = mySettings.value("Music").toInt();
+    mySettings.endGroup();
 
-    QString musicText;
-
-    switch ( ServiceMusique )
+    switch ( myInt )
     {
         case 1:
             musicText = "Ecouter de\nla musique\nsur YouTube";
@@ -98,6 +102,7 @@ MainWindow::MainWindow(QWidget *parent)
         default:
             musicText = "Ecouter de\nla musique\nsur Jamendo";
             music->load(QUrl("https://www.jamendo.com/start"));
+            break;
     }
 
     QString calculatriceText = "Calculatrice";
@@ -156,7 +161,7 @@ MainWindow::MainWindow(QWidget *parent)
     profileC = KCalculatrice->page()->profile();
     profileC->setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36");
     profileE = mail->page()->profile();
-    profileE->setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36");
+    profileE->setHttpUserAgent("Mozilla/5.0 ({os_info}; rv:71.0) Gecko/20100101 Firefox/71.0");
     profileI = web->page()->profile();
     profileI->setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36");
     profileN = office->page()->profile();
@@ -165,6 +170,8 @@ MainWindow::MainWindow(QWidget *parent)
     profileD->setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36");
     profileM = music->page()->profile();
     profileM->setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36");
+
+    myWid = this->winId();
 }
 
 MainWindow::~MainWindow()
@@ -179,10 +186,10 @@ bool MainWindow::eventFilter(QObject* watched, QEvent* event)
             ui->Calculatrice->setText(QStringMap.at("Calculatrice"));
             ui->Calculatrice->setIcon(QIcon(":/Images/0-Categorie/calculator-color.svg"));
             ui->Calculatrice->setStyleSheet("background-color: rgb(0, 0, 0);border-radius: 10px;border:  16PX solid rgb(41, 182, 71);color : white;");
-            player->pause();
-            player->stop();
-            m_process->kill();
-            m_process->start("createWaveFromItem \"Ouvrir la calculatrice.\"");
+            //player->pause(); //Use QTextToSpeech to change this
+            //player->stop();
+            //m_process->kill();
+            //m_process->start("createWaveFromItem \"Ouvrir la calculatrice.\"");
             ui->Calculatrice->setIconSize(QS2);
             fontC.setPointSize(fSize2);
             ui->Calculatrice->setFont(fontC);
@@ -191,10 +198,10 @@ bool MainWindow::eventFilter(QObject* watched, QEvent* event)
             ui->Calculatrice->setText("");
             ui->Calculatrice->setIcon(QIcon(":/Images/0-Categorie/calculator.svg"));
             ui->Calculatrice->setStyleSheet("background-color: rgb(41, 182, 71);border-radius: 10px;border:  8PX solid red;color : white;");
-            player->pause();
-            player->stop();
-            m_process->kill();
-            play=false;
+            //player->pause(); //Use QTextToSpeech to change this
+            //player->stop();
+            //m_process->kill();
+            //play=false;
             ui->Calculatrice->setIconSize(QS1);
             fontC.setPointSize(fSize1);
             ui->Calculatrice->setFont(fontC);
@@ -205,10 +212,10 @@ bool MainWindow::eventFilter(QObject* watched, QEvent* event)
             ui->Email->setText(QStringMap.at("Email"));
             ui->Email->setIcon(QIcon(":/Images/0-Categorie/envelope-color.svg"));
             ui->Email->setStyleSheet("background-color: rgb(0, 0, 0);border-radius: 10px;border:  16PX solid rgb(240, 120, 80);color : white;");
-            player->pause();
-            player->stop();
-            m_process->kill();
-            m_process->start("createWaveFromItem \"Ouvrir le client email.\"");
+            //player->pause(); //Use QTextToSpeech to change this
+            //player->stop();
+            //m_process->kill();
+            //m_process->start("createWaveFromItem \"Ouvrir le client email.\"");
             ui->Email->setIconSize(QS2);
             fontE.setPointSize(fSize2);
             ui->Email->setFont(fontE);
@@ -217,10 +224,10 @@ bool MainWindow::eventFilter(QObject* watched, QEvent* event)
             ui->Email->setText("");
             ui->Email->setIcon(QIcon(":/Images/0-Categorie/envelope.svg"));
             ui->Email->setStyleSheet("background-color: rgb(240, 120, 80);border-radius: 10px;border:  8PX solid red;color : white;");
-            player->pause();
-            player->stop();
-            m_process->kill();
-            play=false;
+            //player->pause(); //Use QTextToSpeech to change this
+            //player->stop();
+            //m_process->kill();
+            //play=false;
             ui->Email->setIconSize(QS1);
             fontE.setPointSize(fSize1);
             ui->Email->setFont(fontE);
@@ -231,10 +238,10 @@ bool MainWindow::eventFilter(QObject* watched, QEvent* event)
             ui->Internet->setText(QStringMap.at("Internet"));
             ui->Internet->setIcon(QIcon(":/Images/0-Categorie/globe-africa-color.svg"));
             ui->Internet->setStyleSheet("background-color: rgb(0, 0, 0);border-radius: 10px;border:  16PX solid rgb(88, 70, 55);color : white;");
-            player->pause();
-            player->stop();
-            m_process->kill();
-            m_process->start("createWaveFromItem \"Ouvrir le navigateur internet.\"");
+            //player->pause(); //Use QTextToSpeech to change this
+            //player->stop();
+            //m_process->kill();
+            //m_process->start("createWaveFromItem \"Ouvrir le navigateur internet.\"");
             ui->Internet->setIconSize(QS2);
             fontI.setPointSize(fSize2);
             ui->Internet->setFont(fontI);
@@ -243,10 +250,10 @@ bool MainWindow::eventFilter(QObject* watched, QEvent* event)
             ui->Internet->setText("");
             ui->Internet->setIcon(QIcon(":/Images/0-Categorie/globe-africa.svg"));
             ui->Internet->setStyleSheet("background-color: rgb(88, 70, 55);border-radius: 10px;border:  8PX solid red;color : white;");
-            player->pause();
-            player->stop();
-            m_process->kill();
-            play=false;
+            //player->pause(); //Use QTextToSpeech to change this
+            //player->stop();
+            //m_process->kill();
+            //play=false;
             ui->Internet->setIconSize(QS1);
             fontI.setPointSize(fSize1);
             ui->Internet->setFont(fontI);
@@ -257,10 +264,10 @@ bool MainWindow::eventFilter(QObject* watched, QEvent* event)
             ui->Notes->setText(QStringMap.at("Notes"));
             ui->Notes->setIcon(QIcon(":/Images/0-Categorie/clipboard-color.svg"));
             ui->Notes->setStyleSheet("background-color: rgb(0, 0, 0);border-radius: 10px;border:  16PX solid rgb(0, 88, 132);color : white;");
-            player->pause();
-            player->stop();
-            m_process->kill();
-            m_process->start("createWaveFromItem \"Ouvrir la suite bureautique.\"");
+            //player->pause(); //Use QTextToSpeech to change this
+            //player->stop();
+            //m_process->kill();
+            //m_process->start("createWaveFromItem \"Ouvrir la suite bureautique.\"");
             ui->Notes->setIconSize(QS2);
             fontN.setPointSize(fSize2);
             ui->Notes->setFont(fontN);
@@ -269,10 +276,10 @@ bool MainWindow::eventFilter(QObject* watched, QEvent* event)
             ui->Notes->setText("");
             ui->Notes->setIcon(QIcon(":/Images/0-Categorie/clipboard.svg"));
             ui->Notes->setStyleSheet("background-color: rgb(0, 88, 132);border-radius: 10px;border:  8PX solid red;color : white;");
-            player->pause();
-            player->stop();
-            m_process->kill();
-            play=false;
+            //player->pause(); //Use QTextToSpeech to change this
+            //player->stop();
+            //m_process->kill();
+            //play=false;
             ui->Notes->setIconSize(QS1);
             fontN.setPointSize(fSize1);
             ui->Notes->setFont(fontN);
@@ -283,10 +290,10 @@ bool MainWindow::eventFilter(QObject* watched, QEvent* event)
             ui->Discord->setText(QStringMap.at("Discord"));
             ui->Discord->setIcon(QIcon(":/Images/0-Categorie/discord-color.svg"));
             ui->Discord->setStyleSheet("background-color: rgb(0, 0, 0);border-radius: 10px;border:  16PX solid rgb(114, 137, 218);color : white;");
-            player->pause();
-            player->stop();
-            m_process->kill();
-            m_process->start("createWaveFromItem \"Discuter grâce à discord.\"");
+            //player->pause(); //Use QTextToSpeech to change this
+            //player->stop();
+            //m_process->kill();
+            //m_process->start("createWaveFromItem \"Discuter grâce à discord.\"");
             ui->Discord->setIconSize(QS2);
             fontD.setPointSize(fSize2);
             ui->Discord->setFont(fontD);
@@ -295,10 +302,10 @@ bool MainWindow::eventFilter(QObject* watched, QEvent* event)
             ui->Discord->setText("");
             ui->Discord->setIcon(QIcon(":/Images/0-Categorie/discord.svg"));
             ui->Discord->setStyleSheet("background-color: rgb(114, 137, 218);border-radius: 10px;border:  8PX solid red;color : white;");
-            player->pause();
-            player->stop();
-            m_process->kill();
-            play=false;
+            //player->pause(); //Use QTextToSpeech to change this
+            //player->stop();
+            //m_process->kill();
+            //play=false;
             ui->Discord->setIconSize(QS1);
             fontD.setPointSize(fSize1);
             ui->Discord->setFont(fontD);
@@ -309,10 +316,10 @@ bool MainWindow::eventFilter(QObject* watched, QEvent* event)
             ui->Music->setText(QStringMap.at("Music"));
             ui->Music->setIcon(QIcon(":/Images/0-Categorie/music-color.svg"));
             ui->Music->setStyleSheet("background-color: rgb(0, 0, 0);border-radius: 10px;border:  16PX solid rgb(212, 115, 212);color : white;");
-            player->pause();
-            player->stop();
-            m_process->kill();
-            m_process->start("createWaveFromItem \"" + QStringMap.at("Music") + "\"");
+            //player->pause(); //Use QTextToSpeech to change this
+            //player->stop();
+            //m_process->kill();
+            //m_process->start("createWaveFromItem \"" + QStringMap.at("Music") + "\"");
             ui->Music->setIconSize(QS2);
             fontM.setPointSize(fSize2);
             ui->Music->setFont(fontM);
@@ -321,23 +328,23 @@ bool MainWindow::eventFilter(QObject* watched, QEvent* event)
             ui->Music->setText("");
             ui->Music->setIcon(QIcon(":/Images/0-Categorie/music.svg"));
             ui->Music->setStyleSheet("background-color: rgb(212, 115, 212);border-radius: 10px;border:  8PX solid red;color : white;");
-            player->pause();
-            player->stop();
-            m_process->kill();
-            play=false;
+            //player->pause(); //Use QTextToSpeech to change this
+            //player->stop();
+            //m_process->kill();
+            //play=false;
             ui->Music->setIconSize(QS1);
             fontM.setPointSize(fSize1);
             ui->Music->setFont(fontM);
         }
     }
-    if (!play) {
+    /**if (!play) { //Use QTextToSpeech to change this
         player->pause();
         player->stop();
         player->setVolume(50);
         player->setMedia(QUrl("file:// + env.value(\"HOME\") + \"/.local/share/dvkbuntu/sonEnCours.wav\"\""));
         player->play();
         play=true;
-    }
+    }**/
     return false;
 }
 
@@ -353,8 +360,6 @@ void MainWindow::handleStateChanged(QProcess *procss, QWidget *widget, QWidget *
 void MainWindow::OpenNewWindows(MyWebEnginePage *myPage)
 {
     mail->setPage(myPage);
-    connect(mail->page(), SIGNAL(loadFinished(bool)),
-            this, SLOT(ExecuteJS(bool)));
     mail->setZoomFactor(myScale.toInt());
     mail->setMinimumWidth(WIDTHMAIN);
     mail->setMinimumHeight(HEIGHT);
@@ -367,16 +372,12 @@ void MainWindow::OpenNewWindows(MyWebEnginePage *myPage)
     myLayout->addWidget(menuE);
     QPalette pal = palette();
     pal.setColor(QPalette::Background, Qt::black);
+    pal.setColor(QPalette::Foreground, Qt::white);
     FenE->setAutoFillBackground(true);
     FenE->setPalette(pal);
-    FenE->setStyleSheet("background-color:black;");
+    FenE->setStyleSheet("background-color:black; color:#fff");
     FenE->showFullScreen();
 }
-
-void MainWindow::ExecuteJS(bool)
-{
-    mail->page()->runJavaScript("Array.from(document.querySelectorAll('a[target=\"_blank\"]')).forEach(link => link.removeAttribute('target'));");
-};
 
 void MainWindow::on_Calculatrice_clicked()
 {
@@ -396,9 +397,10 @@ void MainWindow::on_Calculatrice_clicked()
         myLayout->addWidget(menuC);
         QPalette pal = palette();
         pal.setColor(QPalette::Background, Qt::black);
+        pal.setColor(QPalette::Foreground, Qt::white);
         FenC->setAutoFillBackground(true);
         FenC->setPalette(pal);
-        FenC->setStyleSheet("background-color:black;");
+        FenC->setStyleSheet("background-color:black; color:#fff");
         FenC->showFullScreen();
     }
 }
@@ -406,10 +408,9 @@ void MainWindow::on_Calculatrice_clicked()
 void MainWindow::on_Email_clicked()
 {
     MyWebEnginePage *page = new MyWebEnginePage();
-    GetValue.start("cat \"" + env.value("HOME") +"/.easymenu/ServiceMail\"");
-    GetValue.waitForFinished(-1);
-    QString ServiceMailString = GetValue.readAllStandardOutput();
-    ServiceMail = ServiceMailString.toInt();
+    mySettings.beginGroup("ChoixMail");
+    ServiceMail = mySettings.value("Mail").toInt();
+    mySettings.endGroup();
     switch ( ServiceMail )
     {
         case 1:
@@ -457,9 +458,10 @@ void MainWindow::on_Notes_clicked()
         myLayout->addWidget(menuN);
         QPalette pal = palette();
         pal.setColor(QPalette::Background, Qt::black);
+        pal.setColor(QPalette::Foreground, Qt::white);
         FenN->setAutoFillBackground(true);
         FenN->setPalette(pal);
-        FenN->setStyleSheet("background-color:black;");
+        FenN->setStyleSheet("background-color:black; color:#fff");
         FenN->showFullScreen();
     }
 }
@@ -482,9 +484,10 @@ void MainWindow::on_Internet_clicked()
         myLayout->addWidget(menuI);
         QPalette pal = palette();
         pal.setColor(QPalette::Background, Qt::black);
+        pal.setColor(QPalette::Foreground, Qt::white);
         FenI->setAutoFillBackground(true);
         FenI->setPalette(pal);
-        FenI->setStyleSheet("background-color:black;");
+        FenI->setStyleSheet("background-color:black; color:#fff");
         FenI->showFullScreen();
 }
 }
@@ -506,15 +509,19 @@ void MainWindow::on_Music_clicked()
         myLayout->addWidget(menuM);
         QPalette pal = palette();
         pal.setColor(QPalette::Background, Qt::black);
+        pal.setColor(QPalette::Foreground, Qt::white);
         FenM->setAutoFillBackground(true);
         FenM->setPalette(pal);
-        FenM->setStyleSheet("background-color:black;");
+        FenM->setStyleSheet("background-color:black; color:#fff");
         FenM->showFullScreen();
     }
 }
 
 void MainWindow::on_Discord_clicked()
 {
+    profileD = DiscordLauncher->page()->profile();
+    profileD->setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36");
+
     if (DiscordLauncher->isVisible()) {
         FenD->showFullScreen();
     } else {
@@ -532,9 +539,10 @@ void MainWindow::on_Discord_clicked()
         myLayout->addWidget(menuD);
         QPalette pal = palette();
         pal.setColor(QPalette::Background, Qt::black);
+        pal.setColor(QPalette::Foreground, Qt::white);
         FenD->setAutoFillBackground(true);
         FenD->setPalette(pal);
-        FenD->setStyleSheet("background-color:black;");
+        FenD->setStyleSheet("background-color:black; color:#fff");
         FenD->showFullScreen();
     }
 }
