@@ -17,6 +17,7 @@
 #include <QSettings>
 #include <QWebEngineProfile>
 #include <QSettings>
+#include <QTextToSpeech>
 #include "controlmenu.h"
 #include "controlmenumail.h"
 #include "controlmenumain.h"
@@ -95,6 +96,7 @@ public:
     QProcess GetValue;
     QSettings mySettings;
     WId myWid;
+    QString serviceMusic;
 
 private:
     Ui::MainWindow *ui;
@@ -109,6 +111,7 @@ private:
     QWidget* myWidgetweb;
     QWidget* myWidgetDiscord;
     QWidget *FenApp;
+    QTextToSpeech *m_speech;
 
 private slots:
     virtual bool eventFilter(QObject* watched, QEvent* event);
@@ -120,6 +123,8 @@ private slots:
     void on_Discord_clicked();
     static void handleStateChanged(QProcess *procss, QWidget *widget, QWidget *killtest);
     void OpenNewWindows(MyWebEnginePage *);
+    //void speak(QString monText);
+    //void stop();
 };
 
 #endif // MAINWINDOW_H

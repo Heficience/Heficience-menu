@@ -14,6 +14,7 @@
 #include <QTreeWidget>
 #include <map>
 #include <QSettings>
+#include <QTextToSpeech>
 
 ControlMenuMain::ControlMenuMain(QWidget *parent) :
     QWidget(parent),
@@ -94,8 +95,8 @@ void ControlMenuMain::on_Home_clicked() {
 void ControlMenuMain::on_Options_clicked() {
     Options *myOptions = new Options();
     QPalette pal = palette();
-    pal.setColor(QPalette::Background, Qt::black);
-    pal.setColor(QPalette::Foreground, Qt::white);
+    pal.setColor(QPalette::Window, Qt::black);
+    pal.setColor(QPalette::WindowText, Qt::white);
     myOptions->setAutoFillBackground(true);
     myOptions->setPalette(pal);
     myOptions->setStyleSheet("background-color:black; color:#fff");

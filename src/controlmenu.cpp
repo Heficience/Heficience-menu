@@ -76,8 +76,8 @@ void ControlMenu::on_Home_clicked() {
 void ControlMenu::on_Options_clicked() {
     Options *myOptions = new Options();
     QPalette pal = palette();
-    pal.setColor(QPalette::Background, Qt::black);
-    pal.setColor(QPalette::Foreground, Qt::white);
+    pal.setColor(QPalette::Window, Qt::black);
+    pal.setColor(QPalette::WindowText, Qt::white);
     myOptions->setAutoFillBackground(true);
     myOptions->setPalette(pal);
     myOptions->setStyleSheet("background-color:black; color:#fff");

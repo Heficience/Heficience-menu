@@ -117,8 +117,8 @@ void ControlMenuMail::on_Home_clicked() {
 void ControlMenuMail::on_Options_clicked() {
     Options *myOptions = new Options();
     QPalette pal = palette();
-    pal.setColor(QPalette::Background, Qt::black);
-    pal.setColor(QPalette::Foreground, Qt::white);
+    pal.setColor(QPalette::Window, Qt::black);
+    pal.setColor(QPalette::WindowText, Qt::white);
     myOptions->setAutoFillBackground(true);
     myOptions->setPalette(pal);
     myOptions->setStyleSheet("background-color:black; color:#fff");
@@ -147,8 +147,8 @@ void ControlMenuMail::on_Gmail_clicked() {
     menuE->setMaximumHeight(HEIGHT);
     myLayout->addWidget(menuE);
     QPalette pal = palette();
-    pal.setColor(QPalette::Background, Qt::black);
-    pal.setColor(QPalette::Foreground, Qt::white);
+    pal.setColor(QPalette::Window, Qt::black);
+    pal.setColor(QPalette::WindowText, Qt::white);
     FenE->setAutoFillBackground(true);
     FenE->setPalette(pal);
     FenE->setStyleSheet("background-color:black; color:#fff");
@@ -178,8 +178,8 @@ void ControlMenuMail::on_Outlook_clicked() {
     menuE->setMaximumHeight(HEIGHT);
     myLayout->addWidget(menuE);
     QPalette pal = palette();
-    pal.setColor(QPalette::Background, Qt::black);
-    pal.setColor(QPalette::Foreground, Qt::white);
+    pal.setColor(QPalette::Window, Qt::black);
+    pal.setColor(QPalette::WindowText, Qt::white);
     FenE->setAutoFillBackground(true);
     FenE->setPalette(pal);
     FenE->setStyleSheet("background-color:black; color:#fff");
@@ -209,8 +209,8 @@ void ControlMenuMail::on_Yahoo_clicked() {
     menuE->setMaximumHeight(HEIGHT);
     myLayout->addWidget(menuE);
     QPalette pal = palette();
-    pal.setColor(QPalette::Background, Qt::black);
-    pal.setColor(QPalette::Foreground, Qt::white);
+    pal.setColor(QPalette::Window, Qt::black);
+    pal.setColor(QPalette::WindowText, Qt::white);
     FenE->setAutoFillBackground(true);
     FenE->setPalette(pal);
     FenE->setStyleSheet("background-color:black; color:#fff");
@@ -240,8 +240,8 @@ void ControlMenuMail::on_Orange_clicked() {
     menuE->setMaximumHeight(HEIGHT);
     myLayout->addWidget(menuE);
     QPalette pal = palette();
-    pal.setColor(QPalette::Background, Qt::black);
-    pal.setColor(QPalette::Foreground, Qt::white);
+    pal.setColor(QPalette::Window, Qt::black);
+    pal.setColor(QPalette::WindowText, Qt::white);
     FenE->setAutoFillBackground(true);
     FenE->setPalette(pal);
     FenE->setStyleSheet("background-color:black; color:#fff");
@@ -271,8 +271,8 @@ void ControlMenuMail::on_SFR_clicked() {
     menuE->setMaximumHeight(HEIGHT);
     myLayout->addWidget(menuE);
     QPalette pal = palette();
-    pal.setColor(QPalette::Background, Qt::black);
-    pal.setColor(QPalette::Foreground, Qt::white);
+    pal.setColor(QPalette::Window, Qt::black);
+    pal.setColor(QPalette::WindowText, Qt::white);
     FenE->setAutoFillBackground(true);
     FenE->setPalette(pal);
     FenE->setStyleSheet("background-color:black; color:#fff");
@@ -302,8 +302,8 @@ void ControlMenuMail::on_Free_clicked() {
     menuE->setMaximumHeight(HEIGHT);
     myLayout->addWidget(menuE);
     QPalette pal = palette();
-    pal.setColor(QPalette::Background, Qt::black);
-    pal.setColor(QPalette::Foreground, Qt::white);
+    pal.setColor(QPalette::Window, Qt::black);
+    pal.setColor(QPalette::WindowText, Qt::white);
     FenE->setAutoFillBackground(true);
     FenE->setPalette(pal);
     FenE->setStyleSheet("background-color:black; color:#fff");
@@ -333,8 +333,8 @@ void ControlMenuMail::on_Bouygues_clicked() {
     menuE->setMaximumHeight(HEIGHT);
     myLayout->addWidget(menuE);
     QPalette pal = palette();
-    pal.setColor(QPalette::Background, Qt::black);
-    pal.setColor(QPalette::Foreground, Qt::white);
+    pal.setColor(QPalette::Window, Qt::black);
+    pal.setColor(QPalette::WindowText, Qt::white);
     FenE->setAutoFillBackground(true);
     FenE->setPalette(pal);
     FenE->setStyleSheet("background-color:black; color:#fff");
@@ -364,8 +364,8 @@ void ControlMenuMail::on_LaPoste_clicked() {
     menuE->setMaximumHeight(HEIGHT);
     myLayout->addWidget(menuE);
     QPalette pal = palette();
-    pal.setColor(QPalette::Background, Qt::black);
-    pal.setColor(QPalette::Foreground, Qt::white);
+    pal.setColor(QPalette::Window, Qt::black);
+    pal.setColor(QPalette::WindowText, Qt::white);
     FenE->setAutoFillBackground(true);
     FenE->setPalette(pal);
     FenE->setStyleSheet("background-color:black; color:#fff");
