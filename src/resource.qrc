@@ -45,5 +45,9 @@
         <file>../Images/4-Courriel/Free.svg</file>
         <file>../Images/4-Courriel/Bouygues.svg</file>
         <file>../Images/4-Courriel/LaPoste.svg</file>
+        <file>../Calculator/scripts/script.js</file>
+        <file>../Calculator/styles/dark.css</file>
+        <file>../Calculator/styles/light.css</file>
+        <file>../Calculator/index.html</file>
     </qresource>
 </RCC>

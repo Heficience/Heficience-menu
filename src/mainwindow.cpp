@@ -26,6 +26,7 @@
 #include <QPalette>
 #include <QSettings>
 #include <QTextToSpeech>
+#include <QFileInfo>
 
 std::map<std::string, QString> QStringMap;
 
@@ -446,7 +447,7 @@ void MainWindow::on_Calculatrice_clicked()
     if (KCalculatrice->isVisible()) {
         FenC->showFullScreen();
     } else {
-        KCalculatrice->load(QUrl("https://www.desmos.com/scientific?lang=fr"));
+        KCalculatrice->load(QUrl::fromLocalFile(QFileInfo("Calculator/index.html").absoluteFilePath()));
         KCalculatrice->setZoomFactor(2 * myScale.toInt());
         KCalculatrice->setMinimumWidth(WIDTHMAIN);
         KCalculatrice->setMinimumHeight(HEIGHT);
