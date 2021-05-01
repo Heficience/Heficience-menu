@@ -32,7 +32,9 @@ std::map<std::string, QString> QStringMap;
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
+#if _WIN32
     , m_speech(nullptr)
+#endif
 {
 
 #ifdef __linux__
@@ -43,8 +45,10 @@ MainWindow::MainWindow(QWidget *parent)
 
     ui->setupUi(this);
 
+#if _WIN32
     m_speech = new QTextToSpeech(this);
     m_speech->setLocale(QLocale::French);
+#endif
     screens = QGuiApplication::screens();
     screen = screens.first();
     screenGeometry = screen->geometry();
@@ -193,7 +197,15 @@ bool MainWindow::eventFilter(QObject* watched, QEvent* event)
             ui->Calculatrice->setText(QStringMap.at("Calculatrice"));
             ui->Calculatrice->setIcon(QIcon(":/Images/0-Categorie/calculator-color.svg"));
             ui->Calculatrice->setStyleSheet("background-color: rgb(0, 0, 0);border-radius: 10px;border:  16PX solid rgb(41, 182, 71);color : white;");
+#ifdef __linux__
+            player->pause();
+            player->stop();
+            m_process->kill();
+            m_process->start("createWaveFromItem \"Ouvrir la calculatrice.\"");
+#elif _WIN32
             m_speech->say("Ouvrir la calculatrice.");
+#endif
+
             ui->Calculatrice->setIconSize(QS2);
             fontC.setPointSize(fSize2);
             ui->Calculatrice->setFont(fontC);
@@ -202,7 +214,14 @@ bool MainWindow::eventFilter(QObject* watched, QEvent* event)
             ui->Calculatrice->setText("");
             ui->Calculatrice->setIcon(QIcon(":/Images/0-Categorie/calculator.svg"));
             ui->Calculatrice->setStyleSheet("background-color: rgb(41, 182, 71);border-radius: 10px;border:  8PX solid red;color : white;");
+#ifdef __linux__
+            player->pause();
+            player->stop();
+            m_process->kill();
+            play=false;
+#elif _WIN32
             m_speech->stop();
+#endif
             ui->Calculatrice->setIconSize(QS1);
             fontC.setPointSize(fSize1);
             ui->Calculatrice->setFont(fontC);
@@ -213,7 +232,14 @@ bool MainWindow::eventFilter(QObject* watched, QEvent* event)
             ui->Email->setText(QStringMap.at("Email"));
             ui->Email->setIcon(QIcon(":/Images/0-Categorie/envelope-color.svg"));
             ui->Email->setStyleSheet("background-color: rgb(0, 0, 0);border-radius: 10px;border:  16PX solid rgb(240, 120, 80);color : white;");
+#ifdef __linux__
+            player->pause();
+            player->stop();
+            m_process->kill();
+            m_process->start("createWaveFromItem \"Ouvrir le client email.\"");
+#elif _WIN32
             m_speech->say("Ouvrir le client email.");
+#endif
             ui->Email->setIconSize(QS2);
             fontE.setPointSize(fSize2);
             ui->Email->setFont(fontE);
@@ -222,7 +248,14 @@ bool MainWindow::eventFilter(QObject* watched, QEvent* event)
             ui->Email->setText("");
             ui->Email->setIcon(QIcon(":/Images/0-Categorie/envelope.svg"));
             ui->Email->setStyleSheet("background-color: rgb(240, 120, 80);border-radius: 10px;border:  8PX solid red;color : white;");
+#ifdef __linux__
+            player->pause();
+            player->stop();
+            m_process->kill();
+            play=false;
+#elif _WIN32
             m_speech->stop();
+#endif
             ui->Email->setIconSize(QS1);
             fontE.setPointSize(fSize1);
             ui->Email->setFont(fontE);
@@ -233,7 +266,14 @@ bool MainWindow::eventFilter(QObject* watched, QEvent* event)
             ui->Internet->setText(QStringMap.at("Internet"));
             ui->Internet->setIcon(QIcon(":/Images/0-Categorie/globe-africa-color.svg"));
             ui->Internet->setStyleSheet("background-color: rgb(0, 0, 0);border-radius: 10px;border:  16PX solid rgb(88, 70, 55);color : white;");
+#ifdef __linux__
+            player->pause();
+            player->stop();
+            m_process->kill();
+            m_process->start("createWaveFromItem \"Ouvrir le navigateur internet.\"");
+#elif _WIN32
             m_speech->say("Ouvrir le navigateur internet.");
+#endif
             ui->Internet->setIconSize(QS2);
             fontI.setPointSize(fSize2);
             ui->Internet->setFont(fontI);
@@ -242,7 +282,14 @@ bool MainWindow::eventFilter(QObject* watched, QEvent* event)
             ui->Internet->setText("");
             ui->Internet->setIcon(QIcon(":/Images/0-Categorie/globe-africa.svg"));
             ui->Internet->setStyleSheet("background-color: rgb(88, 70, 55);border-radius: 10px;border:  8PX solid red;color : white;");
+#ifdef __linux__
+            player->pause();
+            player->stop();
+            m_process->kill();
+            play=false;
+#elif _WIN32
             m_speech->stop();
+#endif
             ui->Internet->setIconSize(QS1);
             fontI.setPointSize(fSize1);
             ui->Internet->setFont(fontI);
@@ -253,7 +300,14 @@ bool MainWindow::eventFilter(QObject* watched, QEvent* event)
             ui->Notes->setText(QStringMap.at("Notes"));
             ui->Notes->setIcon(QIcon(":/Images/0-Categorie/clipboard-color.svg"));
             ui->Notes->setStyleSheet("background-color: rgb(0, 0, 0);border-radius: 10px;border:  16PX solid rgb(0, 88, 132);color : white;");
+#ifdef __linux__
+            player->pause();
+            player->stop();
+            m_process->kill();
+            m_process->start("createWaveFromItem \"Ouvrir la suite bureautique.\"");
+#elif _WIN32
             m_speech->say("Ouvrir la suite bureautique.");
+#endif
             ui->Notes->setIconSize(QS2);
             fontN.setPointSize(fSize2);
             ui->Notes->setFont(fontN);
@@ -262,7 +316,14 @@ bool MainWindow::eventFilter(QObject* watched, QEvent* event)
             ui->Notes->setText("");
             ui->Notes->setIcon(QIcon(":/Images/0-Categorie/clipboard.svg"));
             ui->Notes->setStyleSheet("background-color: rgb(0, 88, 132);border-radius: 10px;border:  8PX solid red;color : white;");
+#ifdef __linux__
+            player->pause();
+            player->stop();
+            m_process->kill();
+            play=false;
+#elif _WIN32
             m_speech->stop();
+#endif
             ui->Notes->setIconSize(QS1);
             fontN.setPointSize(fSize1);
             ui->Notes->setFont(fontN);
@@ -273,7 +334,14 @@ bool MainWindow::eventFilter(QObject* watched, QEvent* event)
             ui->Discord->setText(QStringMap.at("Discord"));
             ui->Discord->setIcon(QIcon(":/Images/0-Categorie/discord-color.svg"));
             ui->Discord->setStyleSheet("background-color: rgb(0, 0, 0);border-radius: 10px;border:  16PX solid rgb(114, 137, 218);color : white;");
+#ifdef __linux__
+            player->pause();
+            player->stop();
+            m_process->kill();
+            m_process->start("createWaveFromItem \"Discuter grâce à discord.\"");
+#elif _WIN32
             m_speech->say("Discuter grâce à discord.");
+#endif
             ui->Discord->setIconSize(QS2);
             fontD.setPointSize(fSize2);
             ui->Discord->setFont(fontD);
@@ -282,7 +350,14 @@ bool MainWindow::eventFilter(QObject* watched, QEvent* event)
             ui->Discord->setText("");
             ui->Discord->setIcon(QIcon(":/Images/0-Categorie/discord.svg"));
             ui->Discord->setStyleSheet("background-color: rgb(114, 137, 218);border-radius: 10px;border:  8PX solid red;color : white;");
+#ifdef __linux__
+            player->pause();
+            player->stop();
+            m_process->kill();
+            play=false;
+#elif _WIN32
             m_speech->stop();
+#endif
             ui->Discord->setIconSize(QS1);
             fontD.setPointSize(fSize1);
             ui->Discord->setFont(fontD);
@@ -293,7 +368,14 @@ bool MainWindow::eventFilter(QObject* watched, QEvent* event)
             ui->Music->setText(QStringMap.at("Music"));
             ui->Music->setIcon(QIcon(":/Images/0-Categorie/music-color.svg"));
             ui->Music->setStyleSheet("background-color: rgb(0, 0, 0);border-radius: 10px;border:  16PX solid rgb(212, 115, 212);color : white;");
+#ifdef __linux__
+            player->pause();
+            player->stop();
+            m_process->kill();
+            m_process->start("createWaveFromItem \"" + serviceMusic + "\"");
+#elif _WIN32
             m_speech->say(serviceMusic);
+#endif
             ui->Music->setIconSize(QS2);
             fontM.setPointSize(fSize2);
             ui->Music->setFont(fontM);
@@ -302,12 +384,29 @@ bool MainWindow::eventFilter(QObject* watched, QEvent* event)
             ui->Music->setText("");
             ui->Music->setIcon(QIcon(":/Images/0-Categorie/music.svg"));
             ui->Music->setStyleSheet("background-color: rgb(212, 115, 212);border-radius: 10px;border:  8PX solid red;color : white;");
+#ifdef __linux__
+            player->pause();
+            player->stop();
+            m_process->kill();
+            play=false;
+#elif _WIN32
             m_speech->stop();
+#endif
             ui->Music->setIconSize(QS1);
             fontM.setPointSize(fSize1);
             ui->Music->setFont(fontM);
         }
     }
+#ifdef __linux__
+    if (!play) {
+        player->pause();
+        player->stop();
+        player->setVolume(50);
+        player->setMedia(QUrl("file:// + env.value(\"HOME\") + \"/.local/share/dvkbuntu/sonEnCours.wav\"\""));
+        player->play();
+        play=true;
+    }
+#endif
     return false;
 }
 
