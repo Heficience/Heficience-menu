@@ -1,6 +1,7 @@
-let lightTheme = "styles/light.css";
+et lightTheme = "styles/light.css";
 let darkTheme = "styles/dark.css";
 var varNumber;
+var arcTrigo;
 // Clears the screen on click of C button.
 function clearScreen() {
   document.getElementById("result").value = "";
@@ -11,38 +12,44 @@ function liveScreen(value) {
 }
 //apply trigo function.
 function trigo(func) {
-  document.getElementById("result").value = func+"("+document.getElementById("result").value+")";
+  if (arcTrigo == "a") {
+    document.getElementById("result").value = "a"+func+"("+document.getElementById("result").value+")";
+  } else {
+    document.getElementById("result").value = func+"("+document.getElementById("result").value+")";
+  }
 }
 //calc cos
 function cos(a) {
-  return Math.cos(a);
+  return Math.cos(a * Math.PI / 180);
 }
 //calc sin
 function sin(a) {
-  return Math.sin(a);
+  return Math.sin(a * Math.PI / 180);
 }
 //calc tan
 function tan(a) {
-  return Math.tan(a);
+  return Math.tan(a * Math.PI / 180);
 }
 //calc acos
 function acos(a) {
-  return Math.acos(a);
+  return Math.acos(a) * 180 / Math.PI;
 }
 //calc asin
 function asin(a) {
-  return Math.asin(a);
+  return Math.asin(a) * 180 / Math.PI;
 }
 //calc tan
 function atan(a) {
-  return Math.atan(a);
+  return Math.atan(a) * 180 / Math.PI;
 }
 //arc trigo.
 function second() {
   if (document.getElementById("cos").value == "cos()") {
     document.getElementById("cos").value = "acos()";
+    arcTrigo = "a";
   } else {
     document.getElementById("cos").value = "cos()";
+    arcTrigo = "";
   }
   if (document.getElementById("sin").value == "sin()") {
     document.getElementById("sin").value = "asin()";
