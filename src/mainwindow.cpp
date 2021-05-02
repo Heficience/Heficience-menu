@@ -448,7 +448,7 @@ void MainWindow::on_Calculatrice_clicked()
         FenC->showFullScreen();
     } else {
 #ifdef __linux__
-        KCalculatrice->load(QUrl::fromLocalFile(QFileInfo("../Calculator/index.html").absoluteFilePath()));
+        KCalculatrice->load(QUrl::fromLocalFile("/usr/share/Calculator/index.html"));
 #elif _WIN32
         KCalculatrice->load(QUrl::fromLocalFile(QFileInfo("Calculator/index.html").absoluteFilePath()));
 #endif
