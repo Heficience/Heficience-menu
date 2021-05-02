@@ -447,7 +447,11 @@ void MainWindow::on_Calculatrice_clicked()
     if (KCalculatrice->isVisible()) {
         FenC->showFullScreen();
     } else {
+#ifdef __linux__
+        KCalculatrice->load(QUrl::fromLocalFile(QFileInfo("../Calculator/index.html").absoluteFilePath()));
+#elif _WIN32
         KCalculatrice->load(QUrl::fromLocalFile(QFileInfo("Calculator/index.html").absoluteFilePath()));
+#endif
         KCalculatrice->setZoomFactor(2 * myScale.toInt());
         KCalculatrice->setMinimumWidth(WIDTHMAIN);
         KCalculatrice->setMinimumHeight(HEIGHT);
