@@ -1,4 +1,4 @@
-et lightTheme = "styles/light.css";
+let lightTheme = "styles/light.css";
 let darkTheme = "styles/dark.css";
 var varNumber;
 var arcTrigo;
