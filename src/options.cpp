@@ -90,7 +90,8 @@ void Options::on_Jamendo_toggled()
         mySettings.beginGroup("ChoixMusic");
         mySettings.setValue("Music", 0);
         mySettings.endGroup();
-        qApp->quit();
+        qApp->closeAllWindows();
+        //qApp->quit();
         QProcess::startDetached(qApp->arguments()[0], qApp->arguments());
         this->close();
     }
@@ -102,7 +103,7 @@ void Options::on_YouTube_toggled()
         mySettings.beginGroup("ChoixMusic");
         mySettings.setValue("Music", 1);
         mySettings.endGroup();
-        qApp->quit();
+        qApp->closeAllWindows();
         QProcess::startDetached(qApp->arguments()[0], qApp->arguments());
         this->close();
     }
@@ -114,6 +115,7 @@ void Options::on_Deezer_toggled()
         mySettings.beginGroup("ChoixMusic");
         mySettings.setValue("Music", 2);
         mySettings.endGroup();
+        qApp->closeAllWindows();
         qApp->quit();
         QProcess::startDetached(qApp->arguments()[0], qApp->arguments());
         this->close();

@@ -86,6 +86,8 @@ void ControlMenuMain::on_Fermeture_clicked()
     MainWindow().FenN->close();
     MainWindow().FenD->close();
     MainWindow().FenG->close();
+    qApp->closeAllWindows();
+    QCoreApplication::quit();
 }
 
 void ControlMenuMain::on_Home_clicked() {

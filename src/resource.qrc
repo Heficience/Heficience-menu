@@ -49,5 +49,7 @@
         <file>../Calculator/styles/dark.css</file>
         <file>../Calculator/styles/light.css</file>
         <file>../Calculator/index.html</file>
+        <file>../Images/dvkbuntu-easy-menu.svg</file>
+        <file>../src/dvkbuntu-easy-menu.desktop</file>
     </qresource>
 </RCC>

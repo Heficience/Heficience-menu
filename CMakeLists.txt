@@ -1,15 +1,17 @@
 cmake_minimum_required(VERSION 3.5)
 
 if(WIN32)
-    project(dvkbuntu-easy-menu-qt)
+    project(dvkbuntu-easy-menu VERSION "4.15")
 else()
-    project(dvkbuntu-easy-menu-qt LANGUAGES CXX)
+    project(dvkbuntu-easy-menu LANGUAGES CXX VERSION "4.15")
 endif()
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 if(WIN32)
-set(CMAKE_PREFIX_PATH "C:\\Qt\\5.15.2\\msvc2019_64\\")
+    set(CMAKE_PREFIX_PATH "C:\\Qt\\5.15.2\\msvc2019_64\\")
+else()
+#    set(CMAKE_PREFIX_PATH "/home/paul/Qt/5.15.2/gcc_64/lib/cmake")
 endif()
 
 set(CMAKE_AUTOUIC ON)
@@ -56,27 +58,28 @@ find_package(Qt${QT_VERSION_MAJOR} COMPONENTS TextToSpeech REQUIRED)
         src/mywebenginepage.h
         src/resource.qrc
         src/icon.rc)
+
 if (WIN32)
 qt5_add_resources(src/icon.rc)
 endif()
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
-    qt_add_executable(dvkbuntu-easy-menu-qt
+    qt_add_executable(dvkbuntu-easy-menu
         ${PROJECT_SOURCES}
     )
 else()
     if(ANDROID)
-        add_library(dvkbuntu-easy-menu-qt SHARED
+        add_library(dvkbuntu-easy-menu SHARED
             ${PROJECT_SOURCES}
         )
     else()
-        add_executable(dvkbuntu-easy-menu-qt
+        add_executable(dvkbuntu-easy-menu
             ${PROJECT_SOURCES}
         )
     endif()
 endif()
 
-target_link_libraries(dvkbuntu-easy-menu-qt
+target_link_libraries(dvkbuntu-easy-menu
         PRIVATE
         Qt${QT_VERSION_MAJOR}::Core
         Qt${QT_VERSION_MAJOR}::Gui
@@ -87,3 +90,13 @@ target_link_libraries(dvkbuntu-easy-menu-qt
         Qt${QT_VERSION_MAJOR}::TextToSpeech)
 
 
+if (UNIX)
+  install(TARGETS dvkbuntu-easy-menu
+          RUNTIME DESTINATION bin)
+  install(FILES src/dvkbuntu-easy-menu.desktop DESTINATION share/applications)
+  install(FILES Images/dvkbuntu-easy-menu.svg DESTINATION share/icons/hicolor/scalable/apps)
+  install(FILES Calculator/scripts/script.js DESTINATION share/Calculator/scripts)
+  install(FILES Calculator/styles/dark.css DESTINATION share/Calculator/styles)
+  install(FILES Calculator/styles/light.css DESTINATION share/Calculator/styles)
+  install(FILES Calculator/index.html DESTINATION share/Calculator)
+endif()
