@@ -1,5 +1,5 @@
-#include "controlmenu.h"
-#include "ui_controlmenu.h"
+#include "controlmenudiscord.h"
+#include "ui_controlmenudiscord.h"
 #include "options.h"
 #include "ui_options.h"
 #include <QDesktopWidget>
@@ -15,9 +15,9 @@
 #include <map>
 #include <QSettings>
 
-ControlMenu::ControlMenu(QWidget *parent) :
+ControlMenuDiscord::ControlMenuDiscord(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::ControlMenu)
+    ui(new Ui::ControlMenuDiscord)
 {
     ui->setupUi(this);
 
@@ -48,6 +48,10 @@ ControlMenu::ControlMenu(QWidget *parent) :
     ui->Options->setMaximumHeight(sizeButton);
     ui->Options->setIconSize(QSize(sizeButton, sizeButton));
 
+    ui->InvitDiscord->setMaximumWidth(sizeButton);
+    ui->InvitDiscord->setMaximumHeight(sizeButton);
+    ui->InvitDiscord->setIconSize(QSize(sizeButton, sizeButton));
+
     ui->horizontalSpacer_2->changeSize(sizeButton,sizeButton);
 
     int Size = (int)((1920 * 1920 * dpi) / WIDTH);
@@ -61,27 +65,22 @@ ControlMenu::ControlMenu(QWidget *parent) :
     ui->gridWidget->resize(WIDTHCONTROL, HEIGHT - 50);
 
     QTimer *timer = new QTimer(this);
-
-    connect(timer, &QTimer::timeout, this, &ControlMenu::showTime);
+    connect(timer, &QTimer::timeout, this, &ControlMenuDiscord::showTime);
     timer->start(1000);
 
     showTime();
-
-    mySettings.beginGroup("UrlIci");
-    UrlIci = mySettings.value("UrlIci").toUrl();
-    mySettings.endGroup();
 }
 
-ControlMenu::~ControlMenu()
+ControlMenuDiscord::~ControlMenuDiscord()
 {
     delete ui;
 }
 
-void ControlMenu::on_Fermeture_clicked()
+void ControlMenuDiscord::on_Fermeture_clicked()
 {
     this->parentWidget()->close();
 }
-void ControlMenu::on_Home_clicked() {
+void ControlMenuDiscord::on_Home_clicked() {
     QList<QWebEngineView *> webViews = parentWidget()->findChildren<QWebEngineView *>();
     QList<QWebEngineView *>::iterator it = std::find_if(webViews.begin(), webViews.end(),
                                                         [](QWebEngineView *webView) -> bool {
@@ -90,7 +89,7 @@ void ControlMenu::on_Home_clicked() {
                                                         });
     if (it != webViews.end()) {
         QWebEngineView *mywebview = webViews.at(std::distance(webViews.begin(), it));
-        mywebview->setUrl(UrlIci);
+        mywebview->setUrl(QUrl("https://discord.com/channels/@me"));
         QObject::connect(mywebview, &QWebEngineView::loadFinished,
                          [=](bool arg) {
                              mywebview->setZoomFactor(myScale.toInt());
@@ -98,7 +97,7 @@ void ControlMenu::on_Home_clicked() {
     }
 }
 
-void ControlMenu::on_Options_clicked() {
+void ControlMenuDiscord::on_Options_clicked() {
     Options *myOptions = new Options();
     QPalette pal = palette();
     pal.setColor(QPalette::Window, Qt::black);
@@ -109,7 +108,7 @@ void ControlMenu::on_Options_clicked() {
     myOptions->show();
 }
 
-void ControlMenu::on_Retour_clicked() {
+void ControlMenuDiscord::on_Retour_clicked() {
     QList<QWebEngineView *> webViews = parentWidget()->findChildren<QWebEngineView *>();
     QList<QWebEngineView *>::iterator it = std::find_if(webViews.begin(), webViews.end(),
                                                         [](QWebEngineView *webView) -> bool {
@@ -121,7 +120,19 @@ void ControlMenu::on_Retour_clicked() {
     }
 }
 
-void ControlMenu::showTime()
+void ControlMenuDiscord::on_InvitDiscord_clicked() {
+    QList<QWebEngineView *> webViews = parentWidget()->findChildren<QWebEngineView *>();
+    QList<QWebEngineView *>::iterator it = std::find_if(webViews.begin(), webViews.end(),
+                                                 [](QWebEngineView *webView) -> bool {
+                                                     return QLatin1String(webView->metaObject()->className()) ==
+                                                             "QWebEngineView";
+                                                 });
+    if (it != webViews.end()) {
+        webViews.at(std::distance(webViews.begin(), it))->setUrl(QUrl("https://discord.gg/mv5zEAC"));
+    }
+}
+
+void ControlMenuDiscord::showTime()
 {
     QTime time = QTime::currentTime();
     QString text = time.toString("hh:mm");

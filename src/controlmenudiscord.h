@@ -1,5 +1,5 @@
-#ifndef CONTROLMENU_H
-#define CONTROLMENU_H
+#ifndef CONTROLMENUDISCORD_H
+#define CONTROLMENUDISCORD_H
 
 #include <QWidget>
 #include <QMainWindow>
@@ -12,21 +12,19 @@
 
 
 namespace Ui {
-class ControlMenu;
+class ControlMenuDiscord;
 }
 
-class ControlMenu : public QWidget
+class ControlMenuDiscord : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit ControlMenu(QWidget *parent = nullptr);
-    ~ControlMenu();
-    QSettings mySettings;
-    QUrl UrlIci;
+    explicit ControlMenuDiscord(QWidget *parent = nullptr);
+    ~ControlMenuDiscord();
 
 private:
-    Ui::ControlMenu *ui;
+    Ui::ControlMenuDiscord *ui;
     QList<QScreen*> screens;
     QScreen *screen;
     QRect screenGeometry;
@@ -42,6 +40,7 @@ private slots:
     void on_Home_clicked();
     void on_Options_clicked();
     void on_Retour_clicked();
+    void on_InvitDiscord_clicked();
     void showTime();
 };
-#endif // CONTROLMENU_H
+#endif // CONTROLMENUDISCORD_H

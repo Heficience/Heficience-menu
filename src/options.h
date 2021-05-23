@@ -39,5 +39,6 @@ private slots:
     void on_Jamendo_toggled();
     void on_YouTube_toggled();
     void on_Deezer_toggled();
+    void on_apply_clicked();
 };
 #endif // OPTIONS_H

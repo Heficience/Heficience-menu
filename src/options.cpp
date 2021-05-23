@@ -43,12 +43,15 @@ Options::Options(QWidget *parent)
 
     ui->gridWidget->resize(WIDTH, HEIGHT);
 
+    ui->apply->setFont(font);
+
     QPalette pal = palette();
     pal.setColor(QPalette::Window, Qt::black);
     pal.setColor(QPalette::WindowText, Qt::white);
     this->setAutoFillBackground(true);
     this->setPalette(pal);
     this->setStyleSheet("background-color:black; color:#fff;");
+
     mySettings.beginGroup("ChoixMusic");
     int myInt = mySettings.value("Music").toInt();
     mySettings.endGroup();
@@ -84,16 +87,19 @@ void Options::on_Arretoptions_clicked()
     this->close();
 }
 
+void Options::on_apply_clicked() {
+    qApp->closeAllWindows();
+    qApp->quit();
+    QProcess::startDetached(qApp->arguments()[0], qApp->arguments());
+    this->close();
+}
+
 void Options::on_Jamendo_toggled()
 {
     if (CanUse == true) {
         mySettings.beginGroup("ChoixMusic");
         mySettings.setValue("Music", 0);
         mySettings.endGroup();
-        qApp->closeAllWindows();
-        //qApp->quit();
-        QProcess::startDetached(qApp->arguments()[0], qApp->arguments());
-        this->close();
     }
 }
 
@@ -103,9 +109,6 @@ void Options::on_YouTube_toggled()
         mySettings.beginGroup("ChoixMusic");
         mySettings.setValue("Music", 1);
         mySettings.endGroup();
-        qApp->closeAllWindows();
-        QProcess::startDetached(qApp->arguments()[0], qApp->arguments());
-        this->close();
     }
 }
 
@@ -115,9 +118,5 @@ void Options::on_Deezer_toggled()
         mySettings.beginGroup("ChoixMusic");
         mySettings.setValue("Music", 2);
         mySettings.endGroup();
-        qApp->closeAllWindows();
-        qApp->quit();
-        QProcess::startDetached(qApp->arguments()[0], qApp->arguments());
-        this->close();
     }
 }

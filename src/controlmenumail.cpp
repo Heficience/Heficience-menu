@@ -44,6 +44,10 @@ ControlMenuMail::ControlMenuMail(QWidget *parent) :
     ui->Home->setMaximumHeight(sizeButton);
     ui->Home->setIconSize(QSize(sizeButton, sizeButton));
 
+    ui->Retour->setMaximumWidth(sizeButton);
+    ui->Retour->setMaximumHeight(sizeButton);
+    ui->Retour->setIconSize(QSize(sizeButton, sizeButton));
+
     ui->Options->setMaximumWidth(sizeButton);
     ui->Options->setMaximumHeight(sizeButton);
     ui->Options->setIconSize(QSize(sizeButton, sizeButton));
@@ -111,7 +115,48 @@ void ControlMenuMail::on_Fermeture_clicked()
 }
 
 void ControlMenuMail::on_Home_clicked() {
-    this->parentWidget()->close();
+    QList<QWebEngineView *> webViews = parentWidget()->findChildren<QWebEngineView *>();
+    QList<QWebEngineView *>::iterator it = std::find_if(webViews.begin(), webViews.end(),
+                                                        [](QWebEngineView *webView) -> bool {
+                                                            return QLatin1String(webView->metaObject()->className()) ==
+                                                                   "QWebEngineView";
+                                                        });
+    if (it != webViews.end()) {
+        QWebEngineView *mywebview = webViews.at(std::distance(webViews.begin(), it));
+        mySettings.beginGroup("ChoixMail");
+        int ServiceMail = mySettings.value("Mail").toInt();
+        mySettings.endGroup();
+        switch ( ServiceMail )
+        {
+            case 1:
+                mywebview->setUrl(QUrl("https://outlook.live.com/mail/0/inbox"));
+                break;
+            case 2:
+                mywebview->setUrl(QUrl("https://login.yahoo.com/?.src=ym&lang=fr-FR&done=https%3A%2F%2Ffr.mail.yahoo.com"));
+                break;
+            case 3:
+                mywebview->setUrl(QUrl("https://login.orange.fr/?return_url=https://rms.orange.fr/mail/inbox%3F"));
+                break;
+            case 4:
+                mywebview->setUrl(QUrl("https://www.sfr.fr/cas/login?service=https%3A%2F%2Fwebmail.sfr.fr%2Fwebmail%2Fj_spring_cas_security_check"));
+                break;
+            case 5:
+                mywebview->setUrl(QUrl("https://zimbra.free.fr/"));
+                break;
+            case 6:
+                mywebview->setUrl(QUrl("https://www.mon-compte.bouyguestelecom.fr/cas/login?service=https%3A%2F%2Foauth2.bouyguestelecom.fr%2Fcallback%2Fpicasso%2Fprotocol%2Fcas%3Fid%3Dar-33df094b-d8fb-4aca-afba-fb33f42ab763%26client_id%3Dwebmail.bouyguestelecom.fr"));
+                break;
+            case 7:
+                mywebview->setUrl(QUrl("https://www.laposte.net/accueil"));
+                break;
+            default:
+                mywebview->setUrl(QUrl("https://mail.google.com/"));
+        }
+        QObject::connect(mywebview, &QWebEngineView::loadFinished,
+                         [=](bool arg) {
+                             mywebview->setZoomFactor(myScale.toInt());
+                         });
+    }
 }
 
 void ControlMenuMail::on_Options_clicked() {
@@ -123,6 +168,18 @@ void ControlMenuMail::on_Options_clicked() {
     myOptions->setPalette(pal);
     myOptions->setStyleSheet("background-color:black; color:#fff");
     myOptions->show();
+}
+
+void ControlMenuMail::on_Retour_clicked() {
+    QList<QWebEngineView *> webViews = parentWidget()->findChildren<QWebEngineView *>();
+    QList<QWebEngineView *>::iterator it = std::find_if(webViews.begin(), webViews.end(),
+                                                        [](QWebEngineView *webView) -> bool {
+                                                            return QLatin1String(webView->metaObject()->className()) ==
+                                                                   "QWebEngineView";
+                                                        });
+    if (it != webViews.end()) {
+        webViews.at(std::distance(webViews.begin(), it))->page()->runJavaScript("window.history.back();");
+    }
 }
 
 void ControlMenuMail::on_Gmail_clicked() {

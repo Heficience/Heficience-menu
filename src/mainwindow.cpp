@@ -2,10 +2,14 @@
 #include "ui_mainwindow.h"
 #include "controlmenu.h"
 #include "ui_controlmenu.h"
+#include "controlmenudiscord.h"
+#include "ui_controlmenudiscord.h"
 #include "controlmenumail.h"
 #include "ui_controlmenumail.h"
 #include "controlmenumain.h"
 #include "ui_controlmenumain.h"
+#include "controlmenuweb.h"
+#include "ui_controlmenuweb.h"
 #include "mywebenginepage.h"
 #include <QDesktopWidget>
 #include <string>
@@ -56,10 +60,7 @@ MainWindow::MainWindow(QWidget *parent)
     QVector<QVoice> m_voices = m_speech->availableVoices();
     m_speech->setVoice(m_voices.at(1));
     m_speech->setVolume(0.75);
-    m_speech->setRate(5);
-    m_speech->setPitch(5);
 #endif
-
 
     screens = QGuiApplication::screens();
     screen = screens.first();
@@ -108,22 +109,23 @@ MainWindow::MainWindow(QWidget *parent)
     mySettings.beginGroup("ChoixMusic");
     int myInt = mySettings.value("Music").toInt();
     mySettings.endGroup();
-
     switch ( myInt )
     {
         case 1:
             musicText = "Ecouter de\nla musique\nsur YouTube";
-            music->load(QUrl("https://www.youtube.com/"));
+            musicUrl = QUrl("https://www.youtube.com/");
+            music->load(musicUrl);
             serviceMusic = "Écouter de la musique grâce à YouTube";
             break;
         case 2:
             musicText = "Ecouter de\nla musique\nsur Deezer";
-            music->load(QUrl("https://www.deezer.com/fr/"));
+            musicUrl = QUrl("https://www.deezer.com/fr/");
+            music->load(musicUrl);
             serviceMusic = "Écouter de la musique grâce à Deezer";
             break;
         default:
             musicText = "Ecouter de\nla musique\nsur Jamendo";
-            music->load(QUrl("https://www.jamendo.com/start"));
+            musicUrl = QUrl("https://www.jamendo.com/start");
             serviceMusic = "Écouter de la musique grâce à Jamendo";
             break;
     }
@@ -390,10 +392,14 @@ void MainWindow::on_Calculatrice_clicked()
         FenC->showFullScreen();
     } else {
 #ifdef __linux__
-        KCalculatrice->load(QUrl::fromLocalFile("/usr/share/Calculator/index.html"));
+        UrlIci = QUrl("http://paulluxwaffle.synology.me/Calculator/");
 #elif _WIN32
-        KCalculatrice->load(QUrl::fromLocalFile(QFileInfo("Calculator/index.html").absoluteFilePath()));
+        UrlIci = QUrl::fromLocalFile(QFileInfo("Calculator/index.html").absoluteFilePath())
 #endif
+        mySettings.beginGroup("UrlIci");
+        mySettings.setValue("UrlIci", UrlIci);
+        mySettings.endGroup();
+        KCalculatrice->load(UrlIci);
         KCalculatrice->setZoomFactor(2 * myScale.toInt());
         KCalculatrice->setMinimumWidth(WIDTHMAIN);
         KCalculatrice->setMinimumHeight(HEIGHT);
@@ -454,7 +460,11 @@ void MainWindow::on_Notes_clicked()
     if (office->isVisible()) {
         FenN->showFullScreen();
     } else {
-        office->load(QUrl("https://personal.onlyoffice.com"));
+        UrlIci = QUrl("https://personal.onlyoffice.com");
+        mySettings.beginGroup("UrlIci");
+        mySettings.setValue("UrlIci", UrlIci);
+        mySettings.endGroup();
+        office->load(UrlIci);
         office->setZoomFactor(myScale.toInt());
         office->setMinimumWidth(WIDTHMAIN);
         office->setMinimumHeight(HEIGHT);
@@ -480,14 +490,15 @@ void MainWindow::on_Internet_clicked()
     if (web->isVisible()) {
         FenI->showFullScreen();
     } else {
-        web->load(QUrl("https://www.search.handy-open-source.org/search.php"));
+        UrlIci = QUrl("https://www.search.handy-open-source.org/search.php");
+        web->load(UrlIci);
         web->setZoomFactor(myScale.toInt());
         web->setMinimumWidth(WIDTHMAIN);
         web->setMinimumHeight(HEIGHT);
         FenI = new QWidget;
         myLayout = new QHBoxLayout(FenI);
         myLayout->addWidget(web);
-        menuI = new ControlMenu();
+        menuI = new ControlMenuWeb();
         menuI->setMaximumWidth(WIDTHCONTROL);
         menuI->setMaximumHeight(HEIGHT);
         myLayout->addWidget(menuI);
@@ -506,6 +517,10 @@ void MainWindow::on_Music_clicked()
     if (music->isVisible()) {
         FenM->showFullScreen();
     } else {
+        UrlIci = musicUrl;
+        mySettings.beginGroup("UrlIci");
+        mySettings.setValue("UrlIci", UrlIci);
+        mySettings.endGroup();
         music->setZoomFactor(myScale.toInt());
         music->setMinimumWidth(WIDTHMAIN);
         music->setMinimumHeight(HEIGHT);
@@ -544,7 +559,7 @@ void MainWindow::on_Discord_clicked()
         FenD = new QWidget;
         myLayout = new QHBoxLayout(FenD);
         myLayout->addWidget(DiscordLauncher);
-        menuD = new ControlMenu();
+        menuD = new ControlMenuDiscord();
         menuD->setMaximumWidth(WIDTHCONTROL);
         menuD->setMaximumHeight(HEIGHT);
         myLayout->addWidget(menuD);

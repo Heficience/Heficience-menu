@@ -191,6 +191,25 @@
     <string notr="true">color:#fff;</string>
    </property>
    <layout class="QGridLayout" name="gridLayout_2">
+    <item row="3" column="0">
+     <spacer name="horizontalSpacer_1">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
     <item row="4" column="1">
      <widget class="QRadioButton" name="YouTube">
       <property name="sizePolicy">
@@ -221,24 +240,18 @@
       </property>
      </widget>
     </item>
-    <item row="3" column="0">
-     <spacer name="horizontalSpacer_1">
+    <item row="7" column="1">
+     <widget class="QToolButton" name="apply">
       <property name="sizePolicy">
-       <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
+      <property name="text">
+       <string>Appliquer</string>
       </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>40</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
+     </widget>
     </item>
     <item row="0" column="1">
      <widget class="QLabel" name="Choix">
@@ -268,6 +281,41 @@ color:#fff;</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="1">
+     <spacer name="verticalSpacer_2">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>40</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="9" column="1">
+     <widget class="QLabel" name="Redemarrage">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color:#fff;</string>
+      </property>
+      <property name="text">
+       <string>(tout changement nécessite un redémarrage de Easy-Menu)</string>
       </property>
      </widget>
     </item>
@@ -309,24 +357,36 @@ color:#fff;</string>
       </property>
      </widget>
     </item>
-    <item row="3" column="2">
-     <spacer name="horizontalSpacer_2">
+    <item row="5" column="1">
+     <widget class="QRadioButton" name="Deezer">
       <property name="sizePolicy">
-       <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
+      <property name="font">
+       <font>
+        <pointsize>25</pointsize>
+       </font>
       </property>
-      <property name="sizeHint" stdset="0">
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">text-align: center;
+color:#fff;</string>
+      </property>
+      <property name="text">
+       <string>Deezer</string>
+      </property>
+      <property name="iconSize">
        <size>
-        <width>40</width>
-        <height>20</height>
+        <width>200</width>
+        <height>200</height>
        </size>
       </property>
-     </spacer>
+     </widget>
     </item>
     <item row="3" column="1">
      <widget class="QRadioButton" name="Jamendo">
@@ -364,52 +424,21 @@ color:#fff;</string>
       </property>
      </widget>
     </item>
-    <item row="5" column="1">
-     <widget class="QRadioButton" name="Deezer">
+    <item row="3" column="2">
+     <spacer name="horizontalSpacer_2">
       <property name="sizePolicy">
-       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>25</pointsize>
-       </font>
-      </property>
-      <property name="cursor">
-       <cursorShape>PointingHandCursor</cursorShape>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">text-align: center;
-color:#fff;</string>
-      </property>
-      <property name="text">
-       <string>Deezer</string>
-      </property>
-      <property name="iconSize">
-       <size>
-        <width>200</width>
-        <height>200</height>
-       </size>
-      </property>
-     </widget>
-    </item>
-    <item row="6" column="1">
-     <spacer name="verticalSpacer_2">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+       <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
       <property name="orientation">
-       <enum>Qt::Vertical</enum>
+       <enum>Qt::Horizontal</enum>
       </property>
       <property name="sizeHint" stdset="0">
        <size>
-        <width>20</width>
-        <height>40</height>
+        <width>40</width>
+        <height>20</height>
        </size>
       </property>
      </spacer>
@@ -433,21 +462,18 @@ color:#fff;</string>
       </property>
      </spacer>
     </item>
-    <item row="7" column="1">
-     <widget class="QLabel" name="Redemarrage">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
+    <item row="8" column="1">
+     <spacer name="verticalSpacer">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
       </property>
-      <property name="styleSheet">
-       <string notr="true">color:#fff;</string>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>40</height>
+       </size>
       </property>
-      <property name="text">
-       <string>(tout changement nécessite un redémarrage de Easy-Menu)</string>
-      </property>
-     </widget>
+     </spacer>
     </item>
    </layout>
   </widget>

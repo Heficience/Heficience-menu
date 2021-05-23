@@ -45,6 +45,12 @@ find_package(Qt${QT_VERSION_MAJOR} COMPONENTS TextToSpeech REQUIRED)
         src/controlmenu.cpp
         src/controlmenu.h
         src/controlmenu.ui
+        src/controlmenudiscord.cpp
+        src/controlmenudiscord.h
+        src/controlmenudiscord.ui
+        src/controlmenuweb.cpp
+        src/controlmenuweb.h
+        src/controlmenuweb.ui
         src/controlmenumail.cpp
         src/controlmenumail.h
         src/controlmenumail.ui

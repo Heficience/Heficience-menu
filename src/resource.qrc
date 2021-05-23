@@ -12,6 +12,8 @@
         <file>../Images/1-NavigateurWeb/sync-alt.svg</file>
         <file>../Images/1-NavigateurWeb/close-alt.svg</file>
         <file>../Images/1-NavigateurWeb/PowerOff.svg</file>
+        <file>../Images/1-NavigateurWeb/Dialog-error.svg</file>
+        <file>../Images/1-NavigateurWeb/DiscordHOS.svg</file>
         <file>../Images/2-Calculatrice/cogs.svg</file>
         <file>../Images/2-Calculatrice/euro-sign.svg</file>
         <file>../Images/3-PriseDeNotes/copy.svg</file>
@@ -49,6 +51,7 @@
         <file>../Calculator/styles/dark.css</file>
         <file>../Calculator/styles/light.css</file>
         <file>../Calculator/index.html</file>
+        <file>../Images/splash.png</file>
         <file>../Images/dvkbuntu-easy-menu.svg</file>
         <file>../src/dvkbuntu-easy-menu.desktop</file>
     </qresource>

@@ -19,8 +19,10 @@
 #include <QSettings>
 #include <QTextToSpeech>
 #include "controlmenu.h"
+#include "controlmenudiscord.h"
 #include "controlmenumail.h"
 #include "controlmenumain.h"
+#include "controlmenuweb.h"
 #include "mywebenginepage.h"
 
 QT_BEGIN_NAMESPACE
@@ -97,6 +99,8 @@ public:
     QSettings mySettings;
     WId myWid;
     QString serviceMusic;
+    QUrl musicUrl;
+    QUrl UrlIci;
 
 private:
     Ui::MainWindow *ui;

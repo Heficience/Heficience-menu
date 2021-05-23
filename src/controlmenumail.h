@@ -51,6 +51,7 @@ private slots:
     void on_Fermeture_clicked();
     void on_Home_clicked();
     void on_Options_clicked();
+    void on_Retour_clicked();
     void on_Gmail_clicked();
     void on_Outlook_clicked();
     void on_Yahoo_clicked();
