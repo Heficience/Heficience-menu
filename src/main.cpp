@@ -19,8 +19,6 @@ int main(int argc, char *argv[])
     w.setWindowState(Qt::WindowMaximized);
     w.showFullScreen();
 
-    QMainWindow window;
-    window.show();
-    splash.finish(&window);
+    splash.finish(&w);
     return a.exec();
 }

@@ -104,7 +104,7 @@ public:
 
 private:
     Ui::MainWindow *ui;
-    bool play = false;
+    bool play = true;
     QString program;
     QString PIDtxt;
     QProcess WidFromPid;

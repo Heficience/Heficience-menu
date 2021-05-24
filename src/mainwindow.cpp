@@ -113,7 +113,7 @@ MainWindow::MainWindow(QWidget *parent)
     {
         case 1:
             musicText = "Ecouter de\nla musique\nsur YouTube";
-            musicUrl = QUrl("https://www.youtube.com/");
+            musicUrl = QUrl("https://www.youtube.com/?hl=fr&gl=FR&output=embed");
             music->load(musicUrl);
             serviceMusic = "Écouter de la musique grâce à YouTube";
             break;
@@ -194,7 +194,7 @@ MainWindow::MainWindow(QWidget *parent)
     profileD = DiscordLauncher->page()->profile();
     profileD->setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36");
     profileM = music->page()->profile();
-    profileM->setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36");
+    profileM->setHttpUserAgent("Mozilla/5.0 ({os_info}; rv:71.0) Gecko/20100101 Firefox/71.0");
 
     myWid = this->winId();
 }
@@ -212,7 +212,10 @@ bool MainWindow::eventFilter(QObject* watched, QEvent* event)
             ui->Calculatrice->setIcon(QIcon(":/Images/0-Categorie/calculator-color.svg"));
             ui->Calculatrice->setStyleSheet("background-color: rgb(0, 0, 0);border-radius: 10px;border:  16PX solid rgb(41, 182, 71);color : white;");
 
-            m_speech->say("Ouvrir la calculatrice.");
+            if (play) {
+                play = false;
+                m_speech->say("Ouvrir la calculatrice.");
+            }
 
             ui->Calculatrice->setIconSize(QS2);
             fontC.setPointSize(fSize2);
@@ -223,6 +226,7 @@ bool MainWindow::eventFilter(QObject* watched, QEvent* event)
             ui->Calculatrice->setIcon(QIcon(":/Images/0-Categorie/calculator.svg"));
             ui->Calculatrice->setStyleSheet("background-color: rgb(41, 182, 71);border-radius: 10px;border:  8PX solid red;color : white;");
 
+            play = true;
             m_speech->stop();
 
             ui->Calculatrice->setIconSize(QS1);
@@ -236,7 +240,10 @@ bool MainWindow::eventFilter(QObject* watched, QEvent* event)
             ui->Email->setIcon(QIcon(":/Images/0-Categorie/envelope-color.svg"));
             ui->Email->setStyleSheet("background-color: rgb(0, 0, 0);border-radius: 10px;border:  16PX solid rgb(240, 120, 80);color : white;");
 
-            m_speech->say("Ouvrir le client email.");
+            if (play) {
+                play = false;
+                m_speech->say("Ouvrir le client email.");
+            }
 
             ui->Email->setIconSize(QS2);
             fontE.setPointSize(fSize2);
@@ -247,6 +254,7 @@ bool MainWindow::eventFilter(QObject* watched, QEvent* event)
             ui->Email->setIcon(QIcon(":/Images/0-Categorie/envelope.svg"));
             ui->Email->setStyleSheet("background-color: rgb(240, 120, 80);border-radius: 10px;border:  8PX solid red;color : white;");
 
+            play = true;
             m_speech->stop();
 
             ui->Email->setIconSize(QS1);
@@ -260,7 +268,10 @@ bool MainWindow::eventFilter(QObject* watched, QEvent* event)
             ui->Internet->setIcon(QIcon(":/Images/0-Categorie/globe-africa-color.svg"));
             ui->Internet->setStyleSheet("background-color: rgb(0, 0, 0);border-radius: 10px;border:  16PX solid rgb(88, 70, 55);color : white;");
 
-            m_speech->say("Ouvrir le navigateur internet.");
+            if (play) {
+                play = false;
+                m_speech->say("Ouvrir le navigateur internet.");
+            }
 
             ui->Internet->setIconSize(QS2);
             fontI.setPointSize(fSize2);
@@ -271,6 +282,7 @@ bool MainWindow::eventFilter(QObject* watched, QEvent* event)
             ui->Internet->setIcon(QIcon(":/Images/0-Categorie/globe-africa.svg"));
             ui->Internet->setStyleSheet("background-color: rgb(88, 70, 55);border-radius: 10px;border:  8PX solid red;color : white;");
 
+            play = true;
             m_speech->stop();
 
             ui->Internet->setIconSize(QS1);
@@ -284,7 +296,10 @@ bool MainWindow::eventFilter(QObject* watched, QEvent* event)
             ui->Notes->setIcon(QIcon(":/Images/0-Categorie/clipboard-color.svg"));
             ui->Notes->setStyleSheet("background-color: rgb(0, 0, 0);border-radius: 10px;border:  16PX solid rgb(0, 88, 132);color : white;");
 
-            m_speech->say("Ouvrir la suite bureautique.");
+            if (play) {
+                play = false;
+                m_speech->say("Ouvrir la suite bureautique.");
+            }
 
             ui->Notes->setIconSize(QS2);
             fontN.setPointSize(fSize2);
@@ -295,6 +310,7 @@ bool MainWindow::eventFilter(QObject* watched, QEvent* event)
             ui->Notes->setIcon(QIcon(":/Images/0-Categorie/clipboard.svg"));
             ui->Notes->setStyleSheet("background-color: rgb(0, 88, 132);border-radius: 10px;border:  8PX solid red;color : white;");
 
+            play = true;
             m_speech->stop();
 
             ui->Notes->setIconSize(QS1);
@@ -308,7 +324,10 @@ bool MainWindow::eventFilter(QObject* watched, QEvent* event)
             ui->Discord->setIcon(QIcon(":/Images/0-Categorie/discord-color.svg"));
             ui->Discord->setStyleSheet("background-color: rgb(0, 0, 0);border-radius: 10px;border:  16PX solid rgb(114, 137, 218);color : white;");
 
-            m_speech->say("Discuter grâce à discord.");
+            if (play) {
+                play = false;
+                m_speech->say("Discuter grâce à discord.");
+            }
 
             ui->Discord->setIconSize(QS2);
             fontD.setPointSize(fSize2);
@@ -319,6 +338,7 @@ bool MainWindow::eventFilter(QObject* watched, QEvent* event)
             ui->Discord->setIcon(QIcon(":/Images/0-Categorie/discord.svg"));
             ui->Discord->setStyleSheet("background-color: rgb(114, 137, 218);border-radius: 10px;border:  8PX solid red;color : white;");
 
+            play = true;
             m_speech->stop();
 
             ui->Discord->setIconSize(QS1);
@@ -332,7 +352,10 @@ bool MainWindow::eventFilter(QObject* watched, QEvent* event)
             ui->Music->setIcon(QIcon(":/Images/0-Categorie/music-color.svg"));
             ui->Music->setStyleSheet("background-color: rgb(0, 0, 0);border-radius: 10px;border:  16PX solid rgb(212, 115, 212);color : white;");
 
-            m_speech->say(serviceMusic);
+            if (play) {
+                play = false;
+                m_speech->say(serviceMusic);
+            }
 
             ui->Music->setIconSize(QS2);
             fontM.setPointSize(fSize2);
@@ -343,6 +366,7 @@ bool MainWindow::eventFilter(QObject* watched, QEvent* event)
             ui->Music->setIcon(QIcon(":/Images/0-Categorie/music.svg"));
             ui->Music->setStyleSheet("background-color: rgb(212, 115, 212);border-radius: 10px;border:  8PX solid red;color : white;");
 
+            play = true;
             m_speech->stop();
 
             ui->Music->setIconSize(QS1);
