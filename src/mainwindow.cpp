@@ -394,7 +394,7 @@ void MainWindow::on_Calculatrice_clicked()
 #ifdef __linux__
         UrlIci = QUrl("http://paulluxwaffle.synology.me/Calculator/");
 #elif _WIN32
-        UrlIci = QUrl::fromLocalFile(QFileInfo("Calculator/index.html").absoluteFilePath())
+        UrlIci = QUrl::fromLocalFile(QFileInfo("Calculator/index.html").absoluteFilePath());
 #endif
         mySettings.beginGroup("UrlIci");
         mySettings.setValue("UrlIci", UrlIci);

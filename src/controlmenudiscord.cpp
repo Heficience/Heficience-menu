@@ -56,6 +56,7 @@ ControlMenuDiscord::ControlMenuDiscord(QWidget *parent) :
 
     int Size = (int)((1920 * 1920 * dpi) / WIDTH);
 
+    ui->Horlorge->setMinimumWidth(sizeButton*1.2);
     ui->Horlorge->setMaximumWidth(Size);
 
     ui->gridLayout->setColumnMinimumWidth(1,Size);
