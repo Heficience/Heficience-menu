@@ -1,0 +1,120 @@
+# appimage-builder recipe see https://appimage-builder.readthedocs.io for details
+version: 1
+script: |
+  # remove any existent binaries
+  rm -rf AppDir | true
+
+  # compile and install binaries into AppDir
+  cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+  make install DESTDIR=AppDir
+AppDir:
+  path: ./AppDir
+  app_info:
+    id: dvkbuntu-easy-menu
+    name: Easy Menu
+    icon: dvkbuntu-easy-menu
+    version: '4.17'
+    exec: usr/bin/dvkbuntu-easy-menu
+    exec_args: $@
+  runtime:
+    env:
+      # Disable webengine sandboxing
+      QTWEBENGINE_DISABLE_SANDBOX: 1
+  apt:
+    arch: amd64
+    allow_unauthenticated: true
+    sources:
+      - sourceline: deb http://fr.archive.ubuntu.com/ubuntu/ hirsute main restricted
+      - sourceline: deb http://fr.archive.ubuntu.com/ubuntu/ hirsute-updates main restricted
+      - sourceline: deb http://fr.archive.ubuntu.com/ubuntu/ hirsute universe
+      - sourceline: deb http://fr.archive.ubuntu.com/ubuntu/ hirsute-updates universe
+      - sourceline: deb http://fr.archive.ubuntu.com/ubuntu/ hirsute multiverse
+      - sourceline: deb http://fr.archive.ubuntu.com/ubuntu/ hirsute-updates multiverse
+      - sourceline: deb http://fr.archive.ubuntu.com/ubuntu/ hirsute-backports main
+          restricted universe multiverse
+      - sourceline: deb http://security.ubuntu.com/ubuntu hirsute-security main restricted
+      - sourceline: deb http://security.ubuntu.com/ubuntu hirsute-security universe
+      - sourceline: deb http://security.ubuntu.com/ubuntu hirsute-security multiverse
+    include:
+      - libdebuginfod1
+      - qttranslations5-l10n
+      - qt5-gtk-platformtheme
+      - qtspeech5-speechd-plugin
+      - libpcre2-8-0
+      - libxcb-sync1
+      - libxdmcp6
+      - libxcb-xinerama0
+      - libxfixes3
+      - kimageformat-plugins
+      - libxrandr2
+      - libxtst6
+      - libxv1
+      - qtspeech5-flite-plugin
+      - libxcb-render-util0
+      - breeze-icon-theme
+      - libqt5multimedia5-plugins
+      - libjpeg-turbo8
+      - libc-bin
+      - language-pack-fr-base
+      - kde-style-breeze
+      - gstreamer1.0-x
+      - libxcb-xkb1
+      - libsm6
+      - plasma-integration
+      - gstreamer1.0-plugins-base
+      - libxshmfence1
+      - libxxf86vm1
+      - plasma-workspace-data
+      - libxext6
+      - libfam0
+      - gstreamer1.0-plugins-good
+      - libqt5webenginewidgets5
+      - libsystemd0
+      - libpci3
+      - qt5-image-formats-plugins
+      - qtwayland5
+      - liblz4-1
+      - kubuntu-settings-desktop
+      - hwdata
+      - libunwind8
+      - kde-style-oxygen-qt5
+      - language-selector-common
+      - libxrender1
+      - tzdata
+      - gstreamer1.0-plugins-bad
+      - qtvirtualkeyboard-plugin
+      - breeze-cursor-theme
+    exclude: []
+  files:
+    include: []
+    exclude:
+      - usr/share/man
+      - usr/share/doc/*/README.*
+      - usr/share/doc/*/changelog.*
+      - usr/share/doc/*/NEWS.*
+      - usr/share/doc/*/TODO.*
+  test:
+    fedora:
+      image: appimagecrafters/tests-env:fedora-30
+      command: ./AppRun
+      use_host_x: true
+    debian:
+      image: appimagecrafters/tests-env:debian-stable
+      command: ./AppRun
+      use_host_x: true
+    arch:
+      image: appimagecrafters/tests-env:archlinux-latest
+      command: ./AppRun
+      use_host_x: true
+    centos:
+      image: appimagecrafters/tests-env:centos-7
+      command: ./AppRun
+      use_host_x: true
+    ubuntu:
+      image: appimagecrafters/tests-env:ubuntu-xenial
+      command: ./AppRun
+      use_host_x: true
+AppImage:
+  arch: x86_64
+  update-information: guess
+  sign-key: None
