@@ -35,6 +35,7 @@ ControlMenuOffice::ControlMenuOffice(QWidget *parent) :
     ui->Fermeture->setMaximumWidth(sizeButton);
     ui->Fermeture->setMaximumHeight(sizeButton);
     ui->Fermeture->setIconSize(QSize(sizeButton, sizeButton));
+    ui->Fermeture->setStyleSheet("background-color: grey;");
 
     ui->Home->setMaximumWidth(sizeButton);
     ui->Home->setMaximumHeight(sizeButton);

@@ -39,6 +39,8 @@ ControlMenuMain::ControlMenuMain(QWidget *parent) :
     ui->Home->setMaximumWidth(sizeButton);
     ui->Home->setMaximumHeight(sizeButton);
     ui->Home->setIconSize(QSize(sizeButton, sizeButton));
+
+    ui->Home->setStyleSheet("background-color: grey;");
 /**
     ui->Options->setMaximumWidth(sizeButton);
     ui->Options->setMaximumHeight(sizeButton);
