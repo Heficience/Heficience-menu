@@ -1,6 +1,8 @@
 #!/usr/bin/sh
 
-cmake CMakeLists.txt
-make
-make install
-sudo cp WidFromPid /usr/bin/
+mkdir -p build
+cd build
+rm -rf ./*
+cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+make  -j$(nproc)
+sudo make install
