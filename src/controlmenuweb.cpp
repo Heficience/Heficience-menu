@@ -92,15 +92,15 @@ ControlMenuWeb::ControlMenuWeb(QWidget *parent) :
     ui->Lien8QL->setMinimumHeight(sizeButton/2);
     ui->Lien9QL->setMinimumHeight(sizeButton/2);
 
-    ui->Lien1QL->setStyleSheet("text-align: left;");
-    ui->Lien2QL->setStyleSheet("text-align: left;");
-    ui->Lien3QL->setStyleSheet("text-align: left;");
-    ui->Lien4QL->setStyleSheet("text-align: left;");
-    ui->Lien5QL->setStyleSheet("text-align: left;");
-    ui->Lien6QL->setStyleSheet("text-align: left;");
-    ui->Lien7QL->setStyleSheet("text-align: left;");
-    ui->Lien8QL->setStyleSheet("text-align: left;");
-    ui->Lien9QL->setStyleSheet("text-align: left;");
+    ui->Lien1QL->setStyleSheet("left: 1px; text-align: left;");
+    ui->Lien2QL->setStyleSheet("left: 1px; text-align: left;");
+    ui->Lien3QL->setStyleSheet("left: 1px; text-align: left;");
+    ui->Lien4QL->setStyleSheet("left: 1px; text-align: left;");
+    ui->Lien5QL->setStyleSheet("left: 1px; text-align: left;");
+    ui->Lien6QL->setStyleSheet("left: 1px; text-align: left;");
+    ui->Lien7QL->setStyleSheet("left: 1px; text-align: left;");
+    ui->Lien8QL->setStyleSheet("left: 1px; text-align: left;");
+    ui->Lien9QL->setStyleSheet("left: 1px; text-align: left;");
 
     QFont fontFav;
     fontFav.setPointSize(fSize3*4/2.5);
