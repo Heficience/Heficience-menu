@@ -45,14 +45,18 @@ ControlMenuWeb::ControlMenuWeb(QWidget *parent) :
     ui->Home->setMaximumHeight(sizeButton);
     ui->Home->setIconSize(QSize(sizeButton, sizeButton));
 
+    ui->Home_App->setMaximumWidth(sizeButton);
+    ui->Home_App->setMaximumHeight(sizeButton);
+    ui->Home_App->setIconSize(QSize(sizeButton, sizeButton));
+
     ui->Retour->setMaximumWidth(sizeButton);
     ui->Retour->setMaximumHeight(sizeButton);
     ui->Retour->setIconSize(QSize(sizeButton, sizeButton));
 
-    ui->Options->setMaximumWidth(sizeButton);
+/**    ui->Options->setMaximumWidth(sizeButton);
     ui->Options->setMaximumHeight(sizeButton);
     ui->Options->setIconSize(QSize(sizeButton, sizeButton));
-
+**/
     ui->Favoris->setMaximumWidth(sizeButton);
     ui->Favoris->setMaximumHeight(sizeButton);
     ui->Favoris->setIconSize(QSize(sizeButton, sizeButton));
@@ -77,18 +81,19 @@ ControlMenuWeb::ControlMenuWeb(QWidget *parent) :
     ui->Lien8QTB->setIconSize(QSize(sizeButton/2.5, sizeButton/2.5));
     ui->Lien9QTB->setIconSize(QSize(sizeButton/2.5, sizeButton/2.5));
 
-    ui->Lien1QL->setMaximumHeight(sizeButton/2.5);
-    ui->Lien2QL->setMaximumHeight(sizeButton/2.5);
-    ui->Lien3QL->setMaximumHeight(sizeButton/2.5);
-    ui->Lien4QL->setMaximumHeight(sizeButton/2.5);
-    ui->Lien5QL->setMaximumHeight(sizeButton/2.5);
-    ui->Lien6QL->setMaximumHeight(sizeButton/2.5);
-    ui->Lien7QL->setMaximumHeight(sizeButton/2.5);
-    ui->Lien8QL->setMaximumHeight(sizeButton/2.5);
-    ui->Lien9QL->setMaximumHeight(sizeButton/2.5);
+    ui->Lien1QL->setMinimumHeight(sizeButton/2);
+    ui->Lien2QL->setMinimumHeight(sizeButton/2);
+    ui->Lien3QL->setMinimumHeight(sizeButton/2);
+    ui->Lien4QL->setMinimumHeight(sizeButton/2);
+    ui->Lien5QL->setMinimumHeight(sizeButton/2);
+    ui->Lien6QL->setMinimumHeight(sizeButton/2);
+    ui->Lien7QL->setMinimumHeight(sizeButton/2);
+    ui->Lien8QL->setMinimumHeight(sizeButton/2);
+    ui->Lien9QL->setMinimumHeight(sizeButton/2);
 
     QFont fontFav;
-    fontFav.setPointSize(fSize3);
+    fontFav.setPointSize(fSize3*4/2.5);
+    fontFav.setBold(true);
     ui->Lien1QL->setFont(fontFav);
     ui->Lien2QL->setFont(fontFav);
     ui->Lien3QL->setFont(fontFav);
@@ -104,7 +109,7 @@ ControlMenuWeb::ControlMenuWeb(QWidget *parent) :
 
     int Size = (int)((1920 * 1920 * dpi) / WIDTH);
 
-    ui->Horlorge->setMinimumWidth(sizeButton*1.2);
+    ui->Horlorge->setMinimumWidth(sizeButton*1.5);
     ui->Horlorge->setMaximumWidth(Size);
 
     ui->gridLayout->setColumnMinimumWidth(1,Size);
@@ -139,9 +144,11 @@ ControlMenuWeb::~ControlMenuWeb()
 
 void ControlMenuWeb::on_Fermeture_clicked()
 {
-    this->parentWidget()->close();
 }
 void ControlMenuWeb::on_Home_clicked() {
+    this->parentWidget()->close();
+}
+void ControlMenuWeb::on_Home_App_clicked() {
     QList<QWebEngineView *> webViews = parentWidget()->findChildren<QWebEngineView *>();
     QList<QWebEngineView *>::iterator it = std::find_if(webViews.begin(), webViews.end(),
                                                         [](QWebEngineView *webView) -> bool {
@@ -158,7 +165,7 @@ void ControlMenuWeb::on_Home_clicked() {
     }
 }
 
-void ControlMenuWeb::on_Options_clicked() {
+/**void ControlMenuWeb::on_Options_clicked() {
     Options *myOptions = new Options();
     QPalette pal = palette();
     pal.setColor(QPalette::Window, Qt::black);
@@ -167,7 +174,7 @@ void ControlMenuWeb::on_Options_clicked() {
     myOptions->setPalette(pal);
     myOptions->setStyleSheet("background-color:black; color:#fff");
     myOptions->show();
-}
+}**/
 
 void ControlMenuWeb::on_Favoris_clicked() {
     QList<QWebEngineView *> webViews = parentWidget()->findChildren<QWebEngineView *>();

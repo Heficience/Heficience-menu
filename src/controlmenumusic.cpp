@@ -1,5 +1,5 @@
-#include "controlmenu.h"
-#include "ui_controlmenu.h"
+#include "controlmenumusic.h"
+#include "ui_controlmenumusic.h"
 #include "options.h"
 #include "ui_options.h"
 #include <QDesktopWidget>
@@ -15,9 +15,9 @@
 #include <map>
 #include <QSettings>
 
-ControlMenu::ControlMenu(QWidget *parent) :
+ControlMenuMusic::ControlMenuMusic(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::ControlMenu)
+    ui(new Ui::ControlMenuMusic)
 {
     ui->setupUi(this);
 
@@ -40,6 +40,10 @@ ControlMenu::ControlMenu(QWidget *parent) :
     ui->Home->setMaximumHeight(sizeButton);
     ui->Home->setIconSize(QSize(sizeButton, sizeButton));
 
+    ui->Home_App->setMaximumWidth(sizeButton);
+    ui->Home_App->setMaximumHeight(sizeButton);
+    ui->Home_App->setIconSize(QSize(sizeButton, sizeButton));
+
     ui->Retour->setMaximumWidth(sizeButton);
     ui->Retour->setMaximumHeight(sizeButton);
     ui->Retour->setIconSize(QSize(sizeButton, sizeButton));
@@ -52,7 +56,7 @@ ControlMenu::ControlMenu(QWidget *parent) :
 
     int Size = (int)((1920 * 1920 * dpi) / WIDTH);
 
-    ui->Horlorge->setMinimumWidth(sizeButton*1.2);
+    ui->Horlorge->setMinimumWidth(sizeButton*1.5);
     ui->Horlorge->setMaximumWidth(Size);
 
     ui->gridLayout->setColumnMinimumWidth(1,Size);
@@ -63,7 +67,7 @@ ControlMenu::ControlMenu(QWidget *parent) :
 
     QTimer *timer = new QTimer(this);
 
-    connect(timer, &QTimer::timeout, this, &ControlMenu::showTime);
+    connect(timer, &QTimer::timeout, this, &ControlMenuMusic::showTime);
     timer->start(1000);
 
     showTime();
@@ -73,16 +77,20 @@ ControlMenu::ControlMenu(QWidget *parent) :
     mySettings.endGroup();
 }
 
-ControlMenu::~ControlMenu()
+ControlMenuMusic::~ControlMenuMusic()
 {
     delete ui;
 }
 
-void ControlMenu::on_Fermeture_clicked()
+void ControlMenuMusic::on_Fermeture_clicked()
 {
     this->parentWidget()->close();
 }
-void ControlMenu::on_Home_clicked() {
+void ControlMenuMusic::on_Home_clicked() {
+    this->parentWidget()->close();
+}
+
+void ControlMenuMusic::on_Home_App_clicked() {
     QList<QWebEngineView *> webViews = parentWidget()->findChildren<QWebEngineView *>();
     QList<QWebEngineView *>::iterator it = std::find_if(webViews.begin(), webViews.end(),
                                                         [](QWebEngineView *webView) -> bool {
@@ -99,7 +107,7 @@ void ControlMenu::on_Home_clicked() {
     }
 }
 
-void ControlMenu::on_Options_clicked() {
+void ControlMenuMusic::on_Options_clicked() {
     Options *myOptions = new Options();
     QPalette pal = palette();
     pal.setColor(QPalette::Window, Qt::black);
@@ -110,7 +118,7 @@ void ControlMenu::on_Options_clicked() {
     myOptions->show();
 }
 
-void ControlMenu::on_Retour_clicked() {
+void ControlMenuMusic::on_Retour_clicked() {
     QList<QWebEngineView *> webViews = parentWidget()->findChildren<QWebEngineView *>();
     QList<QWebEngineView *>::iterator it = std::find_if(webViews.begin(), webViews.end(),
                                                         [](QWebEngineView *webView) -> bool {
@@ -122,7 +130,7 @@ void ControlMenu::on_Retour_clicked() {
     }
 }
 
-void ControlMenu::showTime()
+void ControlMenuMusic::showTime()
 {
     QTime time = QTime::currentTime();
     QString text = time.toString("hh:mm");

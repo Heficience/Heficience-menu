@@ -1,5 +1,5 @@
-#ifndef CONTROLMENU_H
-#define CONTROLMENU_H
+#ifndef CONTROLMENUCALC_H
+#define CONTROLMENUCALC_H
 
 #include <QWidget>
 #include <QMainWindow>
@@ -12,21 +12,21 @@
 
 
 namespace Ui {
-class ControlMenu;
+class ControlMenuCalc;
 }
 
-class ControlMenu : public QWidget
+class ControlMenuCalc : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit ControlMenu(QWidget *parent = nullptr);
-    ~ControlMenu();
+    explicit ControlMenuCalc(QWidget *parent = nullptr);
+    ~ControlMenuCalc();
     QSettings mySettings;
     QUrl UrlIci;
 
 private:
-    Ui::ControlMenu *ui;
+    Ui::ControlMenuCalc *ui;
     QList<QScreen*> screens;
     QScreen *screen;
     QRect screenGeometry;
@@ -40,8 +40,9 @@ private:
 private slots:
     void on_Fermeture_clicked();
     void on_Home_clicked();
-    void on_Options_clicked();
+    void on_Home_App_clicked();
+    //void on_Options_clicked();
     void on_Retour_clicked();
     void showTime();
 };
-#endif // CONTROLMENU_H
+#endif // CONTROLMENUCALC_H

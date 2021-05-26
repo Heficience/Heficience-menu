@@ -44,14 +44,18 @@ ControlMenuMail::ControlMenuMail(QWidget *parent) :
     ui->Home->setMaximumHeight(sizeButton);
     ui->Home->setIconSize(QSize(sizeButton, sizeButton));
 
+    ui->Home_App->setMaximumWidth(sizeButton);
+    ui->Home_App->setMaximumHeight(sizeButton);
+    ui->Home_App->setIconSize(QSize(sizeButton, sizeButton));
+
     ui->Retour->setMaximumWidth(sizeButton);
     ui->Retour->setMaximumHeight(sizeButton);
     ui->Retour->setIconSize(QSize(sizeButton, sizeButton));
-
+/**
     ui->Options->setMaximumWidth(sizeButton);
     ui->Options->setMaximumHeight(sizeButton);
     ui->Options->setIconSize(QSize(sizeButton, sizeButton));
-
+**/
     ui->Gmail->setMaximumWidth(sizeButton);
     ui->Gmail->setMaximumHeight(sizeButton);
     ui->Gmail->setIconSize(QSize(sizeButton, sizeButton));
@@ -86,7 +90,7 @@ ControlMenuMail::ControlMenuMail(QWidget *parent) :
 
     int Size = (int)((1920 * 1920 * dpi) / WIDTH);
 
-    ui->Horlorge->setMinimumWidth(sizeButton*1.2);
+    ui->Horlorge->setMinimumWidth(sizeButton*1.5);
     ui->Horlorge->setMaximumWidth(Size);
 
     ui->gridLayout->setColumnMinimumWidth(1,Size);
@@ -116,6 +120,9 @@ void ControlMenuMail::on_Fermeture_clicked()
 }
 
 void ControlMenuMail::on_Home_clicked() {
+    this->parentWidget()->close();
+}
+void ControlMenuMail::on_Home_App_clicked() {
     QList<QWebEngineView *> webViews = parentWidget()->findChildren<QWebEngineView *>();
     QList<QWebEngineView *>::iterator it = std::find_if(webViews.begin(), webViews.end(),
                                                         [](QWebEngineView *webView) -> bool {
@@ -160,7 +167,7 @@ void ControlMenuMail::on_Home_clicked() {
     }
 }
 
-void ControlMenuMail::on_Options_clicked() {
+/**void ControlMenuMail::on_Options_clicked() {
     Options *myOptions = new Options();
     QPalette pal = palette();
     pal.setColor(QPalette::Window, Qt::black);
@@ -169,7 +176,7 @@ void ControlMenuMail::on_Options_clicked() {
     myOptions->setPalette(pal);
     myOptions->setStyleSheet("background-color:black; color:#fff");
     myOptions->show();
-}
+}**/
 
 void ControlMenuMail::on_Retour_clicked() {
     QList<QWebEngineView *> webViews = parentWidget()->findChildren<QWebEngineView *>();

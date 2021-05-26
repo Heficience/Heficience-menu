@@ -1,7 +1,11 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "controlmenu.h"
-#include "ui_controlmenu.h"
+#include "controlmenucalc.h"
+#include "ui_controlmenucalc.h"
+#include "controlmenuoffice.h"
+#include "ui_controlmenuoffice.h"
+#include "controlmenumusic.h"
+#include "ui_controlmenumusic.h"
 #include "controlmenudiscord.h"
 #include "ui_controlmenudiscord.h"
 #include "controlmenumail.h"
@@ -59,9 +63,9 @@ MainWindow::MainWindow(QWidget *parent)
     m_speech->setLocale(QLocale::French);
     QVector<QVoice> m_voices = m_speech->availableVoices();
     m_speech->setVoice(m_voices.at(1));
-    m_speech->setVolume(0.75);
+    m_speech->setVolume(0.05);
     QProcess *newProcess = new QProcess();
-    newProcess->start("pulseaudio -k");
+    //newProcess->start("pulseaudio -k");
 #endif
 
     screens = QGuiApplication::screens();
@@ -432,7 +436,7 @@ void MainWindow::on_Calculatrice_clicked()
         FenC = new QWidget;
         myLayout = new QHBoxLayout(FenC);
         myLayout->addWidget(KCalculatrice);
-        menuC = new ControlMenu();
+        menuC = new ControlMenuCalc();
         menuC->setMaximumWidth(WIDTHCONTROL);
         menuC->setMaximumHeight(HEIGHT);
         myLayout->addWidget(menuC);
@@ -497,7 +501,7 @@ void MainWindow::on_Notes_clicked()
         FenN = new QWidget;
         myLayout = new QHBoxLayout(FenN);
         myLayout->addWidget(office);
-        menuN = new ControlMenu();
+        menuN = new ControlMenuMusic();
         menuN->setMaximumWidth(WIDTHCONTROL);
         menuN->setMaximumHeight(HEIGHT);
         myLayout->addWidget(menuN);
@@ -553,7 +557,7 @@ void MainWindow::on_Music_clicked()
         FenM = new QWidget;
         myLayout = new QHBoxLayout(FenM);
         myLayout->addWidget(music);
-        menuM = new ControlMenu();
+        menuM = new ControlMenuMusic();
         menuM->setMaximumWidth(WIDTHCONTROL);
         menuM->setMaximumHeight(HEIGHT);
         myLayout->addWidget(menuM);

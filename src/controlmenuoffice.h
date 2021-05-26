@@ -1,5 +1,5 @@
-#ifndef CONTROLMENUMAIN_H
-#define CONTROLMENUMAIN_H
+#ifndef CONTROLMENUOFFICE_H
+#define CONTROLMENUOFFICE_H
 
 #include <QWidget>
 #include <QMainWindow>
@@ -10,20 +10,23 @@
 #include "options.h"
 #include "ui_options.h"
 
+
 namespace Ui {
-class ControlMenuMain;
+class ControlMenuOffice;
 }
 
-class ControlMenuMain : public QWidget
+class ControlMenuOffice : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit ControlMenuMain(QWidget *parent = nullptr);
-    ~ControlMenuMain();
+    explicit ControlMenuOffice(QWidget *parent = nullptr);
+    ~ControlMenuOffice();
+    QSettings mySettings;
+    QUrl UrlIci;
 
 private:
-    Ui::ControlMenuMain *ui;
+    Ui::ControlMenuOffice *ui;
     QList<QScreen*> screens;
     QScreen *screen;
     QRect screenGeometry;
@@ -32,12 +35,14 @@ private:
     int HEIGHT;
     int WIDTH;
     int WIDTHCONTROL;
+    QString myScale;
 
 private slots:
     void on_Fermeture_clicked();
     void on_Home_clicked();
+    void on_Home_App_clicked();
     //void on_Options_clicked();
-    void on_PowerOff_clicked();
+    void on_Retour_clicked();
     void showTime();
 };
-#endif // CONTROLMENUMAIN_H
+#endif // CONTROLMENUOFFICE_H

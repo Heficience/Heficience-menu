@@ -42,9 +42,6 @@ find_package(Qt${QT_VERSION_MAJOR} COMPONENTS TextToSpeech REQUIRED)
         src/mainwindow.cpp
         src/mainwindow.h
         src/mainwindow.ui
-        src/controlmenu.cpp
-        src/controlmenu.h
-        src/controlmenu.ui
         src/controlmenudiscord.cpp
         src/controlmenudiscord.h
         src/controlmenudiscord.ui
@@ -54,6 +51,15 @@ find_package(Qt${QT_VERSION_MAJOR} COMPONENTS TextToSpeech REQUIRED)
         src/controlmenumail.cpp
         src/controlmenumail.h
         src/controlmenumail.ui
+        src/controlmenumusic.cpp
+        src/controlmenumusic.h
+        src/controlmenumusic.ui
+        src/controlmenuoffice.cpp
+        src/controlmenuoffice.h
+        src/controlmenuoffice.ui
+        src/controlmenucalc.cpp
+        src/controlmenucalc.h
+        src/controlmenucalc.ui
         src/controlmenumain.cpp
         src/controlmenumain.h
         src/controlmenumain.ui

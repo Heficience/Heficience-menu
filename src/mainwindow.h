@@ -18,11 +18,13 @@
 #include <QWebEngineProfile>
 #include <QSettings>
 #include <QTextToSpeech>
-#include "controlmenu.h"
 #include "controlmenudiscord.h"
 #include "controlmenumail.h"
 #include "controlmenumain.h"
 #include "controlmenuweb.h"
+#include "controlmenuoffice.h"
+#include "controlmenumusic.h"
+#include "controlmenucalc.h"
 #include "mywebenginepage.h"
 
 QT_BEGIN_NAMESPACE

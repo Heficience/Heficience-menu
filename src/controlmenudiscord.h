@@ -38,7 +38,8 @@ private:
 private slots:
     void on_Fermeture_clicked();
     void on_Home_clicked();
-    void on_Options_clicked();
+    void on_Home_App_clicked();
+    //void on_Options_clicked();
     void on_Retour_clicked();
     void on_InvitDiscord_clicked();
     void showTime();

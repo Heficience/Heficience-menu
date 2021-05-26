@@ -39,17 +39,18 @@ ControlMenuMain::ControlMenuMain(QWidget *parent) :
     ui->Home->setMaximumWidth(sizeButton);
     ui->Home->setMaximumHeight(sizeButton);
     ui->Home->setIconSize(QSize(sizeButton, sizeButton));
-
+/**
     ui->Options->setMaximumWidth(sizeButton);
     ui->Options->setMaximumHeight(sizeButton);
     ui->Options->setIconSize(QSize(sizeButton, sizeButton));
-
+**/
     ui->PowerOff->setMaximumWidth(sizeButton);
     ui->PowerOff->setMaximumHeight(sizeButton);
     ui->PowerOff->setIconSize(QSize(sizeButton, sizeButton));
 
     int Size = (int)((1920 * 1920 * dpi) / WIDTH);
 
+    ui->Horlorge->setMinimumWidth(sizeButton*1.5);
     ui->Horlorge->setMaximumWidth(Size);
 
     ui->gridLayout->setColumnMinimumWidth(1,Size);
@@ -94,7 +95,7 @@ void ControlMenuMain::on_Home_clicked() {
 
 }
 
-void ControlMenuMain::on_Options_clicked() {
+/**void ControlMenuMain::on_Options_clicked() {
     Options *myOptions = new Options();
     QPalette pal = palette();
     pal.setColor(QPalette::Window, Qt::black);
@@ -103,7 +104,7 @@ void ControlMenuMain::on_Options_clicked() {
     myOptions->setPalette(pal);
     myOptions->setStyleSheet("background-color:black; color:#fff");
     myOptions->show();
-}
+}**/
 
 void ControlMenuMain::on_PowerOff_clicked() {
     QProcess Extinction;

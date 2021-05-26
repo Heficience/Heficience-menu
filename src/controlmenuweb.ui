@@ -575,22 +575,6 @@
         </property>
        </widget>
       </item>
-      <item row="2" column="5">
-       <spacer name="verticalSpacer_1">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <property name="sizeType">
-         <enum>QSizePolicy::Preferred</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>50</width>
-          <height>80</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
       <item row="4" column="5">
        <spacer name="verticalSpacer_2">
         <property name="orientation">
@@ -709,6 +693,9 @@
       </item>
       <item row="0" column="5">
        <widget class="QToolButton" name="Fermeture">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
           <horstretch>0</horstretch>
@@ -758,8 +745,8 @@
         </property>
         <property name="maximumSize">
          <size>
-          <width>80</width>
-          <height>80</height>
+          <width>0</width>
+          <height>0</height>
          </size>
         </property>
         <property name="text">
@@ -1229,6 +1216,41 @@
          </widget>
         </item>
        </layout>
+      </item>
+      <item row="2" column="5">
+       <widget class="QToolButton" name="Home_App">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>80</width>
+          <height>80</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>...</string>
+        </property>
+        <property name="icon">
+         <iconset resource="resource.qrc">
+          <normaloff>:/Images/0-Categorie/globe-africa.svg</normaloff>:/Images/0-Categorie/globe-africa.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>100</width>
+          <height>100</height>
+         </size>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>
