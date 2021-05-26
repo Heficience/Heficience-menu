@@ -64,7 +64,7 @@ MainWindow::MainWindow(QWidget *parent)
     QVector<QVoice> m_voices = m_speech->availableVoices();
     m_speech->setVoice(m_voices.at(1));
     m_speech->setVolume(0.05);
-    QProcess *newProcess = new QProcess();
+    //QProcess *newProcess = new QProcess();
     //newProcess->start("pulseaudio -k");
 #endif
 
