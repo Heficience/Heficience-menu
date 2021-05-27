@@ -501,7 +501,7 @@ void MainWindow::on_Notes_clicked()
         FenN = new QWidget;
         myLayout = new QHBoxLayout(FenN);
         myLayout->addWidget(office);
-        menuN = new ControlMenuMusic();
+        menuN = new ControlMenuOffice();
         menuN->setMaximumWidth(WIDTHCONTROL);
         menuN->setMaximumHeight(HEIGHT);
         myLayout->addWidget(menuN);
