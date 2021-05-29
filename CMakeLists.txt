@@ -1,15 +1,15 @@
 cmake_minimum_required(VERSION 3.5)
 
 if(WIN32)
-    project(dvkbuntu-easy-menu VERSION "4.15")
+    project(dvkbuntu-easy-menu VERSION "4.17")
 else()
-    project(dvkbuntu-easy-menu LANGUAGES CXX VERSION "4.15")
+    project(dvkbuntu-easy-menu LANGUAGES CXX VERSION "4.17")
 endif()
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 if(WIN32)
-    set(CMAKE_PREFIX_PATH "C:\\Qt\\5.15.2\\msvc2019_64\\")
+    set(CMAKE_PREFIX_PATH "C:\\Qt\\5.15.2\\msvc2019_64")
 else()
 #    set(CMAKE_PREFIX_PATH "/home/paul/Qt/5.15.2/gcc_64/lib/cmake")
 endif()
@@ -18,9 +18,11 @@ set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 
+if (UNIX)
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -Wall -O2")
+endif()
 
 find_package(QT NAMES Qt5 COMPONENTS Core REQUIRED)
 find_package(QT NAMES Qt5 COMPONENTS Gui REQUIRED)
@@ -75,6 +77,12 @@ if (WIN32)
 qt5_add_resources(src/icon.rc)
 endif()
 
+if(WIN32)
+    SET(GUI_TYPE WIN32)
+else()
+    SET(GUI_TYPE )
+endif()
+
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(dvkbuntu-easy-menu
         ${PROJECT_SOURCES}
@@ -86,6 +94,7 @@ else()
         )
     else()
         add_executable(dvkbuntu-easy-menu
+            ${GUI_TYPE}
             ${PROJECT_SOURCES}
         )
     endif()
@@ -100,7 +109,6 @@ target_link_libraries(dvkbuntu-easy-menu
         Qt${QT_VERSION_MAJOR}::Multimedia
         Qt${QT_VERSION_MAJOR}::Widgets
         Qt${QT_VERSION_MAJOR}::TextToSpeech)
-
 
 if (UNIX)
   install(TARGETS dvkbuntu-easy-menu

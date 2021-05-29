@@ -121,17 +121,36 @@ MainWindow::MainWindow(QWidget *parent)
             musicText = "Ecouter de\nla musique\nsur YouTube";
             musicUrl = QUrl("https://www.youtube.com/?hl=fr&gl=FR&output=embed");
             music->load(musicUrl);
+            music->page()->runJavaScript("document.cookie = \"AC-C=ac-c;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/;SameSite=Lax\"; "
+                                         "document.cookie = \"tagname = test;secure\"; "
+                                         "CookieManager cookieManager = CookieManager.getInstance(); "
+                                         "cookieManager.setAcceptFileSchemeCookies(true); "
+                                         "cookieManager.setAcceptCookie(true); "
+                                         "cookieManager.acceptCookie();");
             serviceMusic = "Écouter de la musique grâce à YouTube";
             break;
         case 2:
             musicText = "Ecouter de\nla musique\nsur Deezer";
             musicUrl = QUrl("https://www.deezer.com/fr/");
             music->load(musicUrl);
+            music->page()->runJavaScript("document.cookie = \"AC-C=ac-c;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/;SameSite=Lax\"; "
+                                         "document.cookie = \"tagname = test;secure\"; "
+                                         "CookieManager cookieManager = CookieManager.getInstance(); "
+                                         "cookieManager.setAcceptFileSchemeCookies(true); "
+                                         "cookieManager.setAcceptCookie(true); "
+                                         "cookieManager.acceptCookie();");
             serviceMusic = "Écouter de la musique grâce à Deezer";
             break;
         default:
             musicText = "Ecouter de\nla musique\nsur Jamendo";
             musicUrl = QUrl("https://www.jamendo.com/start");
+            music->load(musicUrl);
+            music->page()->runJavaScript("document.cookie = \"AC-C=ac-c;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/;SameSite=Lax\"; "
+                                         "document.cookie = \"tagname = test;secure\"; "
+                                         "CookieManager cookieManager = CookieManager.getInstance(); "
+                                         "cookieManager.setAcceptFileSchemeCookies(true); "
+                                         "cookieManager.setAcceptCookie(true); "
+                                         "cookieManager.acceptCookie();");
             serviceMusic = "Écouter de la musique grâce à Jamendo";
             break;
     }
@@ -189,13 +208,6 @@ MainWindow::MainWindow(QWidget *parent)
     ui->Discord->installEventFilter(this);
     ui->Music->installEventFilter(this);
 
-    KCalculatrice->page()->runJavaScript("document.cookie = \"AC-C=ac-c;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/;SameSite=Lax\"; document.cookie = \"tagname = test;secure\";");
-    mail->page()->runJavaScript("document.cookie = \"AC-C=ac-c;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/;SameSite=Lax\"; document.cookie = \"tagname = test;secure\";");
-    web->page()->runJavaScript("document.cookie = \"AC-C=ac-c;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/;SameSite=Lax\"; document.cookie = \"tagname = test;secure\";");
-    office->page()->runJavaScript("document.cookie = \"AC-C=ac-c;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/;SameSite=Lax\"; document.cookie = \"tagname = test;secure\";");
-    DiscordLauncher->page()->runJavaScript("document.cookie = \"AC-C=ac-c;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/;SameSite=Lax\"; document.cookie = \"tagname = test;secure\";");
-    music->page()->runJavaScript("document.cookie = \"AC-C=ac-c;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/;SameSite=Lax\"; document.cookie = \"tagname = test;secure\";");
-
     profileC = KCalculatrice->page()->profile();
     profileC->setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36");
     profileE = mail->page()->profile();
@@ -203,7 +215,7 @@ MainWindow::MainWindow(QWidget *parent)
     profileI = web->page()->profile();
     profileI->setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36");
     profileN = office->page()->profile();
-    profileN->setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36");
+    profileN->setHttpUserAgent("Mozilla/5.0 ({os_info}; rv:71.0) Gecko/20100101 Firefox/71.0");
     profileD = DiscordLauncher->page()->profile();
     profileD->setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36");
     profileM = music->page()->profile();
@@ -404,6 +416,12 @@ void MainWindow::handleStateChanged(QProcess *procss, QWidget *widget, QWidget *
 void MainWindow::OpenNewWindows(MyWebEnginePage *myPage)
 {
     mail->setPage(myPage);
+    mail->page()->runJavaScript("document.cookie = \"AC-C=ac-c;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/;SameSite=Lax\"; "
+                                         "document.cookie = \"tagname = test;secure\"; "
+                                         "CookieManager cookieManager = CookieManager.getInstance(); "
+                                         "cookieManager.setAcceptFileSchemeCookies(true); "
+                                         "cookieManager.setAcceptCookie(true); "
+                                         "cookieManager.acceptCookie();");
     mail->setZoomFactor(myScale.toInt());
     mail->setMinimumWidth(WIDTHMAIN);
     mail->setMinimumHeight(HEIGHT);
@@ -437,6 +455,12 @@ void MainWindow::on_Calculatrice_clicked()
         mySettings.setValue("UrlIci", UrlIci);
         mySettings.endGroup();
         KCalculatrice->load(UrlIci);
+        KCalculatrice->page()->runJavaScript("document.cookie = \"AC-C=ac-c;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/;SameSite=Lax\"; "
+                                         "document.cookie = \"tagname = test;secure\"; "
+                                         "CookieManager cookieManager = CookieManager.getInstance(); "
+                                         "cookieManager.setAcceptFileSchemeCookies(true); "
+                                         "cookieManager.setAcceptCookie(true); "
+                                         "cookieManager.acceptCookie();");
         KCalculatrice->setZoomFactor(2 * myScale.toInt());
         KCalculatrice->setMinimumWidth(WIDTHMAIN);
         KCalculatrice->setMinimumHeight(HEIGHT);
@@ -502,6 +526,12 @@ void MainWindow::on_Notes_clicked()
         mySettings.setValue("UrlIci", UrlIci);
         mySettings.endGroup();
         office->load(UrlIci);
+        office->page()->runJavaScript("document.cookie = \"AC-C=ac-c;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/;SameSite=Lax\"; "
+                                         "document.cookie = \"tagname = test;secure\"; "
+                                         "CookieManager cookieManager = CookieManager.getInstance(); "
+                                         "cookieManager.setAcceptFileSchemeCookies(true); "
+                                         "cookieManager.setAcceptCookie(true); "
+                                         "cookieManager.acceptCookie();");
         office->setZoomFactor(myScale.toInt());
         office->setMinimumWidth(WIDTHMAIN);
         office->setMinimumHeight(HEIGHT);
@@ -529,6 +559,12 @@ void MainWindow::on_Internet_clicked()
     } else {
         UrlIci = QUrl("https://www.search.handy-open-source.org/search.php");
         web->load(UrlIci);
+        web->page()->runJavaScript("document.cookie = \"AC-C=ac-c;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/;SameSite=Lax\"; "
+                                         "document.cookie = \"tagname = test;secure\"; "
+                                         "CookieManager cookieManager = CookieManager.getInstance(); "
+                                         "cookieManager.setAcceptFileSchemeCookies(true); "
+                                         "cookieManager.setAcceptCookie(true); "
+                                         "cookieManager.acceptCookie();");
         web->setZoomFactor(myScale.toInt());
         web->setMinimumWidth(WIDTHMAIN);
         web->setMinimumHeight(HEIGHT);
@@ -590,6 +626,12 @@ void MainWindow::on_Discord_clicked()
     } else {
         DiscordLauncher->setPage(new MyWebEnginePage);
         DiscordLauncher->setUrl(QUrl("https://discord.com/channels/@me"));
+        DiscordLauncher->page()->runJavaScript("document.cookie = \"AC-C=ac-c;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/;SameSite=Lax\"; "
+                                         "document.cookie = \"tagname = test;secure\"; "
+                                         "CookieManager cookieManager = CookieManager.getInstance(); "
+                                         "cookieManager.setAcceptFileSchemeCookies(true); "
+                                         "cookieManager.setAcceptCookie(true); "
+                                         "cookieManager.acceptCookie();");
         DiscordLauncher->setZoomFactor(myScale.toInt());
         DiscordLauncher->setMinimumWidth(WIDTHMAIN);
         DiscordLauncher->setMinimumHeight(HEIGHT);

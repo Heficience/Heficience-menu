@@ -113,7 +113,9 @@ void ControlMenuMain::on_PowerOff_clicked() {
 #ifdef __linux__
     Extinction.startDetached("shutdown -P now");
 #elif _WIN32
-    Extinction.startDetached("shutdown -s -f -t 00");
+    QString myProg="shutdown";
+    QStringList myArgs={"-s", "-f", "-t 00"};
+    Extinction.startDetached(myProg,myArgs);
 #endif
 }
 
