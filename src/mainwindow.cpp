@@ -37,6 +37,7 @@
 #include <QTextToSpeechEngine>
 #include <QFileInfo>
 
+
 std::map<std::string, QString> QStringMap;
 
 MainWindow::MainWindow(QWidget *parent)
@@ -215,7 +216,7 @@ MainWindow::MainWindow(QWidget *parent)
     profileI = web->page()->profile();
     profileI->setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36");
     profileN = office->page()->profile();
-    profileN->setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/77.0.3865.120 Safari/537.36");
+    profileN->setHttpUserAgent("Mozilla/5.0 (Linux; Android 11; Pixel 4a (5G)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Mobile Safari/537.36");
     profileD = DiscordLauncher->page()->profile();
     profileD->setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36");
     profileM = music->page()->profile();
@@ -515,17 +516,19 @@ void MainWindow::on_Email_clicked()
     }
     OpenNewWindows(page);
  }
-
 void MainWindow::on_Notes_clicked()
 {
     if (office->isVisible()) {
         FenN->showFullScreen();
     } else {
+        office->setPage(new MyWebEnginePage);
         UrlIci = QUrl("https://personal.onlyoffice.com/Products/Files/");
         mySettings.beginGroup("UrlIci");
         mySettings.setValue("UrlIci", UrlIci);
         mySettings.endGroup();
         office->load(UrlIci);
+        office->settings()->setAttribute(QWebEngineSettings::JavascriptEnabled, true);
+        office->settings()->setAttribute(QWebEngineSettings::JavascriptCanOpenWindows, true);
         office->page()->runJavaScript("document.cookie = \"AC-C=ac-c;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/;SameSite=Lax\"; "
                                          "document.cookie = \"tagname = test;secure\"; "
                                          "CookieManager cookieManager = CookieManager.getInstance(); "
