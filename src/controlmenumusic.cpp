@@ -85,7 +85,6 @@ ControlMenuMusic::~ControlMenuMusic()
 
 void ControlMenuMusic::on_Fermeture_clicked()
 {
-    this->parentWidget()->close();
 }
 void ControlMenuMusic::on_Home_clicked() {
     this->parentWidget()->close();

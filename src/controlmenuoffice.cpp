@@ -89,7 +89,6 @@ ControlMenuOffice::~ControlMenuOffice()
 
 void ControlMenuOffice::on_Fermeture_clicked()
 {
-    this->parentWidget()->close();
 }
 void ControlMenuOffice::on_Home_clicked() {
     this->parentWidget()->close();

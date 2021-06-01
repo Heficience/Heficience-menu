@@ -117,7 +117,6 @@ ControlMenuMail::~ControlMenuMail()
 
 void ControlMenuMail::on_Fermeture_clicked()
 {
-    this->parentWidget()->close();
 }
 
 void ControlMenuMail::on_Home_clicked() {
