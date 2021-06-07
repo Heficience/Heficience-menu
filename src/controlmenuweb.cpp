@@ -157,6 +157,12 @@ void ControlMenuWeb::on_Fermeture_clicked()
 {
 }
 void ControlMenuWeb::on_Home_clicked() {
+#if defined(_WIN32) || defined(__APPLE__)
+    qApp->closeAllWindows();
+    qApp->quit();
+    QProcess::startDetached(qApp->arguments()[0], qApp->arguments());
+    this->close();
+#endif
     this->parentWidget()->close();
 }
 void ControlMenuWeb::on_Home_App_clicked() {
