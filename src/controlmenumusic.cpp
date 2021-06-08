@@ -121,7 +121,7 @@ void ControlMenuMusic::on_Options_clicked() {
     myOptions->setAutoFillBackground(true);
     myOptions->setPalette(pal);
     myOptions->setStyleSheet("background-color:black; color:#fff");
-    myOptions->show();
+    myOptions->showFullScreen();
 }
 
 void ControlMenuMusic::on_Retour_clicked() {
