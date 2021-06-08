@@ -210,17 +210,17 @@ MainWindow::MainWindow(QWidget *parent)
     ui->Music->installEventFilter(this);
 
     profileC = KCalculatrice->page()->profile();
-    profileC->setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36");
+    profileC->setHttpUserAgent("Mozilla/5.0 (Linux; U; Android 4.4.2; fr-fr; SCH-I535 Build/KOT49H) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30");
     profileE = mail->page()->profile();
-    profileE->setHttpUserAgent("Mozilla/5.0 ({os_info}; rv:71.0) Gecko/20100101 Firefox/71.0");
+    profileE->setHttpUserAgent("Mozilla/5.0 (Linux; U; Android 4.4.2; fr-fr; SCH-I535 Build/KOT49H) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30");
     profileI = web->page()->profile();
-    profileI->setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36");
+    profileI->setHttpUserAgent("Mozilla/5.0 (Linux; U; Android 4.4.2; fr-fr; SCH-I535 Build/KOT49H) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30");
     profileN = office->page()->profile();
-    profileN->setHttpUserAgent("Mozilla/5.0 (Linux; Android 11; Pixel 4a (5G)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Mobile Safari/537.36");
+    profileN->setHttpUserAgent("Mozilla/5.0 (Linux; U; Android 4.4.2; fr-fr; SCH-I535 Build/KOT49H) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30");
     profileD = DiscordLauncher->page()->profile();
-    profileD->setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36");
+    profileD->setHttpUserAgent("Mozilla/5.0 (Linux; U; Android 4.4.2; fr-fr; SCH-I535 Build/KOT49H) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30");
     profileM = music->page()->profile();
-    profileM->setHttpUserAgent("Mozilla/5.0 ({os_info}; rv:71.0) Gecko/20100101 Firefox/71.0");
+    profileM->setHttpUserAgent("Mozilla/5.0 (Linux; U; Android 4.4.2; fr-fr; SCH-I535 Build/KOT49H) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30");
 
     myWid = this->winId();
 }

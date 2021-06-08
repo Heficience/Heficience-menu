@@ -45,6 +45,7 @@ private:
     int WIDTH;
     int WIDTHCONTROL;
     QString myScale;
+    bool favBool;
 
 
 private slots:
@@ -55,6 +56,7 @@ private slots:
     void on_Favoris_clicked();
     void on_Retour_clicked();
     void showTime();
+    void ifFav();
 
     void on_Lien1QTB_clicked();
     void on_Lien2QTB_clicked();

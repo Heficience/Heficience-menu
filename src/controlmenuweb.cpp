@@ -61,6 +61,7 @@ ControlMenuWeb::ControlMenuWeb(QWidget *parent) :
     ui->Favoris->setMaximumWidth(sizeButton);
     ui->Favoris->setMaximumHeight(sizeButton);
     ui->Favoris->setIconSize(QSize(sizeButton, sizeButton));
+    ui->Favoris->setIcon(QIcon(":/Images/1-NavigateurWeb/star-clear.svg"));
 
     ui->Lien1QTB->setMaximumHeight(sizeButton/2.5);
     ui->Lien2QTB->setMaximumHeight(sizeButton/2.5);
@@ -135,6 +136,10 @@ ControlMenuWeb::ControlMenuWeb(QWidget *parent) :
 
     showTime();
 
+    QTimer *timerFav = new QTimer(this);
+    connect(timerFav, &QTimer::timeout, this, &ControlMenuWeb::ifFav);
+    timerFav->start(15000); //time specified in ms
+
     mySettings.beginGroup("FavorisWeb");
     for (int i = 0; i < 8; i++) {
         if (mySettings.value("FavorisWebTitre" + QString::number(i)) != "") {
@@ -208,6 +213,7 @@ void ControlMenuWeb::on_Favoris_clicked() {
             myFavoris.append({Url, Titre});
         }
     }
+    ui->Favoris->setIcon(QIcon(":/Images/1-NavigateurWeb/star.svg"));
     reorganiseFav();
 }
 
@@ -223,6 +229,10 @@ void ControlMenuWeb::on_Retour_clicked() {
     }
 }
 
+void ControlMenuWeb::ifFav()
+{
+    reorganiseFav();
+}
 
 void ControlMenuWeb::showTime()
 {
@@ -823,10 +833,34 @@ void ControlMenuWeb::reorganiseFav() {
         ui->Lien9QL->setText(myFavoris[8].title);
     }
 
-    mySettings.beginGroup("FavorisWeb");
-    for (int i = 0; i < myFavoris.length() ; i++) {
-        mySettings.setValue("FavorisWebLien" + QString::number(i), myFavoris[i].url);
-        mySettings.setValue("FavorisWebTitre" + QString::number(i), myFavoris[i].title);
+    QList<QWebEngineView *> webViews = parentWidget()->findChildren<QWebEngineView *>();
+    QList<QWebEngineView *>::iterator it = std::find_if(webViews.begin(), webViews.end(),
+                                                        [](QWebEngineView *webView) -> bool {
+                                                            return QLatin1String(
+                                                                    webView->metaObject()->className()) ==
+                                                                   "QWebEngineView";
+                                                        });
+    if (it != webViews.end()) {
+        QWebEngineView *mywebview = webViews.at(std::distance(webViews.begin(), it));
+        mySettings.beginGroup("FavorisWeb");
+        favBool = false;
+        QObject::connect(mywebview, &QWebEngineView::loadFinished,
+                         [=](bool arg) {
+                             for (int i = 0; i < myFavoris.length(); i++) {
+                                 mySettings.setValue("FavorisWebLien" + QString::number(i), myFavoris[i].url);
+                                 mySettings.setValue("FavorisWebTitre" + QString::number(i), myFavoris[i].title);
+                                 if (!favBool) {
+                                     if (mywebview->url() == myFavoris[i].url) {
+                                         ui->Favoris->setIcon(QIcon(":/Images/1-NavigateurWeb/star.svg"));
+                                         favBool = true;
+                                     } else {
+                                         ui->Favoris->setIcon(QIcon(":/Images/1-NavigateurWeb/star-clear.svg"));
+                                     }
+                                 }
+                             }
+                         });
+        mySettings.endGroup();
     }
-    mySettings.endGroup();
+
 }
+
