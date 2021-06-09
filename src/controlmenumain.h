@@ -21,6 +21,9 @@ class ControlMenuMain : public QWidget
 public:
     explicit ControlMenuMain(QWidget *parent = nullptr);
     ~ControlMenuMain();
+    QSettings mySettings;
+    bool DarkMode;
+    bool FirstTime = true;
 
 private:
     Ui::ControlMenuMain *ui;
@@ -39,5 +42,7 @@ private slots:
     //void on_Options_clicked();
     void on_PowerOff_clicked();
     void showTime();
+    void on_DarkMode_toggled(bool checked);
+    void on_NormalMode_toggled(bool checked);
 };
 #endif // CONTROLMENUMAIN_H

@@ -84,6 +84,9 @@ Options::~Options()
 
 void Options::on_Arretoptions_clicked()
 {
+    qApp->closeAllWindows();
+    qApp->quit();
+    QProcess::startDetached(qApp->arguments()[0], qApp->arguments());
     this->close();
 }
 

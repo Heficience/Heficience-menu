@@ -114,6 +114,7 @@ void ControlMenuMusic::on_Home_App_clicked() {
 }
 
 void ControlMenuMusic::on_Options_clicked() {
+    qApp->closeAllWindows();
     Options *myOptions = new Options();
     QPalette pal = palette();
     pal.setColor(QPalette::Window, Qt::black);

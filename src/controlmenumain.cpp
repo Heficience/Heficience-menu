@@ -18,8 +18,7 @@
 
 ControlMenuMain::ControlMenuMain(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::ControlMenuMain)
-{
+    ui(new Ui::ControlMenuMain) {
     ui->setupUi(this);
 
     screens = QGuiApplication::screens();
@@ -28,7 +27,7 @@ ControlMenuMain::ControlMenuMain(QWidget *parent) :
     HEIGHT = screenGeometry.height();
     WIDTH = screenGeometry.width();
     double dpi = QGuiApplication::primaryScreen()->physicalDotsPerInch();
-    fSize2 = (int)((80*HEIGHT/2160)*72/dpi);
+    fSize2 = (int) ((80 * HEIGHT / 2160) * 72 / dpi);
 
     int sizeButton = 80 * HEIGHT / 1080;
 
@@ -46,6 +45,33 @@ ControlMenuMain::ControlMenuMain(QWidget *parent) :
     ui->Options->setMaximumHeight(sizeButton);
     ui->Options->setIconSize(QSize(sizeButton, sizeButton));
 **/
+    mySettings.beginGroup("DarkMode");
+    DarkMode = mySettings.value("DarkMode").toBool();
+    mySettings.endGroup();
+
+    FirstTime = true;
+
+    if (DarkMode) {
+        ui->DarkMode->toggle();
+        qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--blink-settings=forceDarkModeEnabled=true");
+    } else {
+        ui->NormalMode->toggle();
+        qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--blink-settings=forceDarkModeEnabled=false");
+    }
+
+    FirstTime = false;
+
+    QFont font;
+    font.setPointSize(fSize2);
+    ui->DarkMode->setBaseSize(sizeButton, sizeButton);
+    ui->DarkMode->setMinimumWidth(3.5 * sizeButton);
+    ui->DarkMode->setMinimumHeight(sizeButton);
+    ui->DarkMode->setFont(font);
+    ui->NormalMode->setBaseSize(sizeButton, sizeButton);
+    ui->NormalMode->setMinimumWidth(3.5 * sizeButton);
+    ui->NormalMode->setMinimumHeight(sizeButton);
+    ui->NormalMode->setFont(font);
+
     ui->PowerOff->setMaximumWidth(sizeButton);
     ui->PowerOff->setMaximumHeight(sizeButton);
     ui->PowerOff->setIconSize(QSize(sizeButton, sizeButton));
@@ -71,6 +97,38 @@ ControlMenuMain::ControlMenuMain(QWidget *parent) :
 ControlMenuMain::~ControlMenuMain()
 {
     delete ui;
+}
+
+void ControlMenuMain::on_DarkMode_toggled(bool checked)
+{
+    if (checked) {
+        mySettings.beginGroup("DarkMode");
+        mySettings.setValue("DarkMode", true);
+        qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--blink-settings=forceDarkModeEnabled=true");
+        mySettings.endGroup();
+        if (!FirstTime) {
+            qApp->closeAllWindows();
+            qApp->quit();
+            QProcess::startDetached(qApp->arguments()[0], qApp->arguments());
+            this->parentWidget()->close();
+        }
+    }
+}
+
+void ControlMenuMain::on_NormalMode_toggled(bool checked)
+{
+    if (checked) {
+        mySettings.beginGroup("DarkMode");
+        mySettings.setValue("DarkMode", false);
+        qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--blink-settings=forceDarkModeEnabled=false");
+        mySettings.endGroup();
+        if (!FirstTime) {
+            qApp->closeAllWindows();
+            qApp->quit();
+            QProcess::startDetached(qApp->arguments()[0], qApp->arguments());
+            this->parentWidget()->close();
+        }
+    }
 }
 
 void ControlMenuMain::on_Fermeture_clicked()

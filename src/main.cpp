@@ -15,6 +15,18 @@ int main(int argc, char *argv[])
     QCoreApplication::setOrganizationDomain("https://www.handy-open-source.org/");
     QCoreApplication::setApplicationName("dvkbuntu-easy-menu");
 
+    QSettings mySettings;
+
+    mySettings.beginGroup("DarkMode");
+    bool DarkMode = mySettings.value("DarkMode").toBool();
+    mySettings.endGroup();
+
+    if (DarkMode) {
+        qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--blink-settings=forceDarkModeEnabled=true");
+    } else {
+        qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--blink-settings=forceDarkModeEnabled=false");
+    }
+
     MainWindow w;
     w.setWindowState(Qt::WindowMaximized);
     w.showFullScreen();

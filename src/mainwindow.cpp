@@ -216,13 +216,14 @@ MainWindow::MainWindow(QWidget *parent)
     profileI = web->page()->profile();
     profileI->setHttpUserAgent("Mozilla/5.0 (Linux; U; Android 4.4.2; fr-fr; SCH-I535 Build/KOT49H) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30");
     profileN = office->page()->profile();
-    profileN->setHttpUserAgent("Mozilla/5.0 (Linux; U; Android 4.4.2; fr-fr; SCH-I535 Build/KOT49H) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30");
+    profileN->setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36");
     profileD = DiscordLauncher->page()->profile();
     profileD->setHttpUserAgent("Mozilla/5.0 (Linux; U; Android 4.4.2; fr-fr; SCH-I535 Build/KOT49H) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30");
     profileM = music->page()->profile();
     profileM->setHttpUserAgent("Mozilla/5.0 (Linux; U; Android 4.4.2; fr-fr; SCH-I535 Build/KOT49H) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30");
 
     myWid = this->winId();
+
 }
 
 MainWindow::~MainWindow()
@@ -521,6 +522,8 @@ void MainWindow::on_Notes_clicked()
     if (office->isVisible()) {
         FenN->showFullScreen();
     } else {
+        profileN = office->page()->profile();
+        profileN->setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36");
         office->setPage(new MyWebEnginePage);
         UrlIci = QUrl("https://personal.onlyoffice.com/Products/Files/");
         mySettings.beginGroup("UrlIci");
