@@ -71,6 +71,7 @@ ControlMenuMain::ControlMenuMain(QWidget *parent) :
     ui->NormalMode->setMinimumWidth(3.5 * sizeButton);
     ui->NormalMode->setMinimumHeight(sizeButton);
     ui->NormalMode->setFont(font);
+    ui->Theme->setMinimumHeight(sizeButton);
     ui->Theme->setFont(font);
 
     ui->PowerOff->setMaximumWidth(sizeButton);
