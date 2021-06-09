@@ -325,7 +325,7 @@ height: 30px;
 }</string>
         </property>
         <property name="text">
-         <string>Thème normal</string>
+         <string>Normal</string>
         </property>
        </widget>
       </item>
@@ -338,7 +338,7 @@ height: 30px;
 }</string>
         </property>
         <property name="text">
-         <string>Thème sombre</string>
+         <string>Sombre</string>
         </property>
        </widget>
       </item>
@@ -402,6 +402,22 @@ height: 30px;
          </size>
         </property>
        </spacer>
+      </item>
+      <item row="3" column="1">
+       <widget class="QLabel" name="Theme">
+        <property name="autoFillBackground">
+         <bool>false</bool>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="text">
+         <string>Thème</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>
