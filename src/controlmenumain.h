@@ -44,5 +44,6 @@ private slots:
     void showTime();
     void on_DarkMode_toggled(bool checked);
     void on_NormalMode_toggled(bool checked);
+    void Reload();
 };
 #endif // CONTROLMENUMAIN_H

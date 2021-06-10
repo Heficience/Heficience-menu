@@ -109,10 +109,9 @@ void ControlMenuMain::on_DarkMode_toggled(bool checked)
         qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--blink-settings=forceDarkModeEnabled=true");
         mySettings.endGroup();
         if (!FirstTime) {
-            qApp->closeAllWindows();
-            qApp->quit();
-            QProcess::startDetached(qApp->arguments()[0], qApp->arguments());
-            this->parentWidget()->close();
+            QTimer *timer = new QTimer(this);
+            connect(timer, &QTimer::timeout, this, &ControlMenuMain::Reload);
+            timer->start(1000);
         }
     }
 }
@@ -125,10 +124,9 @@ void ControlMenuMain::on_NormalMode_toggled(bool checked)
         qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--blink-settings=forceDarkModeEnabled=false");
         mySettings.endGroup();
         if (!FirstTime) {
-            qApp->closeAllWindows();
-            qApp->quit();
-            QProcess::startDetached(qApp->arguments()[0], qApp->arguments());
-            this->parentWidget()->close();
+            QTimer *timer = new QTimer(this);
+            connect(timer, &QTimer::timeout, this, &ControlMenuMain::Reload);
+            timer->start(1000);
         }
     }
 }
@@ -190,4 +188,12 @@ void ControlMenuMain::showTime()
 
     ui->Horlorge->setFont(font);
     ui->Horlorge->setText(text);
+}
+
+void ControlMenuMain::Reload()
+{
+    qApp->closeAllWindows();
+    qApp->quit();
+    QProcess::startDetached(qApp->arguments()[0], qApp->arguments());
+    this->parentWidget()->close();
 }
