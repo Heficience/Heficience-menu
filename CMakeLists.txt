@@ -10,8 +10,10 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 if(WIN32)
     set(CMAKE_PREFIX_PATH "C:\\Qt\\5.15.2\\msvc2019_64")
+elseif(UNIX AND NOT APPLE)
+    #set(CMAKE_PREFIX_PATH "/home/paul/Qt/5.15.2/gcc_64/lib/cmake")
 else()
-#    set(CMAKE_PREFIX_PATH "/home/paul/Qt/5.15.2/gcc_64/lib/cmake")
+    set(CMAKE_PREFIX_PATH "/Users/raphael/Qt/5.15.2/clang_64/lib/cmake")
 endif()
 
 set(CMAKE_AUTOUIC ON)
@@ -19,9 +21,9 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 
 if (UNIX)
-set(CMAKE_CXX_STANDARD 14)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -Wall -O2")
+    set(CMAKE_CXX_STANDARD 14)
+    set(CMAKE_CXX_STANDARD_REQUIRED ON)
+    set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -Wall -O2")
 endif()
 
 find_package(QT NAMES Qt5 COMPONENTS Core REQUIRED)
@@ -39,7 +41,7 @@ find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Multimedia REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS TextToSpeech REQUIRED)
 
-        set(PROJECT_SOURCES
+set(PROJECT_SOURCES
         src/main.cpp
         src/mainwindow.cpp
         src/mainwindow.h
@@ -74,7 +76,7 @@ find_package(Qt${QT_VERSION_MAJOR} COMPONENTS TextToSpeech REQUIRED)
         src/icon.rc)
 
 if (WIN32)
-qt5_add_resources(src/icon.rc)
+    qt5_add_resources(src/icon.rc)
 endif()
 
 if(WIN32)
@@ -85,18 +87,18 @@ endif()
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(dvkbuntu-easy-menu
-        ${PROJECT_SOURCES}
-    )
+            ${PROJECT_SOURCES}
+            )
 else()
     if(ANDROID)
         add_library(dvkbuntu-easy-menu SHARED
-            ${PROJECT_SOURCES}
-        )
+                ${PROJECT_SOURCES}
+                )
     else()
         add_executable(dvkbuntu-easy-menu
-            ${GUI_TYPE}
-            ${PROJECT_SOURCES}
-        )
+                ${GUI_TYPE}
+                ${PROJECT_SOURCES}
+                )
     endif()
 endif()
 
@@ -110,13 +112,13 @@ target_link_libraries(dvkbuntu-easy-menu
         Qt${QT_VERSION_MAJOR}::Widgets
         Qt${QT_VERSION_MAJOR}::TextToSpeech)
 
-if (UNIX)
-  install(TARGETS dvkbuntu-easy-menu
-          RUNTIME DESTINATION bin)
-  install(FILES src/dvkbuntu-easy-menu.desktop DESTINATION share/applications)
-  install(FILES Images/dvkbuntu-easy-menu.svg DESTINATION share/icons/hicolor/scalable/apps)
-  install(FILES Calculator/scripts/script.js DESTINATION share/Calculator/scripts)
-  install(FILES Calculator/styles/dark.css DESTINATION share/Calculator/styles)
-  install(FILES Calculator/styles/light.css DESTINATION share/Calculator/styles)
-  install(FILES Calculator/index.html DESTINATION share/Calculator)
+if (UNIX AND NOT APPLE)
+    install(TARGETS dvkbuntu-easy-menu
+            RUNTIME DESTINATION bin)
+    install(FILES src/dvkbuntu-easy-menu.desktop DESTINATION share/applications)
+    install(FILES Images/dvkbuntu-easy-menu.svg DESTINATION share/icons/hicolor/scalable/apps)
+    install(FILES Calculator/scripts/script.js DESTINATION share/Calculator/scripts)
+    install(FILES Calculator/styles/dark.css DESTINATION share/Calculator/styles)
+    install(FILES Calculator/styles/light.css DESTINATION share/Calculator/styles)
+    install(FILES Calculator/index.html DESTINATION share/Calculator)
 endif()
