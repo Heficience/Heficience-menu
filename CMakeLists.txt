@@ -120,7 +120,7 @@ if (UNIX AND NOT APPLE)
     install(TARGETS dvkbuntu-easy-menu
             RUNTIME DESTINATION bin)
     install(FILES src/dvkbuntu-easy-menu.desktop DESTINATION share/applications)
-    install(FILES Images/dvkbuntu-easy-menu.svg DESTINATION share/icons/hicolor/scalable/apps)
+    install(FILES Images/dvkbuntu-easy-menu.svg DESTINATION share/icons/)
     install(FILES Calculator/scripts/script.js DESTINATION share/Calculator/scripts)
     install(FILES Calculator/styles/dark.css DESTINATION share/Calculator/styles)
     install(FILES Calculator/styles/light.css DESTINATION share/Calculator/styles)
