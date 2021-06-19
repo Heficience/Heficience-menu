@@ -36,6 +36,9 @@
 #include <QTextToSpeech>
 #include <QTextToSpeechEngine>
 #include <QFileInfo>
+#include <QEvent>
+#include <QMouseEvent>
+#include <QHoverEvent>
 
 
 std::map<std::string, QString> QStringMap;
@@ -52,11 +55,12 @@ MainWindow::MainWindow(QWidget *parent)
     QMainWindow::setWindowIcon(QIcon(":/Images/EasyMenu_Icone.svg"));
 #elif _WIN32
     QMainWindow::setWindowIcon(QIcon(":/Images/EasyMenu_Icone.ico"));
+#elif __APPLE__
+    QMainWindow::setWindowIcon(QIcon(":/Images/EasyMenu_Icone.icns"));
 #endif
-
     ui->setupUi(this);
 
-#if _WIN32
+#if defined(_WIN32) || defined(__APPLE__)
     m_speech = new QTextToSpeech(this);
     m_speech->setLocale(QLocale::French);
 #elif __linux__
@@ -195,12 +199,12 @@ MainWindow::MainWindow(QWidget *parent)
     ui->Discord->setFont(fontD);
     ui->Music->setFont(fontM);
 
-    ui->Calculatrice->setStyleSheet("background-color: rgb(41, 182, 71);border-radius: 10px;border:  8PX solid red;color : white;");
-    ui->Email->setStyleSheet("background-color: rgb(240, 120, 80);border-radius: 10px;border:  8PX solid red;color : white;");
-    ui->Internet->setStyleSheet("background-color: rgb(88, 70, 55);border-radius: 10px;border:  8PX solid red;color : white;");
-    ui->Notes->setStyleSheet("background-color: rgb(0, 88, 132);border-radius: 10px;border:  8PX solid red;color : white;");
-    ui->Discord->setStyleSheet("background-color: rgb(114, 137, 218);border-radius: 10px;border:  8PX solid red;color : white;");
-    ui->Music->setStyleSheet("background-color: rgb(212, 115, 212);border-radius: 10px;border:  8PX solid red;color : white;");
+    ui->Calculatrice->setMouseTracking(true);
+    ui->Email->setMouseTracking(true);
+    ui->Internet->setMouseTracking(true);
+    ui->Notes->setMouseTracking(true);
+    ui->Discord->setMouseTracking(true);
+    ui->Music->setMouseTracking(true);
 
     ui->Calculatrice->installEventFilter(this);
     ui->Email->installEventFilter(this);
@@ -224,20 +228,39 @@ MainWindow::MainWindow(QWidget *parent)
 
     myWid = this->winId();
 
+    ui->Calculatrice->setObjectName("Calculatrice");
+    ui->Calculatrice->setStyleSheet("QToolButton#Calculatrice {background-color: rgb(41, 182, 71);border-radius: 10px;border:  8PX solid red;color : white;} "
+                                    "QToolButton#Calculatrice:hover {background-color: rgb(0, 0, 0);border-radius: 10px;border:  16PX solid rgb(41, 182, 71);color : white;}");
+    ui->Email->setObjectName("Email");
+    ui->Email->setStyleSheet("QToolButton#Email {background-color: rgb(240, 120, 80);border-radius: 10px;border:  8PX solid red;color : white;} "
+                             "QToolButton#Email:hover {background-color: rgb(0, 0, 0);border-radius: 10px;border:  16PX solid rgb(240, 120, 80);color : white;}");
+    ui->Internet->setObjectName("Internet");
+    ui->Internet->setStyleSheet("QToolButton#Internet {background-color: rgb(88, 70, 55);border-radius: 10px;border:  8PX solid red;color : white;} "
+                                "QToolButton#Internet:hover {background-color: rgb(0, 0, 0);border-radius: 10px;border:  16PX solid rgb(88, 70, 55);color : white;}");
+    ui->Notes->setObjectName("Notes");
+    ui->Notes->setStyleSheet("QToolButton#Notes {background-color: rgb(0, 88, 132);border-radius: 10px;border:  8PX solid red;color : white;} "
+                             "QToolButton#Notes:hover {background-color: rgb(0, 0, 0);border-radius: 10px;border:  16PX solid rgb(0, 88, 132);color : white;}");
+    ui->Discord->setObjectName("Discord");
+    ui->Discord->setStyleSheet("QToolButton#Discord {background-color: rgb(114, 137, 218);border-radius: 10px;border:  8PX solid red;color : white;} "
+                               "QToolButton#Discord:hover {background-color: rgb(0, 0, 0);border-radius: 10px;border:  16PX solid rgb(114, 137, 218);color : white;}");
+    ui->Music->setObjectName("Music");
+    ui->Music->setStyleSheet("QToolButton#Music {background-color: rgb(212, 115, 212);border-radius: 10px;border:  8PX solid red;color : white;} "
+                             "QToolButton#Music:hover {background-color: rgb(0, 0, 0);border-radius: 10px;border:  16PX solid rgb(212, 115, 212);color : white;}");
+
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
 }
-
-bool MainWindow::eventFilter(QObject* watched, QEvent* event)
+bool MainWindow::eventFilter(QObject *watched, QEvent *event)
 {
     if (event->type() != QEvent::WindowDeactivate) {
-        if (watched == ui->Calculatrice && event->type() == QEvent::HoverEnter) {
+        if (watched == ui->Calculatrice && (event->type() == QEvent::HoverEnter || event->type() == QEvent::MouseMove)) {
+
             ui->Calculatrice->setText(QStringMap.at("Calculatrice"));
             ui->Calculatrice->setIcon(QIcon(":/Images/0-Categorie/calculator-color.svg"));
-            ui->Calculatrice->setStyleSheet("background-color: rgb(0, 0, 0);border-radius: 10px;border:  16PX solid rgb(41, 182, 71);color : white;");
+            ui->Calculatrice->setStyleSheet("QToolButton#Calculatrice {background-color: rgb(0, 0, 0);border-radius: 10px;border:  16PX solid rgb(41, 182, 71);color : white;}");
 
             if (play) {
                 play = false;
@@ -248,10 +271,10 @@ bool MainWindow::eventFilter(QObject* watched, QEvent* event)
             fontC.setPointSize(fSize2);
             ui->Calculatrice->setFont(fontC);
         }
-        if (watched == ui->Calculatrice && event->type() == QEvent::HoverLeave) {
+        if (watched == ui->Calculatrice && (event->type() == QEvent::HoverLeave || event->type() == QEvent::Hide)) {
             ui->Calculatrice->setText("");
             ui->Calculatrice->setIcon(QIcon(":/Images/0-Categorie/calculator.svg"));
-            ui->Calculatrice->setStyleSheet("background-color: rgb(41, 182, 71);border-radius: 10px;border:  8PX solid red;color : white;");
+            ui->Calculatrice->setStyleSheet("QToolButton#Calculatrice {background-color: rgb(41, 182, 71);border-radius: 10px;border:  8PX solid red;color : white;}");
 
             play = true;
             m_speech->stop();
@@ -262,10 +285,10 @@ bool MainWindow::eventFilter(QObject* watched, QEvent* event)
         }
     }
     if (event->type() != QEvent::WindowDeactivate) {
-        if (watched == ui->Email && event->type() == QEvent::HoverEnter) {
+        if (watched == ui->Email && (event->type() == QEvent::HoverEnter || event->type() == QEvent::MouseMove)) {
             ui->Email->setText(QStringMap.at("Email"));
             ui->Email->setIcon(QIcon(":/Images/0-Categorie/envelope-color.svg"));
-            ui->Email->setStyleSheet("background-color: rgb(0, 0, 0);border-radius: 10px;border:  16PX solid rgb(240, 120, 80);color : white;");
+            ui->Email->setStyleSheet("QToolButton#Email:hover {background-color: rgb(0, 0, 0);border-radius: 10px;border:  16PX solid rgb(240, 120, 80);color : white;}");
 
             if (play) {
                 play = false;
@@ -276,10 +299,10 @@ bool MainWindow::eventFilter(QObject* watched, QEvent* event)
             fontE.setPointSize(fSize2);
             ui->Email->setFont(fontE);
         }
-        if (watched == ui->Email && event->type() == QEvent::HoverLeave) {
+        if (watched == ui->Email && (event->type() == QEvent::HoverLeave || event->type() == QEvent::Hide)) {
             ui->Email->setText("");
             ui->Email->setIcon(QIcon(":/Images/0-Categorie/envelope.svg"));
-            ui->Email->setStyleSheet("background-color: rgb(240, 120, 80);border-radius: 10px;border:  8PX solid red;color : white;");
+            ui->Email->setStyleSheet("QToolButton#Email {background-color: rgb(240, 120, 80);border-radius: 10px;border:  8PX solid red;color : white;}");
 
             play = true;
             m_speech->stop();
@@ -290,10 +313,10 @@ bool MainWindow::eventFilter(QObject* watched, QEvent* event)
         }
     }
     if (event->type() != QEvent::WindowDeactivate) {
-        if (watched == ui->Internet && event->type() == QEvent::HoverEnter) {
+        if (watched == ui->Internet && (event->type() == QEvent::HoverEnter || event->type() == QEvent::MouseMove)) {
             ui->Internet->setText(QStringMap.at("Internet"));
             ui->Internet->setIcon(QIcon(":/Images/0-Categorie/globe-africa-color.svg"));
-            ui->Internet->setStyleSheet("background-color: rgb(0, 0, 0);border-radius: 10px;border:  16PX solid rgb(88, 70, 55);color : white;");
+            ui->Internet->setStyleSheet("QToolButton#Internet:hover {background-color: rgb(0, 0, 0);border-radius: 10px;border:  16PX solid rgb(88, 70, 55);color : white}");
 
             if (play) {
                 play = false;
@@ -304,10 +327,10 @@ bool MainWindow::eventFilter(QObject* watched, QEvent* event)
             fontI.setPointSize(fSize2);
             ui->Internet->setFont(fontI);
         }
-        if (watched == ui->Internet && event->type() == QEvent::HoverLeave) {
+        if (watched == ui->Internet && (event->type() == QEvent::HoverLeave || event->type() == QEvent::Hide)) {
             ui->Internet->setText("");
             ui->Internet->setIcon(QIcon(":/Images/0-Categorie/globe-africa.svg"));
-            ui->Internet->setStyleSheet("background-color: rgb(88, 70, 55);border-radius: 10px;border:  8PX solid red;color : white;");
+            ui->Internet->setStyleSheet("QToolButton#Internet {background-color: rgb(88, 70, 55);border-radius: 10px;border:  8PX solid red;color : white;}");
 
             play = true;
             m_speech->stop();
@@ -318,10 +341,10 @@ bool MainWindow::eventFilter(QObject* watched, QEvent* event)
         }
     }
     if (event->type() != QEvent::WindowDeactivate) {
-        if (watched == ui->Notes && event->type() == QEvent::HoverEnter) {
+        if (watched == ui->Notes && (event->type() == QEvent::HoverEnter || event->type() == QEvent::MouseMove)) {
             ui->Notes->setText(QStringMap.at("Notes"));
             ui->Notes->setIcon(QIcon(":/Images/0-Categorie/clipboard-color.svg"));
-            ui->Notes->setStyleSheet("background-color: rgb(0, 0, 0);border-radius: 10px;border:  16PX solid rgb(0, 88, 132);color : white;");
+            ui->Notes->setStyleSheet("QToolButton#Notes:hover {background-color: rgb(0, 0, 0);border-radius: 10px;border:  16PX solid rgb(0, 88, 132);color : white;}");
 
             if (play) {
                 play = false;
@@ -332,10 +355,10 @@ bool MainWindow::eventFilter(QObject* watched, QEvent* event)
             fontN.setPointSize(fSize2);
             ui->Notes->setFont(fontN);
         }
-        if (watched == ui->Notes && event->type() == QEvent::HoverLeave) {
+        if (watched == ui->Notes && (event->type() == QEvent::HoverLeave || event->type() == QEvent::Hide)) {
             ui->Notes->setText("");
             ui->Notes->setIcon(QIcon(":/Images/0-Categorie/clipboard.svg"));
-            ui->Notes->setStyleSheet("background-color: rgb(0, 88, 132);border-radius: 10px;border:  8PX solid red;color : white;");
+            ui->Notes->setStyleSheet("QToolButton#Notes {background-color: rgb(0, 88, 132);border-radius: 10px;border:  8PX solid red;color : white;}");
 
             play = true;
             m_speech->stop();
@@ -346,10 +369,10 @@ bool MainWindow::eventFilter(QObject* watched, QEvent* event)
         }
     }
     if (event->type() != QEvent::WindowDeactivate) {
-        if (watched == ui->Discord && event->type() == QEvent::HoverEnter) {
+        if (watched == ui->Discord && (event->type() == QEvent::HoverEnter || event->type() == QEvent::MouseMove)) {
             ui->Discord->setText(QStringMap.at("Discord"));
             ui->Discord->setIcon(QIcon(":/Images/0-Categorie/discord-color.svg"));
-            ui->Discord->setStyleSheet("background-color: rgb(0, 0, 0);border-radius: 10px;border:  16PX solid rgb(114, 137, 218);color : white;");
+            ui->Discord->setStyleSheet("QToolButton#Discord:hover {background-color: rgb(0, 0, 0);border-radius: 10px;border:  16PX solid rgb(114, 137, 218);color : white;}");
 
             if (play) {
                 play = false;
@@ -360,10 +383,10 @@ bool MainWindow::eventFilter(QObject* watched, QEvent* event)
             fontD.setPointSize(fSize2);
             ui->Discord->setFont(fontD);
         }
-        if (watched == ui->Discord && event->type() == QEvent::HoverLeave) {
+        if (watched == ui->Discord && (event->type() == QEvent::HoverLeave || event->type() == QEvent::Hide)) {
             ui->Discord->setText("");
             ui->Discord->setIcon(QIcon(":/Images/0-Categorie/discord.svg"));
-            ui->Discord->setStyleSheet("background-color: rgb(114, 137, 218);border-radius: 10px;border:  8PX solid red;color : white;");
+            ui->Discord->setStyleSheet("QToolButton#Discord {background-color: rgb(114, 137, 218);border-radius: 10px;border:  8PX solid red;color : white;}");
 
             play = true;
             m_speech->stop();
@@ -374,10 +397,10 @@ bool MainWindow::eventFilter(QObject* watched, QEvent* event)
         }
     }
     if (event->type() != QEvent::WindowDeactivate) {
-        if (watched == ui->Music && event->type() == QEvent::HoverEnter) {
+        if (watched == ui->Music && (event->type() == QEvent::HoverEnter || event->type() == QEvent::MouseMove)) {
             ui->Music->setText(QStringMap.at("Music"));
             ui->Music->setIcon(QIcon(":/Images/0-Categorie/music-color.svg"));
-            ui->Music->setStyleSheet("background-color: rgb(0, 0, 0);border-radius: 10px;border:  16PX solid rgb(212, 115, 212);color : white;");
+            ui->Music->setStyleSheet("QToolButton#Music:hover {background-color: rgb(0, 0, 0);border-radius: 10px;border:  16PX solid rgb(212, 115, 212);color : white;}");
 
             if (play) {
                 play = false;
@@ -388,10 +411,10 @@ bool MainWindow::eventFilter(QObject* watched, QEvent* event)
             fontM.setPointSize(fSize2);
             ui->Music->setFont(fontM);
         }
-        if (watched == ui->Music && event->type() == QEvent::HoverLeave) {
+        if (watched == ui->Music && (event->type() == QEvent::HoverLeave || event->type() == QEvent::Hide)) {
             ui->Music->setText("");
             ui->Music->setIcon(QIcon(":/Images/0-Categorie/music.svg"));
-            ui->Music->setStyleSheet("background-color: rgb(212, 115, 212);border-radius: 10px;border:  8PX solid red;color : white;");
+            ui->Music->setStyleSheet("QToolButton#Music {background-color: rgb(212, 115, 212);border-radius: 10px;border:  8PX solid red;color : white;}");
 
             play = true;
             m_speech->stop();
@@ -441,6 +464,9 @@ void MainWindow::OpenNewWindows(MyWebEnginePage *myPage)
     FenE->setPalette(pal);
     FenE->setStyleSheet("background-color:black; color:#fff");
     FenE->showFullScreen();
+#ifdef __APPLE__
+    this->close();
+#endif
 }
 
 void MainWindow::on_Calculatrice_clicked()
@@ -448,7 +474,7 @@ void MainWindow::on_Calculatrice_clicked()
     if (KCalculatrice->isVisible()) {
         FenC->showFullScreen();
     } else {
-#ifdef __linux__
+#if defined(__linux__) || defined(__APPLE__)
         UrlIci = QUrl("http://paulluxwaffle.synology.me/Calculator/");
 #elif _WIN32
         UrlIci = QUrl::fromLocalFile(QFileInfo("Calculator/index.html").absoluteFilePath());
@@ -480,6 +506,9 @@ void MainWindow::on_Calculatrice_clicked()
         FenC->setPalette(pal);
         FenC->setStyleSheet("background-color:black; color:#fff");
         FenC->showFullScreen();
+#ifdef __APPLE__
+        this->close();
+#endif
     }
 }
 
@@ -555,6 +584,9 @@ void MainWindow::on_Notes_clicked()
         FenN->setPalette(pal);
         FenN->setStyleSheet("background-color:black; color:#fff");
         FenN->showFullScreen();
+#ifdef __APPLE__
+        this->close();
+#endif
     }
 }
 
@@ -588,6 +620,9 @@ void MainWindow::on_Internet_clicked()
         FenI->setPalette(pal);
         FenI->setStyleSheet("background-color:black; color:#fff");
         FenI->showFullScreen();
+#ifdef __APPLE__
+        this->close();
+#endif
 }
 }
 
@@ -617,6 +652,9 @@ void MainWindow::on_Music_clicked()
         FenM->setPalette(pal);
         FenM->setStyleSheet("background-color:black; color:#fff");
         FenM->showFullScreen();
+#ifdef __APPLE__
+        this->close();
+#endif
     }
 }
 
@@ -655,5 +693,8 @@ void MainWindow::on_Discord_clicked()
         FenD->setPalette(pal);
         FenD->setStyleSheet("background-color:black; color:#fff");
         FenD->showFullScreen();
+#ifdef __APPLE__
+        this->close();
+#endif
     }
 }

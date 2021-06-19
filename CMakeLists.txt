@@ -13,12 +13,16 @@ if(WIN32)
 elseif(UNIX AND NOT APPLE)
     #set(CMAKE_PREFIX_PATH "/home/paul/Qt/5.15.2/gcc_64/lib/cmake")
 else()
-    set(CMAKE_PREFIX_PATH "/Users/raphael/Qt/5.15.2/clang_64/lib/cmake")
+    set(CMAKE_PREFIX_PATH "/Users/paulw/Qt/5.15.2/clang_64/lib/cmake")
 endif()
 
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
+
+if(APPLE)
+set(CMAKE_MACOSX_BUNDLE ON)
+endif()
 
 if (UNIX)
     set(CMAKE_CXX_STANDARD 14)

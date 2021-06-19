@@ -18,6 +18,7 @@
 #include <QWebEngineProfile>
 #include <QSettings>
 #include <QTextToSpeech>
+#include <QHoverEvent>
 #include "controlmenudiscord.h"
 #include "controlmenumail.h"
 #include "controlmenumain.h"
@@ -119,8 +120,10 @@ private:
     QWidget *FenApp;
     QTextToSpeech *m_speech;
 
+protected:
+    bool eventFilter(QObject *watched, QEvent *event) override;
+
 private slots:
-    virtual bool eventFilter(QObject* watched, QEvent* event);
     void on_Calculatrice_clicked();
     void on_Email_clicked();
     void on_Notes_clicked();

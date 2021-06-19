@@ -2,6 +2,7 @@
 #include <QApplication>
 #include <QWebEngineSettings>
 #include <QtWebEngineWidgets>
+#include <QMouseEvent>
 
 int main(int argc, char *argv[])
 {
