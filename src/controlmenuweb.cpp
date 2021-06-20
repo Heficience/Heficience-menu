@@ -105,6 +105,9 @@ ControlMenuWeb::ControlMenuWeb(QWidget *parent) :
 
     QFont fontFav;
     fontFav.setPointSize(fSize3*4/2.5);
+#ifdef __APPLE__
+    fontFav.setPointSize(fSize3*8/2.5);
+#endif
     fontFav.setBold(true);
     ui->Lien1QL->setFont(fontFav);
     ui->Lien2QL->setFont(fontFav);
@@ -844,8 +847,10 @@ void ControlMenuWeb::reorganiseFav() {
         QWebEngineView *mywebview = webViews.at(std::distance(webViews.begin(), it));
         mySettings.beginGroup("FavorisWeb");
         favBool = false;
+#ifndef __APPLE__
         QObject::connect(mywebview, &QWebEngineView::loadFinished,
                          [=](bool arg) {
+#endif
                              for (int i = 0; i < myFavoris.length(); i++) {
                                  mySettings.setValue("FavorisWebLien" + QString::number(i), myFavoris[i].url);
                                  mySettings.setValue("FavorisWebTitre" + QString::number(i), myFavoris[i].title);
@@ -858,7 +863,9 @@ void ControlMenuWeb::reorganiseFav() {
                                      }
                                  }
                              }
+#ifndef __APPLE__
                          });
+#endif
         mySettings.endGroup();
     }
 

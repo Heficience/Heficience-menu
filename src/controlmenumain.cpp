@@ -133,6 +133,7 @@ void ControlMenuMain::on_NormalMode_toggled(bool checked)
 
 void ControlMenuMain::on_Fermeture_clicked()
 {
+#ifndef __APPLE__
     MainWindow().KCalculatrice->close();
     MainWindow().Email->close();
     MainWindow().web->close();
@@ -148,6 +149,7 @@ void ControlMenuMain::on_Fermeture_clicked()
     MainWindow().FenD->close();
     MainWindow().FenG->close();
     qApp->closeAllWindows();
+#endif
     QCoreApplication::quit();
 }
 
