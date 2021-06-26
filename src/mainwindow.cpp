@@ -39,6 +39,7 @@
 #include <QEvent>
 #include <QMouseEvent>
 #include <QHoverEvent>
+#include <iostream>
 
 
 std::map<std::string, QString> QStringMap;
@@ -229,45 +230,44 @@ MainWindow::MainWindow(QWidget *parent)
     myWid = this->winId();
 
     ui->Calculatrice->setObjectName("Calculatrice");
-    ui->Calculatrice->setStyleSheet("QToolButton#Calculatrice {background-color: rgb(41, 182, 71);border-radius: 10px;border:  8PX solid red;color : white;} "
-                                    "QToolButton#Calculatrice:hover {background-color: rgb(0, 0, 0);border-radius: 10px;border:  16PX solid rgb(41, 182, 71);color : white;}");
     ui->Email->setObjectName("Email");
-    ui->Email->setStyleSheet("QToolButton#Email {background-color: rgb(240, 120, 80);border-radius: 10px;border:  8PX solid red;color : white;} "
-                             "QToolButton#Email:hover {background-color: rgb(0, 0, 0);border-radius: 10px;border:  16PX solid rgb(240, 120, 80);color : white;}");
     ui->Internet->setObjectName("Internet");
-    ui->Internet->setStyleSheet("QToolButton#Internet {background-color: rgb(88, 70, 55);border-radius: 10px;border:  8PX solid red;color : white;} "
-                                "QToolButton#Internet:hover {background-color: rgb(0, 0, 0);border-radius: 10px;border:  16PX solid rgb(88, 70, 55);color : white;}");
     ui->Notes->setObjectName("Notes");
-    ui->Notes->setStyleSheet("QToolButton#Notes {background-color: rgb(0, 88, 132);border-radius: 10px;border:  8PX solid red;color : white;} "
-                             "QToolButton#Notes:hover {background-color: rgb(0, 0, 0);border-radius: 10px;border:  16PX solid rgb(0, 88, 132);color : white;}");
     ui->Discord->setObjectName("Discord");
-    ui->Discord->setStyleSheet("QToolButton#Discord {background-color: rgb(114, 137, 218);border-radius: 10px;border:  8PX solid red;color : white;} "
-                               "QToolButton#Discord:hover {background-color: rgb(0, 0, 0);border-radius: 10px;border:  16PX solid rgb(114, 137, 218);color : white;}");
     ui->Music->setObjectName("Music");
-    ui->Music->setStyleSheet("QToolButton#Music {background-color: rgb(212, 115, 212);border-radius: 10px;border:  8PX solid red;color : white;} "
-                             "QToolButton#Music:hover {background-color: rgb(0, 0, 0);border-radius: 10px;border:  16PX solid rgb(212, 115, 212);color : white;}");
 
+#ifdef __APPLE__
+    FenG->raise();
+#endif
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
 }
+
 bool MainWindow::eventFilter(QObject *watched, QEvent *event)
 {
     if (event->type() != QEvent::WindowDeactivate) {
+
+        QPropertyAnimation *animationIcon = new QPropertyAnimation(ui->Calculatrice, "iconSize");
+
         if (watched == ui->Calculatrice && (event->type() == QEvent::HoverEnter || event->type() == QEvent::MouseMove)) {
 
             ui->Calculatrice->setText(QStringMap.at("Calculatrice"));
             ui->Calculatrice->setIcon(QIcon(":/Images/0-Categorie/calculator-color.svg"));
-            ui->Calculatrice->setStyleSheet("QToolButton#Calculatrice {background-color: rgb(0, 0, 0);border-radius: 10px;border:  16PX solid rgb(41, 182, 71);color : white;}");
+            ui->Calculatrice->setStyleSheet("QToolButton#Calculatrice:hover {background-color: rgb(0, 0, 0);border-radius: 10px;border:  16PX solid rgb(41, 182, 71);color : white;}");
 
             if (play) {
                 play = false;
                 m_speech->say("Ouvrir la calculatrice.");
+
+                animationIcon->setDuration(250);
+                animationIcon->setStartValue(QS1);
+                animationIcon->setEndValue(QS2);
+                animationIcon->start();
             }
 
-            ui->Calculatrice->setIconSize(QS2);
             fontC.setPointSize(fSize2);
             ui->Calculatrice->setFont(fontC);
         }
@@ -279,12 +279,19 @@ bool MainWindow::eventFilter(QObject *watched, QEvent *event)
             play = true;
             m_speech->stop();
 
-            ui->Calculatrice->setIconSize(QS1);
+            animationIcon->setDuration(250);
+            animationIcon->setStartValue(QS2);
+            animationIcon->setEndValue(QS1);
+            animationIcon->start();
+
             fontC.setPointSize(fSize1);
             ui->Calculatrice->setFont(fontC);
         }
     }
     if (event->type() != QEvent::WindowDeactivate) {
+
+        QPropertyAnimation *animationIcon = new QPropertyAnimation(ui->Email, "iconSize");
+
         if (watched == ui->Email && (event->type() == QEvent::HoverEnter || event->type() == QEvent::MouseMove)) {
             ui->Email->setText(QStringMap.at("Email"));
             ui->Email->setIcon(QIcon(":/Images/0-Categorie/envelope-color.svg"));
@@ -293,9 +300,13 @@ bool MainWindow::eventFilter(QObject *watched, QEvent *event)
             if (play) {
                 play = false;
                 m_speech->say("Ouvrir le client email.");
+
+                animationIcon->setDuration(250);
+                animationIcon->setStartValue(QS1);
+                animationIcon->setEndValue(QS2);
+                animationIcon->start();
             }
 
-            ui->Email->setIconSize(QS2);
             fontE.setPointSize(fSize2);
             ui->Email->setFont(fontE);
         }
@@ -307,12 +318,19 @@ bool MainWindow::eventFilter(QObject *watched, QEvent *event)
             play = true;
             m_speech->stop();
 
-            ui->Email->setIconSize(QS1);
+            animationIcon->setDuration(250);
+            animationIcon->setStartValue(QS2);
+            animationIcon->setEndValue(QS1);
+            animationIcon->start();
+
             fontE.setPointSize(fSize1);
             ui->Email->setFont(fontE);
         }
     }
     if (event->type() != QEvent::WindowDeactivate) {
+
+        QPropertyAnimation *animationIcon = new QPropertyAnimation(ui->Internet, "iconSize");
+
         if (watched == ui->Internet && (event->type() == QEvent::HoverEnter || event->type() == QEvent::MouseMove)) {
             ui->Internet->setText(QStringMap.at("Internet"));
             ui->Internet->setIcon(QIcon(":/Images/0-Categorie/globe-africa-color.svg"));
@@ -321,13 +339,20 @@ bool MainWindow::eventFilter(QObject *watched, QEvent *event)
             if (play) {
                 play = false;
                 m_speech->say("Ouvrir le navigateur internet.");
+
+                animationIcon->setDuration(250);
+                animationIcon->setStartValue(QS1);
+                animationIcon->setEndValue(QS2);
+                animationIcon->start();
             }
 
-            ui->Internet->setIconSize(QS2);
             fontI.setPointSize(fSize2);
             ui->Internet->setFont(fontI);
         }
         if (watched == ui->Internet && (event->type() == QEvent::HoverLeave || event->type() == QEvent::Hide)) {
+
+            QPropertyAnimation *animationIcon = new QPropertyAnimation(ui->Internet, "iconSize");
+
             ui->Internet->setText("");
             ui->Internet->setIcon(QIcon(":/Images/0-Categorie/globe-africa.svg"));
             ui->Internet->setStyleSheet("QToolButton#Internet {background-color: rgb(88, 70, 55);border-radius: 10px;border:  8PX solid red;color : white;}");
@@ -335,12 +360,19 @@ bool MainWindow::eventFilter(QObject *watched, QEvent *event)
             play = true;
             m_speech->stop();
 
-            ui->Internet->setIconSize(QS1);
+            animationIcon->setDuration(250);
+            animationIcon->setStartValue(QS2);
+            animationIcon->setEndValue(QS1);
+            animationIcon->start();
+
             fontI.setPointSize(fSize1);
             ui->Internet->setFont(fontI);
         }
     }
     if (event->type() != QEvent::WindowDeactivate) {
+
+        QPropertyAnimation *animationIcon = new QPropertyAnimation(ui->Notes, "iconSize");
+
         if (watched == ui->Notes && (event->type() == QEvent::HoverEnter || event->type() == QEvent::MouseMove)) {
             ui->Notes->setText(QStringMap.at("Notes"));
             ui->Notes->setIcon(QIcon(":/Images/0-Categorie/clipboard-color.svg"));
@@ -349,9 +381,13 @@ bool MainWindow::eventFilter(QObject *watched, QEvent *event)
             if (play) {
                 play = false;
                 m_speech->say("Ouvrir la suite bureautique.");
+
+                animationIcon->setDuration(250);
+                animationIcon->setStartValue(QS1);
+                animationIcon->setEndValue(QS2);
+                animationIcon->start();
             }
 
-            ui->Notes->setIconSize(QS2);
             fontN.setPointSize(fSize2);
             ui->Notes->setFont(fontN);
         }
@@ -363,12 +399,19 @@ bool MainWindow::eventFilter(QObject *watched, QEvent *event)
             play = true;
             m_speech->stop();
 
-            ui->Notes->setIconSize(QS1);
+            animationIcon->setDuration(250);
+            animationIcon->setStartValue(QS2);
+            animationIcon->setEndValue(QS1);
+            animationIcon->start();
+
             fontN.setPointSize(fSize1);
             ui->Notes->setFont(fontN);
         }
     }
     if (event->type() != QEvent::WindowDeactivate) {
+
+        QPropertyAnimation *animationIcon = new QPropertyAnimation(ui->Discord, "iconSize");
+
         if (watched == ui->Discord && (event->type() == QEvent::HoverEnter || event->type() == QEvent::MouseMove)) {
             ui->Discord->setText(QStringMap.at("Discord"));
             ui->Discord->setIcon(QIcon(":/Images/0-Categorie/discord-color.svg"));
@@ -377,9 +420,13 @@ bool MainWindow::eventFilter(QObject *watched, QEvent *event)
             if (play) {
                 play = false;
                 m_speech->say("Discuter grâce à discord.");
+
+                animationIcon->setDuration(250);
+                animationIcon->setStartValue(QS1);
+                animationIcon->setEndValue(QS2);
+                animationIcon->start();
             }
 
-            ui->Discord->setIconSize(QS2);
             fontD.setPointSize(fSize2);
             ui->Discord->setFont(fontD);
         }
@@ -391,12 +438,19 @@ bool MainWindow::eventFilter(QObject *watched, QEvent *event)
             play = true;
             m_speech->stop();
 
-            ui->Discord->setIconSize(QS1);
+            animationIcon->setDuration(250);
+            animationIcon->setStartValue(QS2);
+            animationIcon->setEndValue(QS1);
+            animationIcon->start();
+
             fontD.setPointSize(fSize1);
             ui->Discord->setFont(fontD);
         }
     }
     if (event->type() != QEvent::WindowDeactivate) {
+
+        QPropertyAnimation *animationIcon = new QPropertyAnimation(ui->Music, "iconSize");
+
         if (watched == ui->Music && (event->type() == QEvent::HoverEnter || event->type() == QEvent::MouseMove)) {
             ui->Music->setText(QStringMap.at("Music"));
             ui->Music->setIcon(QIcon(":/Images/0-Categorie/music-color.svg"));
@@ -405,9 +459,13 @@ bool MainWindow::eventFilter(QObject *watched, QEvent *event)
             if (play) {
                 play = false;
                 m_speech->say(serviceMusic);
+
+                animationIcon->setDuration(250);
+                animationIcon->setStartValue(QS1);
+                animationIcon->setEndValue(QS2);
+                animationIcon->start();
             }
 
-            ui->Music->setIconSize(QS2);
             fontM.setPointSize(fSize2);
             ui->Music->setFont(fontM);
         }
@@ -419,7 +477,11 @@ bool MainWindow::eventFilter(QObject *watched, QEvent *event)
             play = true;
             m_speech->stop();
 
-            ui->Music->setIconSize(QS1);
+            animationIcon->setDuration(250);
+            animationIcon->setStartValue(QS2);
+            animationIcon->setEndValue(QS1);
+            animationIcon->start();
+
             fontM.setPointSize(fSize1);
             ui->Music->setFont(fontM);
         }
