@@ -174,13 +174,6 @@ MainWindow::MainWindow(QWidget *parent)
     QStringMap["Discord"] = discordText;
     QStringMap["Music"] = musicText;
 
-    ui->Calculatrice->setText("");
-    ui->Email->setText("");
-    ui->Internet->setText("");
-    ui->Notes->setText("");
-    ui->Discord->setText("");
-    ui->Music->setText("");
-
     ui->Calculatrice->setIconSize(QS1);
     ui->Email->setIconSize(QS1);
     ui->Internet->setIconSize(QS1);
@@ -236,7 +229,29 @@ MainWindow::MainWindow(QWidget *parent)
     ui->Discord->setObjectName("Discord");
     ui->Music->setObjectName("Music");
 
+    ui->Calculatrice->setText("");
+    ui->Email->setText("");
+    ui->Internet->setText("");
+    ui->Notes->setText("");
+    ui->Discord->setText("");
+    ui->Music->setText("");
+
+
 #ifdef __APPLE__
+    ui->Calculatrice->setAutoRaise(true);
+    ui->Email->setAutoRaise(true);
+    ui->Internet->setAutoRaise(true);
+    ui->Notes->setAutoRaise(true);
+    ui->Discord->setAutoRaise(true);
+    ui->Music->setAutoRaise(true);
+
+    ui->Calculatrice->raise();
+    ui->Email->raise();
+    ui->Internet->raise();
+    ui->Notes->raise();
+    ui->Discord->raise();
+    ui->Music->raise();
+
     FenG->raise();
 #endif
 }
