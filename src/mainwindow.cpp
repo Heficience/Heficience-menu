@@ -200,6 +200,16 @@ MainWindow::MainWindow(QWidget *parent)
     ui->Discord->setMouseTracking(true);
     ui->Music->setMouseTracking(true);
 
+    ui->Calculatrice->setAttribute(Qt::WA_Hover);
+    ui->Email->setAttribute(Qt::WA_Hover);
+    ui->Internet->setAttribute(Qt::WA_Hover);
+    ui->Notes->setAttribute(Qt::WA_Hover);
+    ui->Discord->setAttribute(Qt::WA_Hover);
+    ui->Music->setAttribute(Qt::WA_Hover);
+
+    FenApp->setMouseTracking(true);
+    FenApp->setAttribute(Qt::WA_Hover);
+
     ui->Calculatrice->installEventFilter(this);
     ui->Email->installEventFilter(this);
     ui->Internet->installEventFilter(this);
@@ -252,7 +262,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->Discord->raise();
     ui->Music->raise();
 
-    FenG->raise();
+    FenApp->raise();
 #endif
 }
 
