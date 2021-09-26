@@ -845,15 +845,16 @@ void ControlMenuWeb::reorganiseFav() {
                                                         });
     if (it != webViews.end()) {
         QWebEngineView *mywebview = webViews.at(std::distance(webViews.begin(), it));
-        mySettings.beginGroup("FavorisWeb");
         favBool = false;
 #ifndef __APPLE__
         QObject::connect(mywebview, &QWebEngineView::loadFinished,
                          [=](bool arg) {
 #endif
                              for (int i = 0; i < myFavoris.length(); i++) {
+                                 mySettings.beginGroup("FavorisWeb");
                                  mySettings.setValue("FavorisWebLien" + QString::number(i), myFavoris[i].url);
                                  mySettings.setValue("FavorisWebTitre" + QString::number(i), myFavoris[i].title);
+                                 mySettings.endGroup();
                                  if (!favBool) {
                                      if (mywebview->url() == myFavoris[i].url) {
                                          ui->Favoris->setIcon(QIcon(":/Images/1-NavigateurWeb/star.svg"));
@@ -866,7 +867,6 @@ void ControlMenuWeb::reorganiseFav() {
 #ifndef __APPLE__
                          });
 #endif
-        mySettings.endGroup();
     }
 
 }
