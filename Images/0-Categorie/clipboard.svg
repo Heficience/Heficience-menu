@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    viewBox="0 0 384 512"
    version="1.1"
    id="svg4"
    sodipodi:docname="clipboard.svg"
-   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)">
+   inkscape:version="1.1 (c4e8f9e, 2021-05-24)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
   <metadata
      id="metadata10">
     <rdf:RDF>
@@ -39,14 +39,15 @@
      id="namedview6"
      showgrid="false"
      inkscape:zoom="0.4609375"
-     inkscape:cx="192"
-     inkscape:cy="256"
+     inkscape:cx="190.91525"
+     inkscape:cy="254.91525"
      inkscape:window-x="0"
-     inkscape:window-y="79"
+     inkscape:window-y="51"
      inkscape:window-maximized="0"
-     inkscape:current-layer="svg4" />
+     inkscape:current-layer="svg4"
+     inkscape:pagecheckerboard="0" />
   <path
-     d="M384 112v352c0 26.51-21.49 48-48 48H48c-26.51 0-48-21.49-48-48V112c0-26.51 21.49-48 48-48h80c0-35.29 28.71-64 64-64s64 28.71 64 64h80c26.51 0 48 21.49 48 48zM192 40c-13.255 0-24 10.745-24 24s10.745 24 24 24 24-10.745 24-24-10.745-24-24-24m96 114v-20a6 6 0 0 0-6-6H102a6 6 0 0 0-6 6v20a6 6 0 0 0 6 6h180a6 6 0 0 0 6-6z"
+     d="m 384,151.0625 v 317.625 C 384,492.60863 362.51,512 336,512 H 48 C 21.49,512 0,492.60863 0,468.6875 V 151.0625 C 0,127.14137 21.49,107.75 48,107.75 h 80 C 128,75.906289 156.71,50 192,50 c 35.29,0 64,25.906289 64,57.75 h 80 c 26.51,0 48,19.39137 48,43.3125 z M 192,86.09375 c -13.255,0 -24,9.695684 -24,21.65625 0,11.96057 10.745,21.65625 24,21.65625 13.255,0 24,-9.69568 24,-21.65625 0,-11.960566 -10.745,-21.65625 -24,-21.65625 m 96,102.86719 V 170.91406 A 6,5.4140625 0 0 0 282,165.5 H 102 a 6,5.4140625 0 0 0 -6,5.41406 v 18.04688 a 6,5.4140625 0 0 0 6,5.41406 h 180 a 6,5.4140625 0 0 0 6,-5.41406 z"
      id="path2"
-     style="fill:#ffffff" />
+     style="fill:#ffffff;stroke-width:0.949918" />
 </svg>

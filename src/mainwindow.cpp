@@ -174,13 +174,6 @@ MainWindow::MainWindow(QWidget *parent)
     QStringMap["Discord"] = discordText;
     QStringMap["Music"] = musicText;
 
-    ui->Calculatrice->setText("");
-    ui->Email->setText("");
-    ui->Internet->setText("");
-    ui->Notes->setText("");
-    ui->Discord->setText("");
-    ui->Music->setText("");
-
     ui->Calculatrice->setIconSize(QS1);
     ui->Email->setIconSize(QS1);
     ui->Internet->setIconSize(QS1);
@@ -206,6 +199,16 @@ MainWindow::MainWindow(QWidget *parent)
     ui->Notes->setMouseTracking(true);
     ui->Discord->setMouseTracking(true);
     ui->Music->setMouseTracking(true);
+
+    ui->Calculatrice->setAttribute(Qt::WA_Hover);
+    ui->Email->setAttribute(Qt::WA_Hover);
+    ui->Internet->setAttribute(Qt::WA_Hover);
+    ui->Notes->setAttribute(Qt::WA_Hover);
+    ui->Discord->setAttribute(Qt::WA_Hover);
+    ui->Music->setAttribute(Qt::WA_Hover);
+
+    FenApp->setMouseTracking(true);
+    FenApp->setAttribute(Qt::WA_Hover);
 
     ui->Calculatrice->installEventFilter(this);
     ui->Email->installEventFilter(this);
@@ -236,8 +239,30 @@ MainWindow::MainWindow(QWidget *parent)
     ui->Discord->setObjectName("Discord");
     ui->Music->setObjectName("Music");
 
+    ui->Calculatrice->setText("");
+    ui->Email->setText("");
+    ui->Internet->setText("");
+    ui->Notes->setText("");
+    ui->Discord->setText("");
+    ui->Music->setText("");
+
+
 #ifdef __APPLE__
-    FenG->raise();
+    ui->Calculatrice->setAutoRaise(true);
+    ui->Email->setAutoRaise(true);
+    ui->Internet->setAutoRaise(true);
+    ui->Notes->setAutoRaise(true);
+    ui->Discord->setAutoRaise(true);
+    ui->Music->setAutoRaise(true);
+
+    ui->Calculatrice->raise();
+    ui->Email->raise();
+    ui->Internet->raise();
+    ui->Notes->raise();
+    ui->Discord->raise();
+    ui->Music->raise();
+
+    FenApp->raise();
 #endif
 }
 

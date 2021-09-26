@@ -34,12 +34,14 @@ ControlMenuMain::ControlMenuMain(QWidget *parent) :
     ui->Fermeture->setMaximumWidth(sizeButton);
     ui->Fermeture->setMaximumHeight(sizeButton);
     ui->Fermeture->setIconSize(QSize(sizeButton, sizeButton));
+    //ui->Fermeture->setObjectName("Fermeture");
+    //ui->Fermeture->setStyleSheet("QToolButton#Fermeture:hover {background-color: rgb(0, 0, 0);}");
 
     ui->Home->setMaximumWidth(sizeButton);
     ui->Home->setMaximumHeight(sizeButton);
     ui->Home->setIconSize(QSize(sizeButton, sizeButton));
-
-    ui->Home->setStyleSheet("background-color: grey;");
+    //ui->Home->setObjectName("Home");
+    //ui->Home->setStyleSheet("QToolButton#Home:hover {background-color: grey;}");
 /**
     ui->Options->setMaximumWidth(sizeButton);
     ui->Options->setMaximumHeight(sizeButton);
@@ -77,6 +79,8 @@ ControlMenuMain::ControlMenuMain(QWidget *parent) :
     ui->PowerOff->setMaximumWidth(sizeButton);
     ui->PowerOff->setMaximumHeight(sizeButton);
     ui->PowerOff->setIconSize(QSize(sizeButton, sizeButton));
+    //ui->PowerOff->setObjectName("PowerOff");
+    //ui->PowerOff->setStyleSheet("QToolButton#PowerOff:hover {background-color: rgb(0, 0, 0);}");
 
     int Size = (int)((1920 * 1920 * dpi) / WIDTH);
 
@@ -88,6 +92,12 @@ ControlMenuMain::ControlMenuMain(QWidget *parent) :
     WIDTHCONTROL = int(WIDTH * 720 / 3840 - 50);
 
     ui->gridWidget->resize(WIDTHCONTROL, HEIGHT - 50);
+
+/**
+    setMouseTracking(true);
+    setAttribute(Qt::WA_Hover);
+    raise();
+**/
 
     QTimer *timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &ControlMenuMain::showTime);
@@ -176,6 +186,8 @@ void ControlMenuMain::on_PowerOff_clicked() {
     QString myProg="shutdown";
     QStringList myArgs={"-s", "-f", "-t 00"};
     Extinction.startDetached(myProg,myArgs);
+#elif __APPLE__
+    Extinction.startDetached("shutdown -h now");
 #endif
 }
 
