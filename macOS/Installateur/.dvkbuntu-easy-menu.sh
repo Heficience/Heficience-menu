@@ -9,7 +9,7 @@ create-dmg \
 --icon-size 100 \
 --icon "dvkbuntu-easy-menu.app" 200 190 \
 --hide-extension "dvkbuntu-easy-menu.app" \
---eula ".LICENSE.txt" \
+--eula ".LICENSE.rtf" \
 --app-drop-link 600 185 \
 "DVKBuntu-Easy-Menu.dmg" \
 "."
