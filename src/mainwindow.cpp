@@ -53,9 +53,9 @@ MainWindow::MainWindow(QWidget *parent)
 {
 
 #ifdef __linux__
-    QMainWindow::setWindowIcon(QIcon(":/Images/EasyMenu_Icone.svg"));
+    QMainWindow::setWindowIcon(QIcon(":/Images/Heficience_Icone.svg"));
 #elif _WIN32
-    QMainWindow::setWindowIcon(QIcon(":/Images/EasyMenu_Icone.ico"));
+    QMainWindow::setWindowIcon(QIcon(":/Images/Heficience_Icone.ico"));
 #elif __APPLE__
     QMainWindow::setWindowIcon(QIcon(":/Images/EasyMenu_Icone.icns"));
 #endif

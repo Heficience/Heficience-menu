@@ -463,7 +463,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="resource.qrc">
-    <normaloff>:/Images/dvkbuntu-easy-menu.svg</normaloff>:/Images/dvkbuntu-easy-menu.svg</iconset>
+    <normaloff>:/Images/heficience-menu.svg</normaloff>:/Images/heficience-menu.svg</iconset>
   </property>
   <property name="autoFillBackground">
    <bool>true</bool>

@@ -10,11 +10,11 @@ script: |
 AppDir:
   path: ./AppDir
   app_info:
-    id: dvkbuntu-easy-menu
+    id: heficience-menu
     name: Easy Menu
-    icon: dvkbuntu-easy-menu
+    icon: heficience-menu
     version: '4.17'
-    exec: usr/bin/dvkbuntu-easy-menu
+    exec: usr/bin/heficience-menu
     exec_args: $@
   runtime:
     env:

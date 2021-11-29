@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 3.5)
 
 if(WIN32)
-    project(dvkbuntu-easy-menu VERSION "4.17")
+    project(heficience-menu VERSION "4.17")
 else()
-    project(dvkbuntu-easy-menu LANGUAGES CXX VERSION "4.17")
+    project(heficience-menu LANGUAGES CXX VERSION "4.17")
 endif()
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
@@ -90,23 +90,23 @@ else()
 endif()
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
-    qt_add_executable(dvkbuntu-easy-menu
+    qt_add_executable(heficience-menu
             ${PROJECT_SOURCES}
             )
 else()
     if(ANDROID)
-        add_library(dvkbuntu-easy-menu SHARED
+        add_library(heficience-menu SHARED
                 ${PROJECT_SOURCES}
                 )
     else()
-        add_executable(dvkbuntu-easy-menu
+        add_executable(heficience-menu
                 ${GUI_TYPE}
                 ${PROJECT_SOURCES}
                 )
     endif()
 endif()
 
-target_link_libraries(dvkbuntu-easy-menu
+target_link_libraries(heficience-menu
         PRIVATE
         Qt${QT_VERSION_MAJOR}::Core
         Qt${QT_VERSION_MAJOR}::Gui
@@ -117,10 +117,10 @@ target_link_libraries(dvkbuntu-easy-menu
         Qt${QT_VERSION_MAJOR}::TextToSpeech)
 
 if (UNIX AND NOT APPLE)
-    install(TARGETS dvkbuntu-easy-menu
+    install(TARGETS heficience-menu
             RUNTIME DESTINATION bin)
-    install(FILES src/dvkbuntu-easy-menu.desktop DESTINATION share/applications)
-    install(FILES Images/dvkbuntu-easy-menu.svg DESTINATION share/icons/)
+    install(FILES src/heficience-menu.desktop DESTINATION share/applications)
+    install(FILES Images/heficience-menu.svg DESTINATION share/icons/)
     install(FILES Calculator/scripts/script.js DESTINATION share/Calculator/scripts)
     install(FILES Calculator/styles/dark.css DESTINATION share/Calculator/styles)
     install(FILES Calculator/styles/light.css DESTINATION share/Calculator/styles)

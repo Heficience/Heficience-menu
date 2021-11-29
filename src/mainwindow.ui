@@ -522,7 +522,7 @@
    <string>EasyMenu - Acceuil</string>
   </property>
   <property name="windowIcon">
-   <iconset theme="dvkbuntu-easy-menu">
+   <iconset theme="heficience-menu">
     <normaloff>.</normaloff>.</iconset>
   </property>
   <property name="windowOpacity">

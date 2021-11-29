@@ -1,4 +1,4 @@
-# dvkbuntu-easy-menu-qt
+# heficience-menu-qt
 
 ![Image du Menu](Images/ImageDuMenu.png)
 

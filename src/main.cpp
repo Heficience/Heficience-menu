@@ -12,9 +12,9 @@ int main(int argc, char *argv[])
     splash.show();
     a.processEvents();
 
-    QCoreApplication::setOrganizationName("Handy Open Source");
-    QCoreApplication::setOrganizationDomain("https://www.handy-open-source.org/");
-    QCoreApplication::setApplicationName("dvkbuntu-easy-menu");
+    QCoreApplication::setOrganizationName("Heficience");
+    QCoreApplication::setOrganizationDomain("https://www.heficience.com/");
+    QCoreApplication::setApplicationName("heficience-menu");
 
     QSettings mySettings;
 

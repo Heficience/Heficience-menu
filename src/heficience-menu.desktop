@@ -3,6 +3,6 @@
 Type=Application
 Name=Easy menu
 Comment=Easy menu est un menu ayant pour but de simplifier les usages classiques d’un ordinateur.
-Exec=dvkbuntu-easy-menu
-Icon=dvkbuntu-easy-menu
+Exec=heficience-menu
+Icon=Heficience_Icone
 Categories=Utility;

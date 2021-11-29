@@ -29,9 +29,9 @@
         <file>../Images/4-Courriel/envelope-open.svg</file>
         <file>../Images/4-Courriel/envelope.svg</file>
         <file>../Images/4-Courriel/print.svg</file>
-        <file>../Images/EasyMenu_Icone.svg</file>
-        <file>../Images/EasyMenu_Icone.ico</file>
-        <file>../Images/EasyMenu_Icone.icns</file>
+        <file>../Images/Heficience_Icone.svg</file>
+        <file>../Images/Heficience_Icone.ico</file>
+        <file>../Images/Heficience_Icone.icns</file>
         <file>../Images/0-Categorie/music.svg</file>
         <file>../Images/0-Categorie/discord.svg</file>
         <file>../Images/0-Categorie/calculator-color.svg</file>
@@ -54,7 +54,7 @@
         <file>../Calculator/styles/light.css</file>
         <file>../Calculator/index.html</file>
         <file>../Images/splash.png</file>
-        <file>../Images/dvkbuntu-easy-menu.svg</file>
-        <file>../src/dvkbuntu-easy-menu.desktop</file>
+        <file>../Images/heficience-menu.svg</file>
+        <file>../src/heficience-menu.desktop</file>
     </qresource>
 </RCC>
