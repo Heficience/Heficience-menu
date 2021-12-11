@@ -9,7 +9,7 @@ on:
 jobs:
   build-appimage:
 
-    runs-on: ubuntu-hirsute
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
