@@ -120,7 +120,7 @@ if (UNIX AND NOT APPLE)
     install(TARGETS heficience-menu
             RUNTIME DESTINATION bin)
     install(FILES src/heficience-menu.desktop DESTINATION share/applications)
-    install(FILES Images/heficience-menu.svg DESTINATION share/icons/)
+    install(FILES Images/Heficience_Icone.svg DESTINATION share/icons/)
     install(FILES Calculator/scripts/script.js DESTINATION share/Calculator/scripts)
     install(FILES Calculator/styles/dark.css DESTINATION share/Calculator/styles)
     install(FILES Calculator/styles/light.css DESTINATION share/Calculator/styles)
