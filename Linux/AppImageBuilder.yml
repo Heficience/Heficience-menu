@@ -12,7 +12,7 @@ AppDir:
   app_info:
     id: heficience-menu
     name: Heficience Menu
-    icon: Heficience_Icone.svg
+    icon: Heficience_Icone
     version: '4.17'
     exec: usr/bin/heficience-menu
     exec_args: $@
