@@ -182,7 +182,7 @@ void ControlMenuWeb::on_Home_App_clicked() {
                                                         });
     if (it != webViews.end()) {
         QWebEngineView *mywebview = webViews.at(std::distance(webViews.begin(), it));
-        mywebview->setUrl(QUrl("https://www.search.handy-open-source.org/search.php"));
+        mywebview->setUrl(QUrl("https://heficience.search.paulluxwaffle.synology.me/search.php"));
         QObject::connect(mywebview, &QWebEngineView::loadFinished,
                          [=](bool arg) {
                              mywebview->setZoomFactor(myScale.toInt());

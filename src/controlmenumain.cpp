@@ -27,7 +27,7 @@ ControlMenuMain::ControlMenuMain(QWidget *parent) :
     HEIGHT = screenGeometry.height();
     WIDTH = screenGeometry.width();
     double dpi = QGuiApplication::primaryScreen()->physicalDotsPerInch();
-    fSize2 = (int) ((80 * HEIGHT / 2160) * 72 / dpi);
+    fSize2 = (int) ((80 * HEIGHT / 2160) * 72 / (dpi * 1.5));
 
     int sizeButton = 80 * HEIGHT / 1080;
 

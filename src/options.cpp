@@ -50,7 +50,7 @@ Options::Options(QWidget *parent)
     pal.setColor(QPalette::WindowText, Qt::white);
     this->setAutoFillBackground(true);
     this->setPalette(pal);
-    this->setStyleSheet("background-color:black; color:#fff;");
+    this->setStyleSheet("background-color:#22577A; color:#fff;");
 
     mySettings.beginGroup("ChoixMusic");
     int myInt = mySettings.value("Music").toInt();

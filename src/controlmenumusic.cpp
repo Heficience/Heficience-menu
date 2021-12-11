@@ -121,7 +121,7 @@ void ControlMenuMusic::on_Options_clicked() {
     pal.setColor(QPalette::WindowText, Qt::white);
     myOptions->setAutoFillBackground(true);
     myOptions->setPalette(pal);
-    myOptions->setStyleSheet("background-color:black; color:#fff");
+    myOptions->setStyleSheet("background-color:#22577A; color:#fff");
     myOptions->showFullScreen();
 }
 

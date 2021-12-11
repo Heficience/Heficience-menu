@@ -98,7 +98,7 @@ MainWindow::MainWindow(QWidget *parent)
     pal.setColor(QPalette::WindowText, Qt::white);
     FenG->setAutoFillBackground(true);
     FenG->setPalette(pal);
-    FenG->setStyleSheet("background-color:black; color:#fff");
+    FenG->setStyleSheet("background:#22577A; color:#fff");
     FenG->showFullScreen();
 
     fontC = ui->Calculatrice->font();
@@ -401,7 +401,7 @@ bool MainWindow::eventFilter(QObject *watched, QEvent *event)
         if (watched == ui->Notes && (event->type() == QEvent::HoverEnter || event->type() == QEvent::MouseMove)) {
             ui->Notes->setText(QStringMap.at("Notes"));
             ui->Notes->setIcon(QIcon(":/Images/0-Categorie/clipboard-color.svg"));
-            ui->Notes->setStyleSheet("QToolButton#Notes:hover {background-color: rgb(0, 0, 0);border-radius: 10px;border:  16PX solid rgb(0, 88, 132);color : white;}");
+            ui->Notes->setStyleSheet("QToolButton#Notes:hover {background-color: rgb(0, 0, 0);border-radius: 10px;border:  16PX solid #38A3A5;color : white;}");
 
             if (play) {
                 play = false;
@@ -419,7 +419,7 @@ bool MainWindow::eventFilter(QObject *watched, QEvent *event)
         if (watched == ui->Notes && (event->type() == QEvent::HoverLeave || event->type() == QEvent::Hide)) {
             ui->Notes->setText("");
             ui->Notes->setIcon(QIcon(":/Images/0-Categorie/clipboard.svg"));
-            ui->Notes->setStyleSheet("QToolButton#Notes {background-color: rgb(0, 88, 132);border-radius: 10px;border:  8PX solid red;color : white;}");
+            ui->Notes->setStyleSheet("QToolButton#Notes {background-color: #38A3A5;border-radius: 10px;border:  8PX solid red;color : white;}");
 
             play = true;
             m_speech->stop();
@@ -549,7 +549,7 @@ void MainWindow::OpenNewWindows(MyWebEnginePage *myPage)
     pal.setColor(QPalette::WindowText, Qt::white);
     FenE->setAutoFillBackground(true);
     FenE->setPalette(pal);
-    FenE->setStyleSheet("background-color:black; color:#fff");
+    FenE->setStyleSheet("background:#22577A; color:#fff");
     FenE->showFullScreen();
 #ifdef __APPLE__
     this->close();
@@ -591,7 +591,7 @@ void MainWindow::on_Calculatrice_clicked()
         pal.setColor(QPalette::WindowText, Qt::white);
         FenC->setAutoFillBackground(true);
         FenC->setPalette(pal);
-        FenC->setStyleSheet("background-color:black; color:#fff");
+        FenC->setStyleSheet("background:#22577A; color:#fff");
         FenC->showFullScreen();
 #ifdef __APPLE__
         this->close();
@@ -669,7 +669,7 @@ void MainWindow::on_Notes_clicked()
         pal.setColor(QPalette::WindowText, Qt::white);
         FenN->setAutoFillBackground(true);
         FenN->setPalette(pal);
-        FenN->setStyleSheet("background-color:black; color:#fff");
+        FenN->setStyleSheet("background:#22577A; color:#fff");
         FenN->showFullScreen();
 #ifdef __APPLE__
         this->close();
@@ -682,7 +682,7 @@ void MainWindow::on_Internet_clicked()
     if (web->isVisible()) {
         FenI->showFullScreen();
     } else {
-        UrlIci = QUrl("https://www.search.handy-open-source.org/search.php");
+        UrlIci = QUrl("https://heficience.search.paulluxwaffle.synology.me/search.php");
         web->load(UrlIci);
         web->page()->runJavaScript("document.cookie = \"AC-C=ac-c;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/;SameSite=Lax\"; "
                                          "document.cookie = \"tagname = test;secure\"; "
@@ -705,7 +705,7 @@ void MainWindow::on_Internet_clicked()
         pal.setColor(QPalette::WindowText, Qt::white);
         FenI->setAutoFillBackground(true);
         FenI->setPalette(pal);
-        FenI->setStyleSheet("background-color:black; color:#fff");
+        FenI->setStyleSheet("background:#22577A; color:#fff");
         FenI->showFullScreen();
 #ifdef __APPLE__
         this->close();
@@ -737,7 +737,7 @@ void MainWindow::on_Music_clicked()
         pal.setColor(QPalette::WindowText, Qt::white);
         FenM->setAutoFillBackground(true);
         FenM->setPalette(pal);
-        FenM->setStyleSheet("background-color:black; color:#fff");
+        FenM->setStyleSheet("background-color:#22577A; color:#fff");
         FenM->showFullScreen();
 #ifdef __APPLE__
         this->close();
@@ -778,7 +778,7 @@ void MainWindow::on_Discord_clicked()
         pal.setColor(QPalette::WindowText, Qt::white);
         FenD->setAutoFillBackground(true);
         FenD->setPalette(pal);
-        FenD->setStyleSheet("background-color:black; color:#fff");
+        FenD->setStyleSheet("background-color:#22577A; color:#fff");
         FenD->showFullScreen();
 #ifdef __APPLE__
         this->close();
