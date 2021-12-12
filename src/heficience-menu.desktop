@@ -1,8 +1,8 @@
 #!/usr/bin/env xdg-open
 [Desktop Entry]
 Type=Application
-Name=Easy menu
-Comment=Easy menu est un menu ayant pour but de simplifier les usages classiques d’un ordinateur.
+Name=Heficience Menu
+Comment=Heficience Menu est un menu ayant pour but de simplifier les usages classiques d’un ordinateur.
 Exec=heficience-menu
 Icon=Heficience_Icone
 Categories=Utility;
