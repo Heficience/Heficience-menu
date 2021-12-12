@@ -13,7 +13,7 @@ if(WIN32)
 elseif(UNIX AND NOT APPLE)
     #set(CMAKE_PREFIX_PATH "/home/paul/Qt/5.15.2/gcc_64/lib/cmake")
 else()
-    set(CMAKE_PREFIX_PATH "/Users/paulw/Qt/5.15.2/clang_64/lib/cmake")
+    set(CMAKE_PREFIX_PATH "/Users/paulw/Qt/5.15.2/clang_64")
 endif()
 
 set(CMAKE_AUTOUIC ON)
@@ -88,6 +88,8 @@ if(WIN32)
 else()
     SET(GUI_TYPE )
 endif()
+
+
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(heficience-menu
