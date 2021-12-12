@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Heficience Menu"
-#define MyAppVersion "0.4.19"
+#define MyAppVersion "0.4.17"
 #define MyAppPublisher "Heficience"
 #define MyAppURL "https://www.heficience.com/"
 #define MyAppExeName "heficience-menu.exe"
@@ -27,13 +27,13 @@ LicenseFile=C:\Users\paulw\OneDrive\Bureau\Licence GPL V3.txt
 ;PrivilegesRequired=lowest
 OutputDir=C:\Users\paulw\OneDrive\Bureau
 OutputBaseFilename=Setup-heficience-menu
-SetupIconFile=C:\Users\paulw\heficience-menu-qt\Images\Heficience_Icone.ico
+SetupIconFile=C:\Users\paulw\Heficience-menu\Images\Heficience_Icone.ico
 Compression=lzma
 SolidCompression=yes
 ArchitecturesInstallIn64BitMode=x64
 WizardStyle=modern
-WizardImageFile=C:\Users\paulw\OneDrive\Bureau\Wizard_1.bmp
-WizardSmallImageFile=C:\Users\paulw\OneDrive\Bureau\Header_1.bmp
+WizardImageFile=C:\Users\paulw\Heficience-menu\Windows\Wizard_1.bmp
+WizardSmallImageFile=C:\Users\paulw\Heficience-menu\Windows\Header_1.bmp
 
 [Languages]
 Name: "french"; MessagesFile: "compiler:Languages\French.isl"
@@ -42,10 +42,10 @@ Name: "french"; MessagesFile: "compiler:Languages\French.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "C:\build2\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\build2\{#MyAppIcoName}"; DestDir: "{app}"
+Source: "C:\Hbuild\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Hbuild\{#MyAppIcoName}"; DestDir: "{app}"
 Source: "C:\VC_redist.x64.exe"; DestDir: "{app}\redist"; Flags: deleteafterinstall
-Source: "C:\build2\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "C:\Hbuild\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
