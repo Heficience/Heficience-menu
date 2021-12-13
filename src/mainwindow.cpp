@@ -683,6 +683,7 @@ void MainWindow::on_Internet_clicked()
         FenI->showFullScreen();
     } else {
         UrlIci = QUrl("https://heficience.search.paulluxwaffle.synology.me/search.php");
+        web->setPage(new MyWebEnginePage);
         web->load(UrlIci);
         web->page()->runJavaScript("document.cookie = \"AC-C=ac-c;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/;SameSite=Lax\"; "
                                          "document.cookie = \"tagname = test;secure\"; "
