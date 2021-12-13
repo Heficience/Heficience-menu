@@ -142,7 +142,7 @@ void ControlMenuDiscord::on_InvitDiscord_clicked() {
                                                              "QWebEngineView";
                                                  });
     if (it != webViews.end()) {
-        webViews.at(std::distance(webViews.begin(), it))->setUrl(QUrl("https://discord.gg/mv5zEAC"));
+        webViews.at(std::distance(webViews.begin(), it))->setUrl(QUrl("https://discord.gg/YqSs8qNfqN"));
     }
 }
 
