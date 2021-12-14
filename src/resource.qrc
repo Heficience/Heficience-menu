@@ -15,6 +15,7 @@
         <file>../Images/1-NavigateurWeb/PowerOff.svg</file>
         <file>../Images/1-NavigateurWeb/Dialog-error.svg</file>
         <file>../Images/1-NavigateurWeb/DiscordHOS.svg</file>
+        <file>../Images/1-NavigateurWeb/Google_G_Logo.svg</file>
         <file>../Images/2-Calculatrice/cogs.svg</file>
         <file>../Images/2-Calculatrice/euro-sign.svg</file>
         <file>../Images/3-PriseDeNotes/copy.svg</file>
@@ -49,6 +50,16 @@
         <file>../Images/4-Courriel/Free.svg</file>
         <file>../Images/4-Courriel/Bouygues.svg</file>
         <file>../Images/4-Courriel/LaPoste.svg</file>
+        <file>../Images/Heficience_Icone.iconset/icon_16x16.png</file>
+        <file>../Images/Heficience_Icone.iconset/icon_16x16@2x.png</file>
+        <file>../Images/Heficience_Icone.iconset/icon_32x32.png</file>
+        <file>../Images/Heficience_Icone.iconset/icon_32x32@2x.png</file>
+        <file>../Images/Heficience_Icone.iconset/icon_128x128.png</file>
+        <file>../Images/Heficience_Icone.iconset/icon_128x128@2x.png</file>
+        <file>../Images/Heficience_Icone.iconset/icon_256x256.png</file>
+        <file>../Images/Heficience_Icone.iconset/icon_256x256@2x.png</file>
+        <file>../Images/Heficience_Icone.iconset/icon_512x512.png</file>
+        <file>../Images/Heficience_Icone.iconset/icon_512x512@2x.png</file>
         <file>../Calculator/scripts/script.js</file>
         <file>../Calculator/styles/dark.css</file>
         <file>../Calculator/styles/light.css</file>
