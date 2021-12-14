@@ -369,7 +369,7 @@ color:#fff;</string>
        <string notr="true">color:#fff;</string>
       </property>
       <property name="text">
-       <string>(tout changement nécessite un redémarrage de Easy-Menu)</string>
+       <string>(tout changement nécessite un redémarrage de Heficience-Menu)</string>
       </property>
      </widget>
     </item>
