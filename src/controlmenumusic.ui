@@ -512,8 +512,8 @@
         </property>
         <property name="iconSize">
          <size>
-          <width>100</width>
-          <height>100</height>
+          <width>80</width>
+          <height>80</height>
          </size>
         </property>
        </widget>
@@ -550,8 +550,8 @@
         </property>
         <property name="iconSize">
          <size>
-          <width>100</width>
-          <height>100</height>
+          <width>80</width>
+          <height>80</height>
          </size>
         </property>
         <property name="checkable">
@@ -588,8 +588,8 @@
         </property>
         <property name="iconSize">
          <size>
-          <width>100</width>
-          <height>100</height>
+          <width>80</width>
+          <height>80</height>
          </size>
         </property>
        </widget>
@@ -787,12 +787,12 @@
         </property>
         <property name="icon">
          <iconset resource="resource.qrc">
-          <normaloff>:/Images/0-Categorie/music.svg</normaloff>:/Images/0-Categorie/music.svg</iconset>
+          <normaloff>:/Images/0-Categorie/music-color.svg</normaloff>:/Images/0-Categorie/music-color.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
-          <width>100</width>
-          <height>100</height>
+          <width>80</width>
+          <height>80</height>
          </size>
         </property>
        </widget>

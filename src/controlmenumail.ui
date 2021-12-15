@@ -512,8 +512,8 @@
         </property>
         <property name="iconSize">
          <size>
-          <width>100</width>
-          <height>100</height>
+          <width>80</width>
+          <height>80</height>
          </size>
         </property>
        </widget>
@@ -560,8 +560,8 @@
         </property>
         <property name="iconSize">
          <size>
-          <width>100</width>
-          <height>100</height>
+          <width>80</width>
+          <height>80</height>
          </size>
         </property>
        </widget>
@@ -621,8 +621,8 @@
         </property>
         <property name="iconSize">
          <size>
-          <width>100</width>
-          <height>100</height>
+          <width>80</width>
+          <height>80</height>
          </size>
         </property>
        </widget>
@@ -656,8 +656,8 @@
         </property>
         <property name="iconSize">
          <size>
-          <width>100</width>
-          <height>100</height>
+          <width>80</width>
+          <height>80</height>
          </size>
         </property>
        </widget>
@@ -707,8 +707,8 @@
         </property>
         <property name="iconSize">
          <size>
-          <width>100</width>
-          <height>100</height>
+          <width>80</width>
+          <height>80</height>
          </size>
         </property>
        </widget>
@@ -781,8 +781,8 @@
         </property>
         <property name="iconSize">
          <size>
-          <width>100</width>
-          <height>100</height>
+          <width>80</width>
+          <height>80</height>
          </size>
         </property>
        </widget>
@@ -816,8 +816,8 @@
         </property>
         <property name="iconSize">
          <size>
-          <width>100</width>
-          <height>100</height>
+          <width>80</width>
+          <height>80</height>
          </size>
         </property>
        </widget>
@@ -893,8 +893,8 @@
         </property>
         <property name="iconSize">
          <size>
-          <width>100</width>
-          <height>100</height>
+          <width>80</width>
+          <height>80</height>
          </size>
         </property>
        </widget>
@@ -928,8 +928,8 @@
         </property>
         <property name="iconSize">
          <size>
-          <width>100</width>
-          <height>100</height>
+          <width>80</width>
+          <height>80</height>
          </size>
         </property>
        </widget>
@@ -1036,8 +1036,8 @@
         </property>
         <property name="iconSize">
          <size>
-          <width>100</width>
-          <height>100</height>
+          <width>80</width>
+          <height>80</height>
          </size>
         </property>
        </widget>
@@ -1080,12 +1080,12 @@
         </property>
         <property name="icon">
          <iconset resource="resource.qrc">
-          <normaloff>:/Images/0-Categorie/envelope.svg</normaloff>:/Images/0-Categorie/envelope.svg</iconset>
+          <normaloff>:/Images/0-Categorie/envelope-color.svg</normaloff>:/Images/0-Categorie/envelope-color.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
-          <width>100</width>
-          <height>100</height>
+          <width>80</width>
+          <height>80</height>
          </size>
         </property>
        </widget>

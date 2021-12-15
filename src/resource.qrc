@@ -60,12 +60,17 @@
         <file>../Images/Heficience_Icone.iconset/icon_256x256@2x.png</file>
         <file>../Images/Heficience_Icone.iconset/icon_512x512.png</file>
         <file>../Images/Heficience_Icone.iconset/icon_512x512@2x.png</file>
+        <file>../Images/ONLYOFFICE.svg</file>
         <file>../Calculator/scripts/script.js</file>
         <file>../Calculator/styles/dark.css</file>
         <file>../Calculator/styles/light.css</file>
         <file>../Calculator/index.html</file>
         <file>../Images/splash.png</file>
         <file>../Images/heficience-menu.svg</file>
+        <file>../Images/5-music/Deezer.svg</file>
+        <file>../Images/5-music/Jamendo.svg</file>
+        <file>../Images/5-music/SoundCloud.svg</file>
+        <file>../Images/5-music/YouTube.svg</file>
         <file>../src/heficience-menu.desktop</file>
     </qresource>
 </RCC>

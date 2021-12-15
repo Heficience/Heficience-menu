@@ -123,3 +123,12 @@ void Options::on_Deezer_toggled()
         mySettings.endGroup();
     }
 }
+
+void Options::on_SoundCloud_toggled()
+{
+    if (CanUse == true) {
+        mySettings.beginGroup("ChoixMusic");
+        mySettings.setValue("Music", 3);
+        mySettings.endGroup();
+    }
+}

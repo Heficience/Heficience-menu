@@ -174,6 +174,10 @@ void ControlMenuWeb::on_Home_clicked() {
     this->parentWidget()->close();
 }
 void ControlMenuWeb::on_Home_App_clicked() {
+    return_To_Home();
+}
+void ControlMenuWeb::return_To_Home() {
+    ui->Favoris->setIcon(QIcon(":/Images/1-NavigateurWeb/star-clear.svg"));
     QList<QWebEngineView *> webViews = parentWidget()->findChildren<QWebEngineView *>();
     QList<QWebEngineView *>::iterator it = std::find_if(webViews.begin(), webViews.end(),
                                                         [](QWebEngineView *webView) -> bool {
@@ -189,7 +193,6 @@ void ControlMenuWeb::on_Home_App_clicked() {
                          });
     }
 }
-
 /**void ControlMenuWeb::on_Options_clicked() {
     Options *myOptions = new Options();
     QPalette pal = palette();
@@ -629,6 +632,7 @@ void ControlMenuWeb::on_Lien9QTB_clicked() {
 
 void ControlMenuWeb::on_Lien1QL_clicked() {
     if (ui->Lien1QL->text() != "(vide)") {
+        ui->Favoris->setIcon(QIcon(":/Images/1-NavigateurWeb/star.svg"));
         QList<QWebEngineView *> webViews = parentWidget()->findChildren<QWebEngineView *>();
         QList<QWebEngineView *>::iterator it = std::find_if(webViews.begin(), webViews.end(),
                                                             [](QWebEngineView *webView) -> bool {
@@ -644,11 +648,14 @@ void ControlMenuWeb::on_Lien1QL_clicked() {
                                  mywebview->setZoomFactor(myScale.toInt());
                              });
         }
+    } else {
+        return_To_Home();
     }
 }
 
 void ControlMenuWeb::on_Lien2QL_clicked() {
     if (ui->Lien2QL->text() != "(vide)") {
+        ui->Favoris->setIcon(QIcon(":/Images/1-NavigateurWeb/star.svg"));
         QList<QWebEngineView *> webViews = parentWidget()->findChildren<QWebEngineView *>();
         QList<QWebEngineView *>::iterator it = std::find_if(webViews.begin(), webViews.end(),
                                                             [](QWebEngineView *webView) -> bool {
@@ -664,11 +671,14 @@ void ControlMenuWeb::on_Lien2QL_clicked() {
                                  mywebview->setZoomFactor(myScale.toInt());
                              });
         }
+    } else {
+        return_To_Home();
     }
 }
 
 void ControlMenuWeb::on_Lien3QL_clicked() {
     if (ui->Lien3QL->text() != "(vide)") {
+        ui->Favoris->setIcon(QIcon(":/Images/1-NavigateurWeb/star.svg"));
         QList<QWebEngineView *> webViews = parentWidget()->findChildren<QWebEngineView *>();
         QList<QWebEngineView *>::iterator it = std::find_if(webViews.begin(), webViews.end(),
                                                             [](QWebEngineView *webView) -> bool {
@@ -684,11 +694,14 @@ void ControlMenuWeb::on_Lien3QL_clicked() {
                                  mywebview->setZoomFactor(myScale.toInt());
                              });
         }
+    } else {
+        return_To_Home();
     }
 }
 
 void ControlMenuWeb::on_Lien4QL_clicked() {
     if (ui->Lien4QL->text() != "(vide)") {
+        ui->Favoris->setIcon(QIcon(":/Images/1-NavigateurWeb/star.svg"));
         QList<QWebEngineView *> webViews = parentWidget()->findChildren<QWebEngineView *>();
         QList<QWebEngineView *>::iterator it = std::find_if(webViews.begin(), webViews.end(),
                                                             [](QWebEngineView *webView) -> bool {
@@ -704,11 +717,14 @@ void ControlMenuWeb::on_Lien4QL_clicked() {
                                  mywebview->setZoomFactor(myScale.toInt());
                              });
         }
+    } else {
+        return_To_Home();
     }
 }
 
 void ControlMenuWeb::on_Lien5QL_clicked() {
     if (ui->Lien5QL->text() != "(vide)") {
+        ui->Favoris->setIcon(QIcon(":/Images/1-NavigateurWeb/star.svg"));
         QList<QWebEngineView *> webViews = parentWidget()->findChildren<QWebEngineView *>();
         QList<QWebEngineView *>::iterator it = std::find_if(webViews.begin(), webViews.end(),
                                                             [](QWebEngineView *webView) -> bool {
@@ -724,11 +740,14 @@ void ControlMenuWeb::on_Lien5QL_clicked() {
                                  mywebview->setZoomFactor(myScale.toInt());
                              });
         }
+    } else {
+        return_To_Home();
     }
 }
 
 void ControlMenuWeb::on_Lien6QL_clicked() {
     if (ui->Lien6QL->text() != "(vide)") {
+        ui->Favoris->setIcon(QIcon(":/Images/1-NavigateurWeb/star.svg"));
         QList<QWebEngineView *> webViews = parentWidget()->findChildren<QWebEngineView *>();
         QList<QWebEngineView *>::iterator it = std::find_if(webViews.begin(), webViews.end(),
                                                             [](QWebEngineView *webView) -> bool {
@@ -744,11 +763,14 @@ void ControlMenuWeb::on_Lien6QL_clicked() {
                                  mywebview->setZoomFactor(myScale.toInt());
                              });
         }
+    } else {
+        return_To_Home();
     }
 }
 
 void ControlMenuWeb::on_Lien7QL_clicked() {
     if (ui->Lien7QL->text() != "(vide)") {
+        ui->Favoris->setIcon(QIcon(":/Images/1-NavigateurWeb/star.svg"));
         QList<QWebEngineView *> webViews = parentWidget()->findChildren<QWebEngineView *>();
         QList<QWebEngineView *>::iterator it = std::find_if(webViews.begin(), webViews.end(),
                                                             [](QWebEngineView *webView) -> bool {
@@ -764,11 +786,14 @@ void ControlMenuWeb::on_Lien7QL_clicked() {
                                  mywebview->setZoomFactor(myScale.toInt());
                              });
         }
+    } else {
+        return_To_Home();
     }
 }
 
 void ControlMenuWeb::on_Lien8QL_clicked() {
     if (ui->Lien8QL->text() != "(vide)") {
+        ui->Favoris->setIcon(QIcon(":/Images/1-NavigateurWeb/star.svg"));
         QList<QWebEngineView *> webViews = parentWidget()->findChildren<QWebEngineView *>();
         QList<QWebEngineView *>::iterator it = std::find_if(webViews.begin(), webViews.end(),
                                                             [](QWebEngineView *webView) -> bool {
@@ -784,11 +809,14 @@ void ControlMenuWeb::on_Lien8QL_clicked() {
                                  mywebview->setZoomFactor(myScale.toInt());
                              });
         }
+    } else {
+        return_To_Home();
     }
 }
 
 void ControlMenuWeb::on_Lien9QL_clicked() {
     if (ui->Lien9QL->text() != "(vide)") {
+        ui->Favoris->setIcon(QIcon(":/Images/1-NavigateurWeb/star.svg"));
         QList<QWebEngineView *> webViews = parentWidget()->findChildren<QWebEngineView *>();
         QList<QWebEngineView *>::iterator it = std::find_if(webViews.begin(), webViews.end(),
                                                             [](QWebEngineView *webView) -> bool {
@@ -804,6 +832,8 @@ void ControlMenuWeb::on_Lien9QL_clicked() {
                                  mywebview->setZoomFactor(myScale.toInt());
                              });
         }
+    } else {
+        return_To_Home();
     }
 }
 

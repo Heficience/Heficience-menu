@@ -47,9 +47,9 @@ std::map<std::string, QString> QStringMap;
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
-#if _WIN32
+/**#if _WIN32
     , m_speech(nullptr)
-#endif
+#endif**/
 {
 
 #ifdef __linux__
@@ -57,11 +57,11 @@ MainWindow::MainWindow(QWidget *parent)
 #elif _WIN32
     QMainWindow::setWindowIcon(QIcon(":/Images/Heficience_Icone.ico"));
 #elif __APPLE__
-    QMainWindow::setWindowIcon(QIcon(":/Images/EasyMenu_Icone.icns"));
+    QMainWindow::setWindowIcon(QIcon(":/Images/Heficience_Icone.icns"));
 #endif
     ui->setupUi(this);
 
-#if defined(_WIN32) || defined(__APPLE__)
+/**#if defined(_WIN32) || defined(__APPLE__)
     m_speech = new QTextToSpeech(this);
     m_speech->setLocale(QLocale::French);
 #elif __linux__
@@ -72,7 +72,7 @@ MainWindow::MainWindow(QWidget *parent)
     m_speech->setVolume(0.05);
     //QProcess *newProcess = new QProcess();
     //newProcess->start("pulseaudio -k");
-#endif
+#endif**/
 
     screens = QGuiApplication::screens();
     screen = screens.first();
@@ -147,6 +147,19 @@ MainWindow::MainWindow(QWidget *parent)
                                          "cookieManager.acceptCookie();");
             serviceMusic = "Écouter de la musique grâce à Deezer";
             break;
+        case 3:
+            musicText = "Ecouter de\nla musique\nsur \nSoundCloud";
+            musicUrl = QUrl("https://soundcloud.com/discover");
+            music->load(musicUrl);
+            music->page()->runJavaScript("document.cookie = \"AC-C=ac-c;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/;SameSite=Lax\"; "
+                                         "document.cookie = \"tagname = test;secure\"; "
+                                         "CookieManager cookieManager = CookieManager.getInstance(); "
+                                         "cookieManager.setAcceptFileSchemeCookies(true); "
+                                         "cookieManager.setAcceptCookie(true); "
+                                         "cookieManager.acceptCookie();");
+            serviceMusic = "Écouter de la musique grâce à SoundCloud";
+            break;
+
         default:
             musicText = "Ecouter de\nla musique\nsur Jamendo";
             musicUrl = QUrl("https://www.jamendo.com/start");
@@ -285,7 +298,7 @@ bool MainWindow::eventFilter(QObject *watched, QEvent *event)
 
             if (play) {
                 play = false;
-                m_speech->say("Ouvrir la calculatrice.");
+                //m_speech->say("Ouvrir la calculatrice.");
 
                 animationIcon->setDuration(250);
                 animationIcon->setStartValue(QS1);
@@ -302,7 +315,7 @@ bool MainWindow::eventFilter(QObject *watched, QEvent *event)
             ui->Calculatrice->setStyleSheet("QToolButton#Calculatrice {background-color: rgb(41, 182, 71);border-radius: 10px;border:  8PX solid red;color : white;}");
 
             play = true;
-            m_speech->stop();
+            //m_speech->stop();
 
             animationIcon->setDuration(250);
             animationIcon->setStartValue(QS2);
@@ -324,7 +337,7 @@ bool MainWindow::eventFilter(QObject *watched, QEvent *event)
 
             if (play) {
                 play = false;
-                m_speech->say("Ouvrir le client email.");
+                //m_speech->say("Ouvrir le client email.");
 
                 animationIcon->setDuration(250);
                 animationIcon->setStartValue(QS1);
@@ -341,7 +354,7 @@ bool MainWindow::eventFilter(QObject *watched, QEvent *event)
             ui->Email->setStyleSheet("QToolButton#Email {background-color: rgb(240, 120, 80);border-radius: 10px;border:  8PX solid red;color : white;}");
 
             play = true;
-            m_speech->stop();
+            //m_speech->stop();
 
             animationIcon->setDuration(250);
             animationIcon->setStartValue(QS2);
@@ -363,7 +376,7 @@ bool MainWindow::eventFilter(QObject *watched, QEvent *event)
 
             if (play) {
                 play = false;
-                m_speech->say("Ouvrir le navigateur internet.");
+                //m_speech->say("Ouvrir le navigateur internet.");
 
                 animationIcon->setDuration(250);
                 animationIcon->setStartValue(QS1);
@@ -383,7 +396,7 @@ bool MainWindow::eventFilter(QObject *watched, QEvent *event)
             ui->Internet->setStyleSheet("QToolButton#Internet {background-color: rgb(88, 70, 55);border-radius: 10px;border:  8PX solid red;color : white;}");
 
             play = true;
-            m_speech->stop();
+            //m_speech->stop();
 
             animationIcon->setDuration(250);
             animationIcon->setStartValue(QS2);
@@ -405,7 +418,7 @@ bool MainWindow::eventFilter(QObject *watched, QEvent *event)
 
             if (play) {
                 play = false;
-                m_speech->say("Ouvrir la suite bureautique.");
+                //m_speech->say("Ouvrir la suite bureautique.");
 
                 animationIcon->setDuration(250);
                 animationIcon->setStartValue(QS1);
@@ -422,7 +435,7 @@ bool MainWindow::eventFilter(QObject *watched, QEvent *event)
             ui->Notes->setStyleSheet("QToolButton#Notes {background-color: #38A3A5;border-radius: 10px;border:  8PX solid red;color : white;}");
 
             play = true;
-            m_speech->stop();
+            //m_speech->stop();
 
             animationIcon->setDuration(250);
             animationIcon->setStartValue(QS2);
@@ -444,7 +457,7 @@ bool MainWindow::eventFilter(QObject *watched, QEvent *event)
 
             if (play) {
                 play = false;
-                m_speech->say("Discuter grâce à discord.");
+                //m_speech->say("Discuter grâce à discord.");
 
                 animationIcon->setDuration(250);
                 animationIcon->setStartValue(QS1);
@@ -461,7 +474,7 @@ bool MainWindow::eventFilter(QObject *watched, QEvent *event)
             ui->Discord->setStyleSheet("QToolButton#Discord {background-color: rgb(114, 137, 218);border-radius: 10px;border:  8PX solid red;color : white;}");
 
             play = true;
-            m_speech->stop();
+            //m_speech->stop();
 
             animationIcon->setDuration(250);
             animationIcon->setStartValue(QS2);
@@ -483,7 +496,7 @@ bool MainWindow::eventFilter(QObject *watched, QEvent *event)
 
             if (play) {
                 play = false;
-                m_speech->say(serviceMusic);
+                //m_speech->say(serviceMusic);
 
                 animationIcon->setDuration(250);
                 animationIcon->setStartValue(QS1);
@@ -500,7 +513,7 @@ bool MainWindow::eventFilter(QObject *watched, QEvent *event)
             ui->Music->setStyleSheet("QToolButton#Music {background-color: rgb(212, 115, 212);border-radius: 10px;border:  8PX solid red;color : white;}");
 
             play = true;
-            m_speech->stop();
+            //m_speech->stop();
 
             animationIcon->setDuration(250);
             animationIcon->setStartValue(QS2);

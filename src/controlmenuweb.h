@@ -57,6 +57,7 @@ private slots:
     void on_Retour_clicked();
     void showTime();
     void ifFav();
+    void return_To_Home();
 
     void on_Lien1QTB_clicked();
     void on_Lien2QTB_clicked();

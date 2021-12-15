@@ -41,6 +41,26 @@ ControlMenuMusic::ControlMenuMusic(QWidget *parent) :
     ui->Home->setMaximumHeight(sizeButton);
     ui->Home->setIconSize(QSize(sizeButton, sizeButton));
 
+    mySettings.beginGroup("ChoixMusic");
+    int myInt = mySettings.value("Music").toInt();
+    mySettings.endGroup();
+    switch ( myInt )
+    {
+        case 1:
+            ui->Home_App->setIcon(QIcon(":/Images/5-music/YouTube.svg"));
+            break;
+        case 2:
+            ui->Home_App->setIcon(QIcon(":/Images/5-music/Deezer.svg"));
+            break;
+        case 3:
+            ui->Home_App->setIcon(QIcon(":/Images/5-music/SoundCloud.svg"));
+            break;
+
+        default:
+            ui->Home_App->setIcon(QIcon(":/Images/5-music/Jamendo.svg"));
+            break;
+    }
+
     ui->Home_App->setMaximumWidth(sizeButton);
     ui->Home_App->setMaximumHeight(sizeButton);
     ui->Home_App->setIconSize(QSize(sizeButton, sizeButton));

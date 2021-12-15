@@ -48,6 +48,7 @@ public:
     int ServiceMusique;
     int ServiceMail;
     QWindow* ma_fenetreG;
+    QWindow* blankWindow;
     QWidget *FenG;
     QWidget *FenC;
     QWidget *FenE;

@@ -245,6 +245,38 @@
     <string notr="true">color:#fff;</string>
    </property>
    <layout class="QGridLayout" name="gridLayout_2">
+    <item row="2" column="1">
+     <spacer name="verticalSpacer_1">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>40</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="8" column="1">
+     <widget class="QToolButton" name="apply">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="text">
+       <string>Appliquer</string>
+      </property>
+     </widget>
+    </item>
     <item row="3" column="0">
      <spacer name="horizontalSpacer_1">
       <property name="sizePolicy">
@@ -260,6 +292,59 @@
        <size>
         <width>40</width>
         <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="3" column="1">
+     <widget class="QRadioButton" name="Jamendo">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>25</pointsize>
+       </font>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color:#fff;</string>
+      </property>
+      <property name="text">
+       <string>Jamendo</string>
+      </property>
+      <property name="icon">
+       <iconset resource="resource.qrc">
+        <normaloff>:/Images/5-music/Jamendo.svg</normaloff>:/Images/5-music/Jamendo.svg</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>80</width>
+        <height>80</height>
+       </size>
+      </property>
+      <property name="autoRepeat">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="9" column="1">
+     <spacer name="verticalSpacer">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>40</height>
        </size>
       </property>
      </spacer>
@@ -286,26 +371,36 @@
       <property name="text">
        <string>YouTube</string>
       </property>
+      <property name="icon">
+       <iconset resource="resource.qrc">
+        <normaloff>:/Images/5-music/YouTube.svg</normaloff>:/Images/5-music/YouTube.svg</iconset>
+      </property>
       <property name="iconSize">
        <size>
-        <width>200</width>
-        <height>200</height>
+        <width>80</width>
+        <height>80</height>
        </size>
       </property>
      </widget>
     </item>
     <item row="7" column="1">
-     <widget class="QToolButton" name="apply">
+     <spacer name="verticalSpacer_2">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
-      <property name="text">
-       <string>Appliquer</string>
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
       </property>
-     </widget>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>40</height>
+       </size>
+      </property>
+     </spacer>
     </item>
     <item row="0" column="1">
      <widget class="QLabel" name="Choix">
@@ -338,26 +433,7 @@ color:#fff;</string>
       </property>
      </widget>
     </item>
-    <item row="6" column="1">
-     <spacer name="verticalSpacer_2">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="orientation">
-       <enum>Qt::Vertical</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>20</width>
-        <height>40</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item row="9" column="1">
+    <item row="10" column="1">
      <widget class="QLabel" name="Redemarrage">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -411,6 +487,25 @@ color:#fff;</string>
       </property>
      </widget>
     </item>
+    <item row="3" column="2">
+     <spacer name="horizontalSpacer_2">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
     <item row="5" column="1">
      <widget class="QRadioButton" name="Deezer">
       <property name="sizePolicy">
@@ -434,16 +529,20 @@ color:#fff;</string>
       <property name="text">
        <string>Deezer</string>
       </property>
+      <property name="icon">
+       <iconset resource="resource.qrc">
+        <normaloff>:/Images/5-music/Deezer.svg</normaloff>:/Images/5-music/Deezer.svg</iconset>
+      </property>
       <property name="iconSize">
        <size>
-        <width>200</width>
-        <height>200</height>
+        <width>80</width>
+        <height>80</height>
        </size>
       </property>
      </widget>
     </item>
-    <item row="3" column="1">
-     <widget class="QRadioButton" name="Jamendo">
+    <item row="6" column="1">
+     <widget class="QRadioButton" name="SoundCloud">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
         <horstretch>0</horstretch>
@@ -458,76 +557,24 @@ color:#fff;</string>
       <property name="cursor">
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
-      <property name="autoFillBackground">
-       <bool>false</bool>
-      </property>
       <property name="styleSheet">
-       <string notr="true">color:#fff;</string>
+       <string notr="true">text-align: center;
+color:#fff;</string>
       </property>
       <property name="text">
-       <string>Jamendo</string>
+       <string>SoundCloud</string>
+      </property>
+      <property name="icon">
+       <iconset resource="resource.qrc">
+        <normaloff>:/Images/5-music/SoundCloud.svg</normaloff>:/Images/5-music/SoundCloud.svg</iconset>
       </property>
       <property name="iconSize">
        <size>
-        <width>200</width>
-        <height>200</height>
+        <width>80</width>
+        <height>80</height>
        </size>
-      </property>
-      <property name="autoRepeat">
-       <bool>false</bool>
       </property>
      </widget>
-    </item>
-    <item row="3" column="2">
-     <spacer name="horizontalSpacer_2">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>40</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item row="2" column="1">
-     <spacer name="verticalSpacer_1">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="orientation">
-       <enum>Qt::Vertical</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>20</width>
-        <height>40</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item row="8" column="1">
-     <spacer name="verticalSpacer">
-      <property name="orientation">
-       <enum>Qt::Vertical</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>20</width>
-        <height>40</height>
-       </size>
-      </property>
-     </spacer>
     </item>
    </layout>
   </widget>
