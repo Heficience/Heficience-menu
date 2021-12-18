@@ -13,7 +13,7 @@ AppDir:
     id: heficience-menu
     name: Heficience Menu
     icon: Heficience_Icone
-    version: '4.17'
+    version: '4.18'
     exec: usr/bin/heficience-menu
     exec_args: $@
   runtime:
