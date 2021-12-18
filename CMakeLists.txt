@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 3.5)
 
 if(WIN32)
-    project(heficience-menu VERSION "4.17")
+    project(heficience-menu VERSION "4.18")
 else()
-    project(heficience-menu LANGUAGES CXX VERSION "4.17")
+    project(heficience-menu LANGUAGES CXX VERSION "4.18")
 endif()
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
@@ -14,6 +14,7 @@ elseif(UNIX AND NOT APPLE)
     #set(CMAKE_PREFIX_PATH "/home/paul/Qt/5.15.2/gcc_64/lib/cmake")
 else()
     set(CMAKE_PREFIX_PATH "/Users/paulw/Qt/5.15.2/clang_64")
+    set(CMAKE_OSX_DEPLOYMENT_TARGET "10.9")
 endif()
 
 set(CMAKE_AUTOUIC ON)
