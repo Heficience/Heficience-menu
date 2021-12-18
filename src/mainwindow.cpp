@@ -574,11 +574,11 @@ void MainWindow::on_Calculatrice_clicked()
     if (KCalculatrice->isVisible()) {
         FenC->showFullScreen();
     } else {
-#if defined(__linux__) || defined(__APPLE__)
+//#if defined(__linux__) || defined(__APPLE__)
         UrlIci = QUrl("http://paulluxwaffle.synology.me/Calculator/");
-#elif _WIN32
-        UrlIci = QUrl::fromLocalFile(QFileInfo("Calculator/index.html").absoluteFilePath());
-#endif
+/**#elif _WIN32
+        UrlIci = QUrl::fromLocalFile(QFileInfo("../Calculator/index.html").absoluteFilePath());
+#endif**/
         mySettings.beginGroup("UrlIci");
         mySettings.setValue("UrlIci", UrlIci);
         mySettings.endGroup();
