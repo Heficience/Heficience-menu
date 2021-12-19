@@ -178,15 +178,6 @@
        </color>
       </brush>
      </colorrole>
-     <colorrole role="PlaceholderText">
-      <brush brushstyle="SolidPattern">
-       <color alpha="128">
-        <red>255</red>
-        <green>255</green>
-        <blue>255</blue>
-       </color>
-      </brush>
-     </colorrole>
     </active>
     <inactive>
      <colorrole role="WindowText">
@@ -339,15 +330,6 @@
         <red>0</red>
         <green>0</green>
         <blue>0</blue>
-       </color>
-      </brush>
-     </colorrole>
-     <colorrole role="PlaceholderText">
-      <brush brushstyle="SolidPattern">
-       <color alpha="128">
-        <red>255</red>
-        <green>255</green>
-        <blue>255</blue>
        </color>
       </brush>
      </colorrole>
@@ -506,30 +488,19 @@
        </color>
       </brush>
      </colorrole>
-     <colorrole role="PlaceholderText">
-      <brush brushstyle="SolidPattern">
-       <color alpha="128">
-        <red>255</red>
-        <green>255</green>
-        <blue>255</blue>
-       </color>
-      </brush>
-     </colorrole>
     </disabled>
    </palette>
   </property>
   <property name="windowTitle">
-   <string>EasyMenu - Acceuil</string>
+   <string>HeficienceMenu - Acceuil</string>
   </property>
   <property name="windowIcon">
    <iconset theme="heficience-menu">
-    <normaloff>.</normaloff>.</iconset>
+    <normaloff/>
+   </iconset>
   </property>
   <property name="windowOpacity">
    <double>3.000000000000000</double>
-  </property>
-  <property name="toolTipDuration">
-   <number>0</number>
   </property>
   <property name="autoFillBackground">
    <bool>false</bool>
@@ -540,15 +511,15 @@
   <property name="unifiedTitleAndToolBarOnMac">
    <bool>false</bool>
   </property>
+  <property name="toolTipDuration" stdset="0">
+   <number>0</number>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <property name="sizePolicy">
     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
      <horstretch>0</horstretch>
      <verstretch>0</verstretch>
     </sizepolicy>
-   </property>
-   <property name="toolTipDuration">
-    <number>-1</number>
    </property>
    <property name="layoutDirection">
     <enum>Qt::LeftToRight</enum>
@@ -558,6 +529,9 @@
    </property>
    <property name="styleSheet">
     <string notr="true"/>
+   </property>
+   <property name="toolTipDuration" stdset="0">
+    <number>-1</number>
    </property>
    <layout class="QGridLayout" name="gridLayout_3">
     <item row="0" column="0">
@@ -581,16 +555,7 @@
        <property name="sizeConstraint">
         <enum>QLayout::SetMaximumSize</enum>
        </property>
-       <property name="leftMargin">
-        <number>30</number>
-       </property>
-       <property name="topMargin">
-        <number>30</number>
-       </property>
-       <property name="rightMargin">
-        <number>30</number>
-       </property>
-       <property name="bottomMargin">
+       <property name="margin">
         <number>30</number>
        </property>
        <property name="spacing">
@@ -676,15 +641,6 @@
               </color>
              </brush>
             </colorrole>
-            <colorrole role="PlaceholderText">
-             <brush brushstyle="SolidPattern">
-              <color alpha="128">
-               <red>253</red>
-               <green>253</green>
-               <blue>255</blue>
-              </color>
-             </brush>
-            </colorrole>
            </active>
            <inactive>
             <colorrole role="WindowText">
@@ -744,15 +700,6 @@
             <colorrole role="ToolTipText">
              <brush brushstyle="SolidPattern">
               <color alpha="255">
-               <red>253</red>
-               <green>253</green>
-               <blue>255</blue>
-              </color>
-             </brush>
-            </colorrole>
-            <colorrole role="PlaceholderText">
-             <brush brushstyle="SolidPattern">
-              <color alpha="128">
                <red>253</red>
                <green>253</green>
                <blue>255</blue>
@@ -824,15 +771,6 @@
               </color>
              </brush>
             </colorrole>
-            <colorrole role="PlaceholderText">
-             <brush brushstyle="SolidPattern">
-              <color alpha="128">
-               <red>170</red>
-               <green>170</green>
-               <blue>172</blue>
-              </color>
-             </brush>
-            </colorrole>
            </disabled>
           </palette>
          </property>
@@ -858,7 +796,7 @@ Présentation</string>
          </property>
          <property name="icon">
           <iconset resource="resource.qrc">
-           <normaloff>:/Images/0-Categorie/clipboard.svg</normaloff>:/Images/0-Categorie/clipboard.svg</iconset>
+           <normaloff>:/Images/0-Categorie/office.svg</normaloff>:/Images/0-Categorie/office.svg</iconset>
          </property>
          <property name="iconSize">
           <size>
@@ -957,15 +895,6 @@ Présentation</string>
               </color>
              </brush>
             </colorrole>
-            <colorrole role="PlaceholderText">
-             <brush brushstyle="SolidPattern">
-              <color alpha="128">
-               <red>253</red>
-               <green>253</green>
-               <blue>255</blue>
-              </color>
-             </brush>
-            </colorrole>
            </active>
            <inactive>
             <colorrole role="WindowText">
@@ -1025,15 +954,6 @@ Présentation</string>
             <colorrole role="ToolTipText">
              <brush brushstyle="SolidPattern">
               <color alpha="255">
-               <red>253</red>
-               <green>253</green>
-               <blue>255</blue>
-              </color>
-             </brush>
-            </colorrole>
-            <colorrole role="PlaceholderText">
-             <brush brushstyle="SolidPattern">
-              <color alpha="128">
                <red>253</red>
                <green>253</green>
                <blue>255</blue>
@@ -1102,15 +1022,6 @@ Présentation</string>
                <red>253</red>
                <green>253</green>
                <blue>255</blue>
-              </color>
-             </brush>
-            </colorrole>
-            <colorrole role="PlaceholderText">
-             <brush brushstyle="SolidPattern">
-              <color alpha="128">
-               <red>170</red>
-               <green>170</green>
-               <blue>172</blue>
               </color>
              </brush>
             </colorrole>
@@ -1238,15 +1149,6 @@ sur Jamendo</string>
               </color>
              </brush>
             </colorrole>
-            <colorrole role="PlaceholderText">
-             <brush brushstyle="SolidPattern">
-              <color alpha="128">
-               <red>253</red>
-               <green>253</green>
-               <blue>255</blue>
-              </color>
-             </brush>
-            </colorrole>
            </active>
            <inactive>
             <colorrole role="WindowText">
@@ -1306,15 +1208,6 @@ sur Jamendo</string>
             <colorrole role="ToolTipText">
              <brush brushstyle="SolidPattern">
               <color alpha="255">
-               <red>253</red>
-               <green>253</green>
-               <blue>255</blue>
-              </color>
-             </brush>
-            </colorrole>
-            <colorrole role="PlaceholderText">
-             <brush brushstyle="SolidPattern">
-              <color alpha="128">
                <red>253</red>
                <green>253</green>
                <blue>255</blue>
@@ -1383,15 +1276,6 @@ sur Jamendo</string>
                <red>253</red>
                <green>253</green>
                <blue>255</blue>
-              </color>
-             </brush>
-            </colorrole>
-            <colorrole role="PlaceholderText">
-             <brush brushstyle="SolidPattern">
-              <color alpha="128">
-               <red>170</red>
-               <green>170</green>
-               <blue>172</blue>
               </color>
              </brush>
             </colorrole>
@@ -1521,15 +1405,6 @@ Email</string>
               </color>
              </brush>
             </colorrole>
-            <colorrole role="PlaceholderText">
-             <brush brushstyle="SolidPattern">
-              <color alpha="128">
-               <red>253</red>
-               <green>253</green>
-               <blue>255</blue>
-              </color>
-             </brush>
-            </colorrole>
            </active>
            <inactive>
             <colorrole role="WindowText">
@@ -1589,15 +1464,6 @@ Email</string>
             <colorrole role="ToolTipText">
              <brush brushstyle="SolidPattern">
               <color alpha="255">
-               <red>253</red>
-               <green>253</green>
-               <blue>255</blue>
-              </color>
-             </brush>
-            </colorrole>
-            <colorrole role="PlaceholderText">
-             <brush brushstyle="SolidPattern">
-              <color alpha="128">
                <red>253</red>
                <green>253</green>
                <blue>255</blue>
@@ -1666,15 +1532,6 @@ Email</string>
                <red>253</red>
                <green>253</green>
                <blue>255</blue>
-              </color>
-             </brush>
-            </colorrole>
-            <colorrole role="PlaceholderText">
-             <brush brushstyle="SolidPattern">
-              <color alpha="128">
-               <red>170</red>
-               <green>170</green>
-               <blue>172</blue>
               </color>
              </brush>
             </colorrole>
@@ -1804,15 +1661,6 @@ Accéder
               </color>
              </brush>
             </colorrole>
-            <colorrole role="PlaceholderText">
-             <brush brushstyle="SolidPattern">
-              <color alpha="128">
-               <red>253</red>
-               <green>253</green>
-               <blue>255</blue>
-              </color>
-             </brush>
-            </colorrole>
            </active>
            <inactive>
             <colorrole role="WindowText">
@@ -1872,15 +1720,6 @@ Accéder
             <colorrole role="ToolTipText">
              <brush brushstyle="SolidPattern">
               <color alpha="255">
-               <red>253</red>
-               <green>253</green>
-               <blue>255</blue>
-              </color>
-             </brush>
-            </colorrole>
-            <colorrole role="PlaceholderText">
-             <brush brushstyle="SolidPattern">
-              <color alpha="128">
                <red>253</red>
                <green>253</green>
                <blue>255</blue>
@@ -1949,15 +1788,6 @@ Accéder
                <red>253</red>
                <green>253</green>
                <blue>255</blue>
-              </color>
-             </brush>
-            </colorrole>
-            <colorrole role="PlaceholderText">
-             <brush brushstyle="SolidPattern">
-              <color alpha="128">
-               <red>170</red>
-               <green>170</green>
-               <blue>172</blue>
               </color>
              </brush>
             </colorrole>
@@ -2084,15 +1914,6 @@ sur Discord </string>
               </color>
              </brush>
             </colorrole>
-            <colorrole role="PlaceholderText">
-             <brush brushstyle="SolidPattern">
-              <color alpha="128">
-               <red>253</red>
-               <green>253</green>
-               <blue>255</blue>
-              </color>
-             </brush>
-            </colorrole>
            </active>
            <inactive>
             <colorrole role="WindowText">
@@ -2152,15 +1973,6 @@ sur Discord </string>
             <colorrole role="ToolTipText">
              <brush brushstyle="SolidPattern">
               <color alpha="255">
-               <red>253</red>
-               <green>253</green>
-               <blue>255</blue>
-              </color>
-             </brush>
-            </colorrole>
-            <colorrole role="PlaceholderText">
-             <brush brushstyle="SolidPattern">
-              <color alpha="128">
                <red>253</red>
                <green>253</green>
                <blue>255</blue>
@@ -2232,15 +2044,6 @@ sur Discord </string>
               </color>
              </brush>
             </colorrole>
-            <colorrole role="PlaceholderText">
-             <brush brushstyle="SolidPattern">
-              <color alpha="128">
-               <red>170</red>
-               <green>170</green>
-               <blue>172</blue>
-              </color>
-             </brush>
-            </colorrole>
            </disabled>
           </palette>
          </property>
@@ -2297,7 +2100,7 @@ Calculatrice</string>
      <x>0</x>
      <y>0</y>
      <width>1000</width>
-     <height>29</height>
+     <height>43</height>
     </rect>
    </property>
   </widget>

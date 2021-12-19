@@ -41,7 +41,6 @@
 #include <QHoverEvent>
 #include <iostream>
 
-
 std::map<std::string, QString> QStringMap;
 
 MainWindow::MainWindow(QWidget *parent)
@@ -413,7 +412,7 @@ bool MainWindow::eventFilter(QObject *watched, QEvent *event)
 
         if (watched == ui->Notes && (event->type() == QEvent::HoverEnter || event->type() == QEvent::MouseMove)) {
             ui->Notes->setText(QStringMap.at("Notes"));
-            ui->Notes->setIcon(QIcon(":/Images/0-Categorie/clipboard-color.svg"));
+            ui->Notes->setIcon(QIcon(":/Images/0-Categorie/office-color.svg"));
             ui->Notes->setStyleSheet("QToolButton#Notes:hover {background-color: rgb(0, 0, 0);border-radius: 10px;border:  16PX solid #38A3A5;color : white;}");
 
             if (play) {
@@ -431,7 +430,7 @@ bool MainWindow::eventFilter(QObject *watched, QEvent *event)
         }
         if (watched == ui->Notes && (event->type() == QEvent::HoverLeave || event->type() == QEvent::Hide)) {
             ui->Notes->setText("");
-            ui->Notes->setIcon(QIcon(":/Images/0-Categorie/clipboard.svg"));
+            ui->Notes->setIcon(QIcon(":/Images/0-Categorie/office.svg"));
             ui->Notes->setStyleSheet("QToolButton#Notes {background-color: #38A3A5;border-radius: 10px;border:  8PX solid red;color : white;}");
 
             play = true;
@@ -654,7 +653,8 @@ void MainWindow::on_Notes_clicked()
         profileN = office->page()->profile();
         profileN->setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36");
         office->setPage(new MyWebEnginePage);
-        UrlIci = QUrl("https://personal.onlyoffice.com/Products/Files/");
+        //UrlIci = QUrl("https://personal.onlyoffice.com/Products/Files/");
+        UrlIci = QUrl("https://www.office.com/");
         mySettings.beginGroup("UrlIci");
         mySettings.setValue("UrlIci", UrlIci);
         mySettings.endGroup();

@@ -41,6 +41,8 @@
         <file>../Images/0-Categorie/envelope-color.svg</file>
         <file>../Images/0-Categorie/globe-africa-color.svg</file>
         <file>../Images/0-Categorie/music-color.svg</file>
+        <file>../Images/0-Categorie/office.svg</file>
+        <file>../Images/0-Categorie/office-color.svg</file>
         <file>../Images/1-NavigateurWeb/close-alt.svg</file>
         <file>../Images/4-Courriel/Gmail.svg</file>
         <file>../Images/4-Courriel/Outlook.svg</file>
@@ -71,6 +73,7 @@
         <file>../Images/5-music/Jamendo.svg</file>
         <file>../Images/5-music/SoundCloud.svg</file>
         <file>../Images/5-music/YouTube.svg</file>
+        <file>../Images/logo.svg</file>
         <file>../src/heficience-menu.desktop</file>
     </qresource>
 </RCC>
