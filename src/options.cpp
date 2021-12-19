@@ -37,6 +37,8 @@ Options::Options(QWidget *parent)
 
     ui->Jamendo->setFont(font);
 
+    ui->SoundCloud->setFont(font);
+
     ui->Choix->setFont(font);
 
     ui->Redemarrage->setFont(font);
@@ -60,16 +62,25 @@ Options::Options(QWidget *parent)
             ui->Jamendo->setChecked(true);
             ui->YouTube->setChecked(false);
             ui->Deezer->setChecked(false);
+            ui->SoundCloud->setChecked(false);
             break;
         case 1:
             ui->Jamendo->setChecked(false);
             ui->YouTube->setChecked(true);
             ui->Deezer->setChecked(false);
+            ui->SoundCloud->setChecked(false);
+            break;
+        case 2:
+            ui->Jamendo->setChecked(false);
+            ui->YouTube->setChecked(false);
+            ui->Deezer->setChecked(true);
+            ui->SoundCloud->setChecked(false);
             break;
         default:
             ui->Jamendo->setChecked(false);
             ui->YouTube->setChecked(false);
-            ui->Deezer->setChecked(true);
+            ui->Deezer->setChecked(false);
+            ui->SoundCloud->setChecked(true);
             break;
     }
 
