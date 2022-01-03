@@ -41,13 +41,21 @@ ControlMenuOffice::ControlMenuOffice(QWidget *parent) :
     ui->Home->setMaximumHeight(sizeButton);
     ui->Home->setIconSize(QSize(sizeButton, sizeButton));
 
-    ui->Home_App->setMaximumWidth(sizeButton);
-    ui->Home_App->setMaximumHeight(sizeButton);
-    ui->Home_App->setIconSize(QSize(sizeButton, sizeButton));
+    ui->Docs->setMaximumWidth(sizeButton);
+    ui->Docs->setMaximumHeight(sizeButton);
+    ui->Docs->setIconSize(QSize(sizeButton, sizeButton));
 
-    ui->Home_App->setMaximumWidth(sizeButton);
-    ui->Home_App->setMaximumHeight(sizeButton);
-    ui->Home_App->setIconSize(QSize(sizeButton, sizeButton));
+    ui->Sheets->setMaximumWidth(sizeButton);
+    ui->Sheets->setMaximumHeight(sizeButton);
+    ui->Sheets->setIconSize(QSize(sizeButton, sizeButton));
+
+    ui->Slides->setMaximumWidth(sizeButton);
+    ui->Slides->setMaximumHeight(sizeButton);
+    ui->Slides->setIconSize(QSize(sizeButton, sizeButton));
+
+    ui->Forms->setMaximumWidth(sizeButton);
+    ui->Forms->setMaximumHeight(sizeButton);
+    ui->Forms->setIconSize(QSize(sizeButton, sizeButton));
 
     ui->Retour->setMaximumWidth(sizeButton);
     ui->Retour->setMaximumHeight(sizeButton);
@@ -100,7 +108,7 @@ void ControlMenuOffice::on_Home_clicked() {
     this->parentWidget()->close();
 }
 
-void ControlMenuOffice::on_Home_App_clicked() {
+void ControlMenuOffice::on_Docs_clicked() {
     QList<QWebEngineView *> webViews = parentWidget()->findChildren<QWebEngineView *>();
     QList<QWebEngineView *>::iterator it = std::find_if(webViews.begin(), webViews.end(),
                                                         [](QWebEngineView *webView) -> bool {
@@ -109,12 +117,65 @@ void ControlMenuOffice::on_Home_App_clicked() {
                                                         });
     if (it != webViews.end()) {
         QWebEngineView *mywebview = webViews.at(std::distance(webViews.begin(), it));
-        mywebview->setUrl(UrlIci);
+        mywebview->setUrl(QUrl("https://docs.google.com/document/u/0/"));
         QObject::connect(mywebview, &QWebEngineView::loadFinished,
                          [=](bool arg) {
                              mywebview->setZoomFactor(myScale.toInt());
                          });
     }
+}
+
+void ControlMenuOffice::on_Sheets_clicked() {
+    QList<QWebEngineView *> webViews = parentWidget()->findChildren<QWebEngineView *>();
+    QList<QWebEngineView *>::iterator it = std::find_if(webViews.begin(), webViews.end(),
+                                                        [](QWebEngineView *webView) -> bool {
+                                                            return QLatin1String(webView->metaObject()->className()) ==
+                                                                   "QWebEngineView";
+                                                        });
+    if (it != webViews.end()) {
+        QWebEngineView *mywebview = webViews.at(std::distance(webViews.begin(), it));
+        mywebview->setUrl(QUrl("https://docs.google.com/spreadsheets/u/0/"));
+        QObject::connect(mywebview, &QWebEngineView::loadFinished,
+                         [=](bool arg) {
+                             mywebview->setZoomFactor(myScale.toInt());
+                         });
+    }
+
+}
+
+void ControlMenuOffice::on_Slides_clicked() {
+    QList<QWebEngineView *> webViews = parentWidget()->findChildren<QWebEngineView *>();
+    QList<QWebEngineView *>::iterator it = std::find_if(webViews.begin(), webViews.end(),
+                                                        [](QWebEngineView *webView) -> bool {
+                                                            return QLatin1String(webView->metaObject()->className()) ==
+                                                                   "QWebEngineView";
+                                                        });
+    if (it != webViews.end()) {
+        QWebEngineView *mywebview = webViews.at(std::distance(webViews.begin(), it));
+        mywebview->setUrl(QUrl("https://docs.google.com/presentation/u/0/"));
+        QObject::connect(mywebview, &QWebEngineView::loadFinished,
+                         [=](bool arg) {
+                             mywebview->setZoomFactor(myScale.toInt());
+                         });
+    }
+}
+
+void ControlMenuOffice::on_Forms_clicked() {
+    QList<QWebEngineView *> webViews = parentWidget()->findChildren<QWebEngineView *>();
+    QList<QWebEngineView *>::iterator it = std::find_if(webViews.begin(), webViews.end(),
+                                                        [](QWebEngineView *webView) -> bool {
+                                                            return QLatin1String(webView->metaObject()->className()) ==
+                                                                   "QWebEngineView";
+                                                        });
+    if (it != webViews.end()) {
+        QWebEngineView *mywebview = webViews.at(std::distance(webViews.begin(), it));
+        mywebview->setUrl(QUrl("https://docs.google.com/forms/u/0/"));
+        QObject::connect(mywebview, &QWebEngineView::loadFinished,
+                         [=](bool arg) {
+                             mywebview->setZoomFactor(myScale.toInt());
+                         });
+    }
+
 }
 
 /**void ControlMenuOffice::on_Options_clicked() {

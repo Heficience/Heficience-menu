@@ -55,7 +55,6 @@ ControlMenuMusic::ControlMenuMusic(QWidget *parent) :
         case 3:
             ui->Home_App->setIcon(QIcon(":/Images/5-music/SoundCloud.svg"));
             break;
-
         default:
             ui->Home_App->setIcon(QIcon(":/Images/5-music/Jamendo.svg"));
             break;

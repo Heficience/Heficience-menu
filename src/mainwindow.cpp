@@ -126,49 +126,24 @@ MainWindow::MainWindow(QWidget *parent)
             musicText = "Ecouter de\nla musique\nsur YouTube";
             musicUrl = QUrl("https://www.youtube.com/?hl=fr&gl=FR&output=embed");
             music->load(musicUrl);
-            music->page()->runJavaScript("document.cookie = \"AC-C=ac-c;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/;SameSite=Lax\"; "
-                                         "document.cookie = \"tagname = test;secure\"; "
-                                         "CookieManager cookieManager = CookieManager.getInstance(); "
-                                         "cookieManager.setAcceptFileSchemeCookies(true); "
-                                         "cookieManager.setAcceptCookie(true); "
-                                         "cookieManager.acceptCookie();");
             serviceMusic = "Écouter de la musique grâce à YouTube";
             break;
         case 2:
             musicText = "Ecouter de\nla musique\nsur Deezer";
             musicUrl = QUrl("https://www.deezer.com/fr/");
             music->load(musicUrl);
-            music->page()->runJavaScript("document.cookie = \"AC-C=ac-c;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/;SameSite=Lax\"; "
-                                         "document.cookie = \"tagname = test;secure\"; "
-                                         "CookieManager cookieManager = CookieManager.getInstance(); "
-                                         "cookieManager.setAcceptFileSchemeCookies(true); "
-                                         "cookieManager.setAcceptCookie(true); "
-                                         "cookieManager.acceptCookie();");
             serviceMusic = "Écouter de la musique grâce à Deezer";
             break;
         case 3:
             musicText = "Ecouter de\nla musique\nsur \nSoundCloud";
             musicUrl = QUrl("https://soundcloud.com/discover");
             music->load(musicUrl);
-            music->page()->runJavaScript("document.cookie = \"AC-C=ac-c;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/;SameSite=Lax\"; "
-                                         "document.cookie = \"tagname = test;secure\"; "
-                                         "CookieManager cookieManager = CookieManager.getInstance(); "
-                                         "cookieManager.setAcceptFileSchemeCookies(true); "
-                                         "cookieManager.setAcceptCookie(true); "
-                                         "cookieManager.acceptCookie();");
             serviceMusic = "Écouter de la musique grâce à SoundCloud";
             break;
-
         default:
             musicText = "Ecouter de\nla musique\nsur Jamendo";
             musicUrl = QUrl("https://www.jamendo.com/start");
             music->load(musicUrl);
-            music->page()->runJavaScript("document.cookie = \"AC-C=ac-c;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/;SameSite=Lax\"; "
-                                         "document.cookie = \"tagname = test;secure\"; "
-                                         "CookieManager cookieManager = CookieManager.getInstance(); "
-                                         "cookieManager.setAcceptFileSchemeCookies(true); "
-                                         "cookieManager.setAcceptCookie(true); "
-                                         "cookieManager.acceptCookie();");
             serviceMusic = "Écouter de la musique grâce à Jamendo";
             break;
     }
@@ -230,17 +205,40 @@ MainWindow::MainWindow(QWidget *parent)
     ui->Music->installEventFilter(this);
 
     profileC = KCalculatrice->page()->profile();
-    profileC->setHttpUserAgent("Mozilla/5.0 (Linux; U; Android 4.4.2; fr-fr; SCH-I535 Build/KOT49H) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30");
+    profileC->setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36");
+    profileC->setPersistentCookiesPolicy(QWebEngineProfile::ForcePersistentCookies);
+    profileC->setCachePath(".heficience/cache");
+    profileC->setPersistentStoragePath(".heficience/persistentstorage");
+
     profileE = mail->page()->profile();
-    profileE->setHttpUserAgent("Mozilla/5.0 (Linux; U; Android 4.4.2; fr-fr; SCH-I535 Build/KOT49H) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30");
+    profileE->setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36");
+    profileE->setPersistentCookiesPolicy(QWebEngineProfile::ForcePersistentCookies);
+    profileE->setCachePath(".heficience/cache");
+    profileE->setPersistentStoragePath(".heficience/persistentstorage");
+
     profileI = web->page()->profile();
-    profileI->setHttpUserAgent("Mozilla/5.0 (Linux; U; Android 4.4.2; fr-fr; SCH-I535 Build/KOT49H) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30");
+    profileI->setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36");
+    profileI->setPersistentCookiesPolicy(QWebEngineProfile::ForcePersistentCookies);
+    profileI->setCachePath(".heficience/cache");
+    profileI->setPersistentStoragePath(".heficience/persistentstorage");
+
     profileN = office->page()->profile();
     profileN->setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36");
+    profileN->setPersistentCookiesPolicy(QWebEngineProfile::ForcePersistentCookies);
+    profileN->setCachePath(".heficience/cache");
+    profileN->setPersistentStoragePath(".heficience/persistentstorage");
+
     profileD = DiscordLauncher->page()->profile();
-    profileD->setHttpUserAgent("Mozilla/5.0 (Linux; U; Android 4.4.2; fr-fr; SCH-I535 Build/KOT49H) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30");
+    profileD->setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36");
+    profileD->setPersistentCookiesPolicy(QWebEngineProfile::ForcePersistentCookies);
+    profileD->setCachePath(".heficience/cache");
+    profileD->setPersistentStoragePath(".heficience/persistentstorage");
+
     profileM = music->page()->profile();
-    profileM->setHttpUserAgent("Mozilla/5.0 (Linux; U; Android 4.4.2; fr-fr; SCH-I535 Build/KOT49H) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30");
+    profileM->setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36");
+    profileM->setPersistentCookiesPolicy(QWebEngineProfile::ForcePersistentCookies);
+    profileM->setCachePath(".heficience/cache");
+    profileM->setPersistentStoragePath(".heficience/persistentstorage");
 
     myWid = this->winId();
 
@@ -412,7 +410,7 @@ bool MainWindow::eventFilter(QObject *watched, QEvent *event)
 
         if (watched == ui->Notes && (event->type() == QEvent::HoverEnter || event->type() == QEvent::MouseMove)) {
             ui->Notes->setText(QStringMap.at("Notes"));
-            ui->Notes->setIcon(QIcon(":/Images/0-Categorie/office-color.svg"));
+            ui->Notes->setIcon(QIcon(":/Images/0-Categorie/All_docs-color.svg"));
             ui->Notes->setStyleSheet("QToolButton#Notes:hover {background-color: rgb(0, 0, 0);border-radius: 10px;border:  16PX solid #38A3A5;color : white;}");
 
             if (play) {
@@ -430,7 +428,7 @@ bool MainWindow::eventFilter(QObject *watched, QEvent *event)
         }
         if (watched == ui->Notes && (event->type() == QEvent::HoverLeave || event->type() == QEvent::Hide)) {
             ui->Notes->setText("");
-            ui->Notes->setIcon(QIcon(":/Images/0-Categorie/office.svg"));
+            ui->Notes->setIcon(QIcon(":/Images/0-Categorie/All_docs.svg"));
             ui->Notes->setStyleSheet("QToolButton#Notes {background-color: #38A3A5;border-radius: 10px;border:  8PX solid red;color : white;}");
 
             play = true;
@@ -537,37 +535,6 @@ void MainWindow::handleStateChanged(QProcess *procss, QWidget *widget, QWidget *
     }
 }
 
-void MainWindow::OpenNewWindows(MyWebEnginePage *myPage)
-{
-    mail->setPage(myPage);
-    mail->page()->runJavaScript("document.cookie = \"AC-C=ac-c;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/;SameSite=Lax\"; "
-                                         "document.cookie = \"tagname = test;secure\"; "
-                                         "CookieManager cookieManager = CookieManager.getInstance(); "
-                                         "cookieManager.setAcceptFileSchemeCookies(true); "
-                                         "cookieManager.setAcceptCookie(true); "
-                                         "cookieManager.acceptCookie();");
-    mail->setZoomFactor(myScale.toInt());
-    mail->setMinimumWidth(WIDTHMAIN);
-    mail->setMinimumHeight(HEIGHT);
-    FenE = new QWidget;
-    myLayout = new QHBoxLayout(FenE);
-    myLayout->addWidget(mail);
-    menuE = new ControlMenuMail();
-    menuE->setMaximumWidth(WIDTHCONTROL);
-    menuE->setMaximumHeight(HEIGHT);
-    myLayout->addWidget(menuE);
-    QPalette pal = palette();
-    pal.setColor(QPalette::Window, Qt::black);
-    pal.setColor(QPalette::WindowText, Qt::white);
-    FenE->setAutoFillBackground(true);
-    FenE->setPalette(pal);
-    FenE->setStyleSheet("background:#22577A; color:#fff");
-    FenE->showFullScreen();
-#ifdef __APPLE__
-    this->close();
-#endif
-}
-
 void MainWindow::on_Calculatrice_clicked()
 {
     if (KCalculatrice->isVisible()) {
@@ -582,12 +549,6 @@ void MainWindow::on_Calculatrice_clicked()
         mySettings.setValue("UrlIci", UrlIci);
         mySettings.endGroup();
         KCalculatrice->load(UrlIci);
-        KCalculatrice->page()->runJavaScript("document.cookie = \"AC-C=ac-c;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/;SameSite=Lax\"; "
-                                         "document.cookie = \"tagname = test;secure\"; "
-                                         "CookieManager cookieManager = CookieManager.getInstance(); "
-                                         "cookieManager.setAcceptFileSchemeCookies(true); "
-                                         "cookieManager.setAcceptCookie(true); "
-                                         "cookieManager.acceptCookie();");
         KCalculatrice->setZoomFactor(2 * myScale.toInt());
         KCalculatrice->setMinimumWidth(WIDTHMAIN);
         KCalculatrice->setMinimumHeight(HEIGHT);
@@ -613,60 +574,69 @@ void MainWindow::on_Calculatrice_clicked()
 
 void MainWindow::on_Email_clicked()
 {
-    MyWebEnginePage *page = new MyWebEnginePage();
     mySettings.beginGroup("ChoixMail");
     ServiceMail = mySettings.value("Mail").toInt();
     mySettings.endGroup();
+    QUrl urlici;
     switch ( ServiceMail )
     {
         case 1:
-            page->load(QUrl("https://outlook.live.com/mail/0/inbox"));
+            urlici = QUrl("https://outlook.live.com/mail/0/inbox");
             break;
         case 2:
-            page->load(QUrl("https://login.yahoo.com/?.src=ym&lang=fr-FR&done=https%3A%2F%2Ffr.mail.yahoo.com"));
+            urlici = QUrl("https://login.yahoo.com/?.src=ym&lang=fr-FR&done=https%3A%2F%2Ffr.mail.yahoo.com");
             break;
         case 3:
-            page->load(QUrl("https://login.orange.fr/?return_url=https://rms.orange.fr/mail/inbox%3F"));
+            urlici = QUrl("https://login.orange.fr/?return_url=https://rms.orange.fr/mail/inbox%3F");
             break;
         case 4:
-            page->load(QUrl("https://www.sfr.fr/cas/login?service=https%3A%2F%2Fwebmail.sfr.fr%2Fwebmail%2Fj_spring_cas_security_check"));
+            urlici = QUrl("https://www.sfr.fr/cas/login?service=https%3A%2F%2Fwebmail.sfr.fr%2Fwebmail%2Fj_spring_cas_security_check");
             break;
         case 5:
-            page->load(QUrl("https://zimbra.free.fr/"));
+            urlici = QUrl("https://zimbra.free.fr/");
             break;
         case 6:
-            page->load(QUrl("https://www.mon-compte.bouyguestelecom.fr/cas/login?service=https%3A%2F%2Foauth2.bouyguestelecom.fr%2Fcallback%2Fpicasso%2Fprotocol%2Fcas%3Fid%3Dar-33df094b-d8fb-4aca-afba-fb33f42ab763%26client_id%3Dwebmail.bouyguestelecom.fr"));
+            urlici = QUrl("https://www.mon-compte.bouyguestelecom.fr/cas/login?service=https%3A%2F%2Foauth2.bouyguestelecom.fr%2Fcallback%2Fpicasso%2Fprotocol%2Fcas%3Fid%3Dar-33df094b-d8fb-4aca-afba-fb33f42ab763%26client_id%3Dwebmail.bouyguestelecom.fr");
             break;
         case 7:
-            page->load(QUrl("https://www.laposte.net/accueil"));
+            urlici = QUrl("https://www.laposte.net/accueil");
             break;
         default:
-            page->load(QUrl("https://mail.google.com/"));
+            urlici = QUrl("https://mail.google.com/");
     }
-    OpenNewWindows(page);
+    mail->load(urlici);
+    mail->setZoomFactor(myScale.toInt());
+    mail->setMinimumWidth(WIDTHMAIN);
+    mail->setMinimumHeight(HEIGHT);
+    FenE = new QWidget;
+    myLayout = new QHBoxLayout(FenE);
+    myLayout->addWidget(mail);
+    menuE = new ControlMenuMail();
+    menuE->setMaximumWidth(WIDTHCONTROL);
+    menuE->setMaximumHeight(HEIGHT);
+    myLayout->addWidget(menuE);
+    QPalette pal = palette();
+    pal.setColor(QPalette::Window, Qt::black);
+    pal.setColor(QPalette::WindowText, Qt::white);
+    FenE->setAutoFillBackground(true);
+    FenE->setPalette(pal);
+    FenE->setStyleSheet("background:#22577A; color:#fff");
+    FenE->showFullScreen();
  }
 void MainWindow::on_Notes_clicked()
 {
     if (office->isVisible()) {
         FenN->showFullScreen();
     } else {
-        profileN = office->page()->profile();
-        profileN->setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36");
         office->setPage(new MyWebEnginePage);
         //UrlIci = QUrl("https://personal.onlyoffice.com/Products/Files/");
-        UrlIci = QUrl("https://www.office.com/");
+        UrlIci = QUrl("https://docs.google.com/document/u/0/");
         mySettings.beginGroup("UrlIci");
         mySettings.setValue("UrlIci", UrlIci);
         mySettings.endGroup();
         office->load(UrlIci);
         office->settings()->setAttribute(QWebEngineSettings::JavascriptEnabled, true);
         office->settings()->setAttribute(QWebEngineSettings::JavascriptCanOpenWindows, true);
-        office->page()->runJavaScript("document.cookie = \"AC-C=ac-c;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/;SameSite=Lax\"; "
-                                         "document.cookie = \"tagname = test;secure\"; "
-                                         "CookieManager cookieManager = CookieManager.getInstance(); "
-                                         "cookieManager.setAcceptFileSchemeCookies(true); "
-                                         "cookieManager.setAcceptCookie(true); "
-                                         "cookieManager.acceptCookie();");
         office->setZoomFactor(myScale.toInt());
         office->setMinimumWidth(WIDTHMAIN);
         office->setMinimumHeight(HEIGHT);
@@ -698,12 +668,6 @@ void MainWindow::on_Internet_clicked()
         UrlIci = QUrl("https://heficience.search.paulluxwaffle.synology.me/search.php");
         web->setPage(new MyWebEnginePage);
         web->load(UrlIci);
-        web->page()->runJavaScript("document.cookie = \"AC-C=ac-c;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/;SameSite=Lax\"; "
-                                         "document.cookie = \"tagname = test;secure\"; "
-                                         "CookieManager cookieManager = CookieManager.getInstance(); "
-                                         "cookieManager.setAcceptFileSchemeCookies(true); "
-                                         "cookieManager.setAcceptCookie(true); "
-                                         "cookieManager.acceptCookie();");
         web->setZoomFactor(myScale.toInt());
         web->setMinimumWidth(WIDTHMAIN);
         web->setMinimumHeight(HEIGHT);
@@ -762,21 +726,11 @@ void MainWindow::on_Music_clicked()
 void MainWindow::on_Discord_clicked()
 {
     profileD = DiscordLauncher->page()->profile();
-    if (profileD->httpUserAgent() != "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36") {
-        profileD->setHttpUserAgent(
-                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36");
-    }
     if (DiscordLauncher->isVisible()) {
         FenD->showFullScreen();
     } else {
         DiscordLauncher->setPage(new MyWebEnginePage);
         DiscordLauncher->setUrl(QUrl("https://discord.com/channels/@me"));
-        DiscordLauncher->page()->runJavaScript("document.cookie = \"AC-C=ac-c;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/;SameSite=Lax\"; "
-                                         "document.cookie = \"tagname = test;secure\"; "
-                                         "CookieManager cookieManager = CookieManager.getInstance(); "
-                                         "cookieManager.setAcceptFileSchemeCookies(true); "
-                                         "cookieManager.setAcceptCookie(true); "
-                                         "cookieManager.acceptCookie();");
         DiscordLauncher->setZoomFactor(myScale.toInt());
         DiscordLauncher->setMinimumWidth(WIDTHMAIN);
         DiscordLauncher->setMinimumHeight(HEIGHT);

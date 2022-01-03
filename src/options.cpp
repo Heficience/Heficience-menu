@@ -143,3 +143,12 @@ void Options::on_SoundCloud_toggled()
         mySettings.endGroup();
     }
 }
+
+void Options::on_Spotify_toggled()
+{
+    if (CanUse == true) {
+        mySettings.beginGroup("ChoixMusic");
+        mySettings.setValue("Music", 4);
+        mySettings.endGroup();
+    }
+}

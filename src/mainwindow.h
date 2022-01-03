@@ -132,7 +132,6 @@ private slots:
     void on_Music_clicked();
     void on_Discord_clicked();
     static void handleStateChanged(QProcess *procss, QWidget *widget, QWidget *killtest);
-    void OpenNewWindows(MyWebEnginePage *);
 };
 
 #endif // MAINWINDOW_H

@@ -40,6 +40,7 @@ private slots:
     void on_YouTube_toggled();
     void on_Deezer_toggled();
     void on_SoundCloud_toggled();
+    void on_Spotify_toggled();
     void on_apply_clicked();
 };
 #endif // OPTIONS_H
