@@ -1,6 +1,6 @@
 # heficience-menu-qt
 
-![Image du Menu](Images/ImageDuMenu.gif?width=1522&height=860)
+![Image du Menu](Images/ImageDuMenu.png?width=1522&height=860)
 
 # install 
 
