@@ -204,41 +204,49 @@ MainWindow::MainWindow(QWidget *parent)
     ui->Discord->installEventFilter(this);
     ui->Music->installEventFilter(this);
 
+    QString home=QDir::homePath();
+    
+    KCalculatrice->setPage(new MyWebEnginePage);
     profileC = KCalculatrice->page()->profile();
-    profileC->setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36");
+    //profileC->setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36");
     profileC->setPersistentCookiesPolicy(QWebEngineProfile::ForcePersistentCookies);
-    profileC->setCachePath(".heficience/cache");
-    profileC->setPersistentStoragePath(".heficience/persistentstorage");
+    profileC->setCachePath(home+"/.heficience/cache");
+    profileC->setPersistentStoragePath(home+"/.heficience/persistentstorage");
 
+    mail->setPage(new MyWebEnginePage);
     profileE = mail->page()->profile();
-    profileE->setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36");
+    //profileE->setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36");
     profileE->setPersistentCookiesPolicy(QWebEngineProfile::ForcePersistentCookies);
-    profileE->setCachePath(".heficience/cache");
-    profileE->setPersistentStoragePath(".heficience/persistentstorage");
+    profileE->setCachePath(home+"/.heficience/cache");
+    profileE->setPersistentStoragePath(home+"/.heficience/persistentstorage");
 
+    web->setPage(new MyWebEnginePage);
     profileI = web->page()->profile();
-    profileI->setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36");
+    //profileI->setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36");
     profileI->setPersistentCookiesPolicy(QWebEngineProfile::ForcePersistentCookies);
-    profileI->setCachePath(".heficience/cache");
-    profileI->setPersistentStoragePath(".heficience/persistentstorage");
+    profileI->setCachePath(home+"/.heficience/cache");
+    profileI->setPersistentStoragePath(home+"/.heficience/persistentstorage");
 
+    office->setPage(new MyWebEnginePage);
     profileN = office->page()->profile();
-    profileN->setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36");
+    //profileN->setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36");
     profileN->setPersistentCookiesPolicy(QWebEngineProfile::ForcePersistentCookies);
-    profileN->setCachePath(".heficience/cache");
-    profileN->setPersistentStoragePath(".heficience/persistentstorage");
+    profileN->setCachePath(home+"/.heficience/cache");
+    profileN->setPersistentStoragePath(home+"/.heficience/persistentstorage");
 
+    DiscordLauncher->setPage(new MyWebEnginePage);
     profileD = DiscordLauncher->page()->profile();
-    profileD->setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36");
+    //profileD->setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36");
     profileD->setPersistentCookiesPolicy(QWebEngineProfile::ForcePersistentCookies);
-    profileD->setCachePath(".heficience/cache");
-    profileD->setPersistentStoragePath(".heficience/persistentstorage");
+    profileD->setCachePath(home+"/.heficience/cache");
+    profileD->setPersistentStoragePath(home+"/.heficience/persistentstorage");
 
+    music->setPage(new MyWebEnginePage);
     profileM = music->page()->profile();
-    profileM->setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36");
+    //profileM->setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36");
     profileM->setPersistentCookiesPolicy(QWebEngineProfile::ForcePersistentCookies);
-    profileM->setCachePath(".heficience/cache");
-    profileM->setPersistentStoragePath(".heficience/persistentstorage");
+    profileM->setCachePath(home+"/.heficience/cache");
+    profileM->setPersistentStoragePath(home+"/.heficience/persistentstorage");
 
     myWid = this->winId();
 
@@ -666,7 +674,6 @@ void MainWindow::on_Internet_clicked()
         FenI->showFullScreen();
     } else {
         UrlIci = QUrl("https://heficience.search.paulluxwaffle.synology.me/search.php");
-        web->setPage(new MyWebEnginePage);
         web->load(UrlIci);
         web->setZoomFactor(myScale.toInt());
         web->setMinimumWidth(WIDTHMAIN);

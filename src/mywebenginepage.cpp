@@ -8,5 +8,7 @@
 
 QWebEnginePage* MyWebEnginePage::createWindow(QWebEnginePage::WebWindowType Type)
 {
-    return this;
+    MyWebEnginePage *page = new MyWebEnginePage(this);
+    connect(page, &QWebEnginePage::urlChanged, this, &MyWebEnginePage::onUrlChanged);
+    return page;
 }
