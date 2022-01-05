@@ -704,6 +704,7 @@ void MainWindow::on_Music_clicked()
         FenM->showFullScreen();
     } else {
         UrlIci = musicUrl;
+        music->load(UrlIci);
         mySettings.beginGroup("UrlIci");
         mySettings.setValue("UrlIci", UrlIci);
         mySettings.endGroup();
