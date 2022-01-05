@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 3.5)
 
 if(WIN32)
-    project(heficience-menu VERSION "4.18")
+    project(heficience-menu VERSION "4.20")
 else()
-    project(heficience-menu LANGUAGES CXX VERSION "4.18")
+    project(heficience-menu LANGUAGES CXX VERSION "4.20")
 endif()
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)

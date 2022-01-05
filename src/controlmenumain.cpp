@@ -55,10 +55,10 @@ ControlMenuMain::ControlMenuMain(QWidget *parent) :
 
     if (DarkMode) {
         ui->DarkMode->toggle();
-        qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--blink-settings=forceDarkModeEnabled=true");
+        qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--blink-settings=forceDarkModeEnabled=true,darkModeInversionAlgorithm=4");
     } else {
         ui->NormalMode->toggle();
-        qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--blink-settings=forceDarkModeEnabled=false");
+        qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--blink-settings=forceDarkModeEnabled=false,darkModeInversionAlgorithm=0");
     }
 
     FirstTime = false;
@@ -116,7 +116,7 @@ void ControlMenuMain::on_DarkMode_toggled(bool checked)
     if (checked) {
         mySettings.beginGroup("DarkMode");
         mySettings.setValue("DarkMode", true);
-        qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--blink-settings=forceDarkModeEnabled=true");
+        qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--blink-settings=forceDarkModeEnabled=true,darkModeInversionAlgorithm=4");
         mySettings.endGroup();
         if (!FirstTime) {
             QTimer *timer = new QTimer(this);
@@ -131,7 +131,7 @@ void ControlMenuMain::on_NormalMode_toggled(bool checked)
     if (checked) {
         mySettings.beginGroup("DarkMode");
         mySettings.setValue("DarkMode", false);
-        qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--blink-settings=forceDarkModeEnabled=false");
+        qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--blink-settings=forceDarkModeEnabled=false,darkModeInversionAlgorithm=0");
         mySettings.endGroup();
         if (!FirstTime) {
             QTimer *timer = new QTimer(this);

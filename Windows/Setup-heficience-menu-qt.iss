@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Heficience Menu"
-#define MyAppVersion "0.4.18"
+#define MyAppVersion "4.20"
 #define MyAppPublisher "Heficience"
 #define MyAppURL "https://www.heficience.com/"
 #define MyAppExeName "heficience-menu.exe"

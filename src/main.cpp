@@ -23,9 +23,9 @@ int main(int argc, char *argv[])
     mySettings.endGroup();
 
     if (DarkMode) {
-        qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--blink-settings=forceDarkModeEnabled=true");
+        qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--blink-settings=forceDarkModeEnabled=true,darkModeInversionAlgorithm=4");
     } else {
-        qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--blink-settings=forceDarkModeEnabled=false");
+        qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--blink-settings=forceDarkModeEnabled=false,darkModeInversionAlgorithm=0");
     }
 
     MainWindow w;
